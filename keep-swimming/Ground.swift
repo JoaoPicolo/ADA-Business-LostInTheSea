@@ -17,11 +17,11 @@ class Ground: GameNode {
     
     func update(deltaTime: TimeInterval) {
         // Move ground - Moves 50px/second
-        node.position.x -= GameManager.speed * deltaTime
+        node.position.x -= GameManager.speed * (deltaTime / 60)
         
         if node.position.x <= 0 {
             // The ground repeats every 24px
-            node.position.x += 24
+            node.position.x += 12
         }
     }
 }

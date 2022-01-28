@@ -35,12 +35,12 @@ class Player: GameNode {
     }
     
     func die() {
-        node.yScale = -1
+        node.yScale = startScaleY * -1
         node.removeAllActions()
     }
     
     func reset() {
-        node.yScale = 1
+        node.yScale = startScaleY
         node.physicsBody?.isDynamic = false
         node.position = startPosition
     }

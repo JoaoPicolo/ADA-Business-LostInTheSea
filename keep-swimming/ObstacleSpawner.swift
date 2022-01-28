@@ -43,7 +43,7 @@ class ObstacleSpawner {
         
         // Only the first must be removed
         if let firstPipe = obstacles.first {
-            if firstPipe.position.x < -180 {
+            if firstPipe.position.x < -400 {
                 firstPipe.removeFromParent()
                 obstacles.removeFirst()
             }
@@ -54,7 +54,7 @@ class ObstacleSpawner {
         let new = obstacleNode.copy() as! SKSpriteNode
         
         if obstaclePos == .middle {
-            new.position.y = CGFloat.random(in: -40...140)
+            new.position.y = CGFloat.random(in: -110...130)
         }
         
         getSpawnObject(new: new)

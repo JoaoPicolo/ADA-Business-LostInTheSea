@@ -11,9 +11,13 @@ import SpriteKit
 class GameNode {
     var node: SKSpriteNode
     var startPosition: CGPoint
+    var startScaleY: CGFloat
+    var startScaleX: CGFloat
     
     init(node: SKSpriteNode) {
         self.node = node
         startPosition = node.position
+        startScaleX = node.xScale
+        startScaleY = node.yScale
     }
 }
