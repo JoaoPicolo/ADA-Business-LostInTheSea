@@ -10,12 +10,10 @@ import SpriteKit
 
 class Player: GameNode {
     private var jumpVelocity = CGFloat(500)
-    private var animation: SKAction = SKAction()
     
     override init(node: SKSpriteNode) {
         super.init(node: node)
         physicsSetup()
-        animationSetup()
     }
     
     func physicsSetup() {
@@ -24,19 +22,6 @@ class Player: GameNode {
         body.affectedByGravity = true
         
         node.physicsBody = body
-    }
-    
-    func animationSetup() {
-        // Can use atlas
-        var textures = [SKTexture]()
-        textures.append(SKTexture(imageNamed: "bluebird-downflap"))
-        textures.append(SKTexture(imageNamed: "bluebird-midflap"))
-        textures.append(SKTexture(imageNamed: "bluebird-upflap"))
-        textures.append(SKTexture(imageNamed: "bluebird-midflap"))
-        
-        let frames = SKAction.animate(with: textures, timePerFrame: 0.1, resize: false, restore: true)
-        animation = SKAction.repeatForever(frames)
-        node.run(animation)
     }
     
     // Start physics

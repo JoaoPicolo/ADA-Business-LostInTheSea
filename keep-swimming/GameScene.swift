@@ -8,12 +8,13 @@
 import SpriteKit
 import GameplayKit
 
+
 class GameScene: SKScene, SKPhysicsContactDelegate {
     var player: Player!
     var ground: Ground!
     var introNode: SKSpriteNode!
     var gameOverNode: SKSpriteNode!
-    var spawner: PipeSpawner!
+    var spawnManager: SpawnManager!
 
     var lastUpdate = TimeInterval(0)
     var status: GameStatus = .intro
@@ -22,23 +23,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
        physicsWorld.contactDelegate = self
        
        // Player Node
-       let playerNode = childNode(withName: "Player") as! SKSpriteNode
+       let playerNode = childNode(withName: "player") as! SKSpriteNode
        player = Player(node: playerNode)
        
        // Ground Node
-       let groundNode = childNode(withName: "Ground") as! SKSpriteNode
+       let groundNode = childNode(withName: "ground") as! SKSpriteNode
        ground = Ground(node: groundNode)
        
        // Intro Node
-       introNode = childNode(withName: "Intro") as? SKSpriteNode
+       introNode = childNode(withName: "intro") as? SKSpriteNode
        
        // Game over Node
-       gameOverNode = childNode(withName: "GameOver") as? SKSpriteNode
+       gameOverNode = childNode(withName: "gameOver") as? SKSpriteNode
        gameOverNode.removeFromParent()
        
-       // Pipes spawner - Treat possible error later
-       let pipesNode = childNode(withName: "Pipes")!
-       spawner = PipeSpawner(pipesModel: pipesNode, parent: self)
+       // Spawn Manager
+       spawnManager = SpawnManager(parent: self)
    }
 
     
@@ -52,13 +52,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             reset()
         }
     }
-    
-    func start() {
-        status = .playing
-        introNode.removeFromParent()
-        player.start()
-    }
-
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered - 60x/second
@@ -82,12 +75,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func playingUpdate(deltaTime: TimeInterval) {
         ground.update(deltaTime: deltaTime)
-        spawner.update(deltaTime: deltaTime)
+        spawnManager.updateSpawns(deltaTime: deltaTime)
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
         // Pass which object colided with which object
         gameOver()
+    }
+    
+    func start() {
+        status = .playing
+        introNode.removeFromParent()
+        player.start()
     }
     
     func gameOver() {
@@ -105,12 +104,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(introNode)
         status = .intro
         player.reset()
-        spawner.reset()
+        spawnManager.resetSpawns()
     }
-}
-
-enum GameStatus {
-    case intro
-    case playing
-    case gameOver
 }

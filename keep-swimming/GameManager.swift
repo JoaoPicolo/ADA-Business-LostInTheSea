@@ -9,5 +9,11 @@ import Foundation
 import SpriteKit
 
 class GameManager {
-    static var speed = CGFloat(50)
+    static var speed = CGFloat(100)
+}
+
+enum GameStatus {
+    case intro
+    case playing
+    case gameOver
 }
