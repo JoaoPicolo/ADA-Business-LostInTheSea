@@ -17,10 +17,19 @@ class GameManager {
         distance += (deltaTime / 60) * speed
         distanceDisplayed = Int(distance)
         
+        if (distanceDisplayed != 0) && (distanceDisplayed % 20 == 0) {
+            updateSpeed()
+        }
+        
         return "\(distanceDisplayed) m"
     }
     
+    static func updateSpeed() {
+        speed += 0.5
+    }
+    
     static func reset() {
+        speed = CGFloat(100)
         distance = 0
         distanceDisplayed = 0
     }
