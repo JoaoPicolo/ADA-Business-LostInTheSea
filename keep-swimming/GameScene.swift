@@ -15,6 +15,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var introNode: SKSpriteNode!
     var gameOverNode: SKSpriteNode!
     var spawnManager: SpawnManager!
+    
+    var distanceText: SKLabelNode!
 
     var lastUpdate = TimeInterval(0)
     var status: GameStatus = .intro
@@ -36,6 +38,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
        // Game over Node
        gameOverNode = childNode(withName: "gameOver") as? SKSpriteNode
        gameOverNode.removeFromParent()
+       
+       // Distance text
+       distanceText = childNode(withName: "distanceText") as? SKLabelNode
        
        // Spawn Manager
        spawnManager = SpawnManager(parent: self)
@@ -76,6 +81,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func playingUpdate(deltaTime: TimeInterval) {
         ground.update(deltaTime: deltaTime)
         spawnManager.updateSpawns(deltaTime: deltaTime)
+        distanceText.text = GameManager.updateDistance(deltaTime: deltaTime)
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
@@ -105,5 +111,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         status = .intro
         player.reset()
         spawnManager.resetSpawns()
+        GameManager.reset()
+        distanceText.text = "0 m"
     }
 }
