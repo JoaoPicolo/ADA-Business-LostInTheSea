@@ -12,14 +12,20 @@ class Player: GameNode {
     private var jumpVelocity = CGFloat(500)
     
     override init(node: SKSpriteNode) {
+        node.xScale = 0.3
+        node.yScale = 0.3
         super.init(node: node)
+        
+        node.texture = SKTexture(imageNamed: "fish")
         physicsSetup()
     }
     
     func physicsSetup() {
-        let body = SKPhysicsBody(circleOfRadius: 12)
+        let body = SKPhysicsBody(circleOfRadius: 8)
         body.isDynamic = false
         body.affectedByGravity = true
+        body.categoryBitMask = Masks.playerMask
+        body.contactTestBitMask = Masks.groundMask | Masks.obstacleMask | Masks.lifeMask
         
         node.physicsBody = body
     }
@@ -40,8 +46,10 @@ class Player: GameNode {
     }
     
     func reset() {
+        node.zRotation = 0
         node.yScale = startScaleY
-        node.physicsBody?.isDynamic = false
+        node.xScale = startScaleX
         node.position = startPosition
+        node.physicsBody?.isDynamic = false
     }
 }

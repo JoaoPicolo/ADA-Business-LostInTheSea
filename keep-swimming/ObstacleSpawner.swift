@@ -52,9 +52,11 @@ class ObstacleSpawner {
     
     func spawn() {
         let new = obstacleNode.copy() as! SKSpriteNode
+        new.xScale = 0.5
+        new.yScale = 0.5
         
         if obstaclePos == .middle {
-            new.position.y = CGFloat.random(in: -110...130)
+            new.position.y = CGFloat.random(in: -100...140)
         }
         
         getSpawnObject(new: new)
@@ -80,7 +82,7 @@ class ObstacleSpawner {
     }
     
     func getMiddleObstacle(new: SKSpriteNode) {
-        let options = ["jellyfish", "seahorse", "starsea"]
+        let options = ["jellyfish", "seahorse", "starfish"]
         let randomOption = options.randomElement()
         new.texture = SKTexture(imageNamed: randomOption!)
     }

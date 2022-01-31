@@ -13,19 +13,21 @@ class GameManager {
     static var distance = CGFloat(0)
     static var distanceDisplayed = Int(0)
     
-    static func updateDistance(deltaTime: TimeInterval) -> String {
-        distance += (deltaTime / 60) * speed
+    static var accelaration = CGFloat(0.2)
+    
+    static func updateDistance(deltaTime: TimeInterval) -> NSAttributedString {
+        updateSpeed()
+        distance += (deltaTime / 30) * speed
         distanceDisplayed = Int(distance)
-        
-        if (distanceDisplayed != 0) && (distanceDisplayed % 20 == 0) {
-            updateSpeed()
-        }
-        
-        return "\(distanceDisplayed) m"
+
+        let value = "\(distanceDisplayed) m"
+        let attributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.white]
+        let finalString = NSAttributedString(string: value, attributes: attributes)
+        return finalString
     }
     
     static func updateSpeed() {
-        speed += 0.5
+        speed = 100 + self.accelaration * self.distance
     }
     
     static func reset() {
