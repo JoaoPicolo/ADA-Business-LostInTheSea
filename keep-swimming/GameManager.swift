@@ -13,7 +13,7 @@ class GameManager {
     static var distance = CGFloat(0)
     static var distanceDisplayed = Int(0)
     
-    static var accelaration = CGFloat(0.2)
+    static var accelaration = CGFloat(1)
     
     static func updateDistance(deltaTime: TimeInterval) -> NSAttributedString {
         updateSpeed()
