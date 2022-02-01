@@ -8,13 +8,13 @@
 import Foundation
 import SpriteKit
 
-class Ground: GameNode {
+class Limit: GameNode {
     override init(node: SKSpriteNode) {
         super.init(node: node)
     }
     
     func update(deltaTime: TimeInterval) {
-        // Move ground - Moves 50px/second
+        // Move limit - Moves 60px/second
         node.position.x -= GameManager.speed * deltaTime
         
         if node.position.x <= 0 {

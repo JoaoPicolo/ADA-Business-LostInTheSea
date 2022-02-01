@@ -15,16 +15,32 @@ class ObstacleSpawner {
     private var obstacles = [SKNode]()
     
     // Will spawn every 3 seconds
+    private var lowerInterval = CGFloat(1)
+    private var upperInterval: CGFloat
     private var interval = TimeInterval(3)
     private var currentTime = TimeInterval(0)
     
-    init(obstacleNode: SKSpriteNode, obstaclePos: ObstaclePosition, parent: SKNode, interval: TimeInterval) {
+    init(obstacleNode: SKSpriteNode, obstaclePos: ObstaclePosition, parent: SKNode, upperInterval: CGFloat) {
         self.obstacleNode = obstacleNode
         self.obstaclePos = obstaclePos
         self.parent = parent
-        self.interval = interval
-
-        currentTime = self.interval
+        self.upperInterval = upperInterval
+        
+        setTimeConfig()
+    }
+    
+    func setTimeConfig() {
+        interval = CGFloat.random(in: 1...upperInterval)
+        currentTime = interval
+    }
+    
+    func updateInterval() {
+        let newValue = (upperInterval * GameManager.initialSpeed) / GameManager.speed
+        if newValue >= lowerInterval {
+            interval = CGFloat.random(in: lowerInterval...newValue)
+        }
+        
+        currentTime -= interval
     }
     
     func update(deltaTime: TimeInterval) {
@@ -33,7 +49,7 @@ class ObstacleSpawner {
         // Interval
         if currentTime > interval {
             spawn()
-            currentTime -= interval
+            updateInterval()
         }
         
         // Movement
@@ -43,7 +59,7 @@ class ObstacleSpawner {
         
         // Only the first must be removed
         if let firstPipe = obstacles.first {
-            if firstPipe.position.x < -400 {
+            if firstPipe.position.x < -450 {
                 firstPipe.removeFromParent()
                 obstacles.removeFirst()
             }
@@ -55,8 +71,14 @@ class ObstacleSpawner {
         new.xScale = 0.5
         new.yScale = 0.5
         
+        let body = SKPhysicsBody(circleOfRadius: 20)
+        body.isDynamic = false
+        body.categoryBitMask = Masks.obstacleMask
+        body.contactTestBitMask = Masks.playerMask
+        new.physicsBody = body
+        
         if obstaclePos == .middle {
-            new.position.y = CGFloat.random(in: -100...140)
+            new.position.y = CGFloat.random(in: -80...120)
         }
         
         getSpawnObject(new: new)
@@ -75,22 +97,37 @@ class ObstacleSpawner {
         }
     }
     
+    
     func getBottomObstacle(new: SKSpriteNode) {
         let options = ["seaweedUp-1", "seaweedUp-2"]
         let randomOption = options.randomElement()
-        new.texture = SKTexture(imageNamed: randomOption!)
+        let texture = SKTexture(imageNamed: randomOption!)
+        new.texture = texture
+//        new.physicsBody = getObstacleBodyMask(texture: texture)
     }
     
     func getMiddleObstacle(new: SKSpriteNode) {
         let options = ["jellyfish", "seahorse", "starfish"]
         let randomOption = options.randomElement()
-        new.texture = SKTexture(imageNamed: randomOption!)
+        let texture = SKTexture(imageNamed: randomOption!)
+        new.texture = texture
+//        new.physicsBody = getObstacleBodyMask(texture: texture)
     }
     
     func getTopObstacle(new: SKSpriteNode) {
         let options = ["seaweedDown"]
         let randomOption = options.randomElement()
-        new.texture = SKTexture(imageNamed: randomOption!)
+        let texture = SKTexture(imageNamed: randomOption!)
+        new.texture = texture
+//        new.physicsBody = getObstacleBodyMask(texture: texture)
+    }
+    
+    func getObstacleBodyMask(texture: SKTexture) -> SKPhysicsBody {
+        let body = SKPhysicsBody(texture: texture, size: texture.size())
+        body.isDynamic = false
+        body.categoryBitMask = Masks.obstacleMask
+        body.contactTestBitMask = Masks.playerMask
+        return body
     }
     
     func reset() {
@@ -99,6 +136,6 @@ class ObstacleSpawner {
         }
         obstacles.removeAll()
         
-        currentTime = interval
+        setTimeConfig()
     }
 }

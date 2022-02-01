@@ -14,9 +14,10 @@ class Player: GameNode {
     override init(node: SKSpriteNode) {
         node.xScale = 0.3
         node.yScale = 0.3
+        node.texture = SKTexture(imageNamed: "fish")
+        
         super.init(node: node)
         
-        node.texture = SKTexture(imageNamed: "fish")
         physicsSetup()
     }
     
@@ -30,7 +31,7 @@ class Player: GameNode {
         node.physicsBody = body
     }
     
-    // Start physics
+
     func start() {
         node.physicsBody?.isDynamic = true
         jump()
@@ -42,6 +43,7 @@ class Player: GameNode {
     
     func die() {
         node.yScale = startScaleY * -1
+        node.physicsBody?.linearDamping = 5
         node.removeAllActions()
     }
     
@@ -50,6 +52,7 @@ class Player: GameNode {
         node.yScale = startScaleY
         node.xScale = startScaleX
         node.position = startPosition
+        node.physicsBody?.linearDamping = 0.1
         node.physicsBody?.isDynamic = false
     }
 }

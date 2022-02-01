@@ -9,16 +9,19 @@ import SpriteKit
 import GameplayKit
 
 
-class GameScene: SKScene, SKPhysicsContactDelegate {
+class GameScene: SKScene {
+    // Nodes
     var player: Player!
-    var ground: Ground!
-    var ceil: Ground!
+    var ground: Limit!
+    var ceil: Limit!
     var introNode: SKSpriteNode!
     var gameOverNode: SKSpriteNode!
-    var spawnManager: SpawnManager!
-    
     var distanceText: SKLabelNode!
 
+    // Managers
+    var spawnManager: SpawnManager!
+    
+    // Control
     var lastUpdate = TimeInterval(0)
     var status: GameStatus = .intro
     
@@ -31,11 +34,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
        // Ground Node
        let groundNode = childNode(withName: "ground") as! SKSpriteNode
-       ground = Ground(node: groundNode)
+       ground = Limit(node: groundNode)
        
        // Ceil Node
        let ceilNode = childNode(withName: "ceil") as! SKSpriteNode
-       ceil = Ground(node: ceilNode)
+       ceil = Limit(node: ceilNode)
        
        // Intro Node
        introNode = childNode(withName: "intro") as? SKSpriteNode
@@ -71,13 +74,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             return
         }
         
-        let deltaTime = currentTime - lastUpdate
+        var deltaTime = currentTime - lastUpdate
+        // Minimized app increases delta time, limits to 100 ms
+        deltaTime = min(deltaTime, 0.1)
         lastUpdate = currentTime
         
         switch status {
         case .intro:
-            ground.update(deltaTime: deltaTime)
-            ceil.update(deltaTime: deltaTime)
+            playIntro(deltaTime: deltaTime)
         case .playing:
             playingUpdate(deltaTime: deltaTime)
         case .gameOver:
@@ -85,33 +89,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    func playingUpdate(deltaTime: TimeInterval) {
+    func playIntro(deltaTime: TimeInterval) {
         ground.update(deltaTime: deltaTime)
         ceil.update(deltaTime: deltaTime)
-        spawnManager.updateSpawns(deltaTime: deltaTime)
-        distanceText.attributedText = GameManager.updateDistance(deltaTime: deltaTime)
     }
     
-    func didBegin(_ contact: SKPhysicsContact) {
-        // Pass which object colided with which object
-        if contact.bodyA.node?.name == "player" {
-            hasColided(other: contact.bodyB.node!)
-        } else if contact.bodyB.node?.name == "player" {
-            hasColided(other: contact.bodyA.node!)
-        }
-    }
-    
-    func hasColided(other: SKNode) {
-        let category = other.userData?.value(forKey: "category") as! String
-        if  category == "obstacle" {
-            gameOver()
-        }
-    }
     
     func start() {
         status = .playing
         introNode.removeFromParent()
         player.start()
+    }
+    
+    func playingUpdate(deltaTime: TimeInterval) {
+        ground.update(deltaTime: deltaTime)
+        ceil.update(deltaTime: deltaTime)
+        spawnManager.updateSpawns(deltaTime: deltaTime)
+        distanceText.attributedText = GameManager.updateDistance(deltaTime: deltaTime)
     }
     
     func gameOver() {
@@ -141,5 +135,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let attributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.white]
         let finalString = NSAttributedString(string: value, attributes: attributes)
         distanceText.attributedText = finalString
+    }
+}
+
+extension GameScene: SKPhysicsContactDelegate {
+    func didBegin(_ contact: SKPhysicsContact) {
+        // Pass which object colided with which object
+        if contact.bodyA.node?.name == "player" {
+            hasColided(other: contact.bodyB.node!)
+        } else if contact.bodyB.node?.name == "player" {
+            hasColided(other: contact.bodyA.node!)
+        }
+    }
+    
+    func hasColided(other: SKNode) {
+        let category = other.userData?.value(forKey: "category") as! String
+        if  category == "obstacle" {
+            gameOver()
+        }
     }
 }

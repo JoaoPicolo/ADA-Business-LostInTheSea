@@ -27,13 +27,13 @@ class SpawnManager {
     
     func setSpawnObstacles() {
         let bottomNode = parent.childNode(withName: "bottomObstacle") as! SKSpriteNode
-        spawnBottom = ObstacleSpawner(obstacleNode: bottomNode, obstaclePos: .bottom, parent: parent, interval: TimeInterval(5))
+        spawnBottom = ObstacleSpawner(obstacleNode: bottomNode, obstaclePos: .bottom, parent: parent, upperInterval: CGFloat(5))
         
         let middleNode = parent.childNode(withName: "middleObstacle") as! SKSpriteNode
-        spawnMiddle = ObstacleSpawner(obstacleNode: middleNode, obstaclePos: .middle, parent: parent, interval: TimeInterval(3))
+        spawnMiddle = ObstacleSpawner(obstacleNode: middleNode, obstaclePos: .middle, parent: parent, upperInterval: CGFloat(3))
         
         let topNode = parent.childNode(withName: "topObstacle") as! SKSpriteNode
-        spawnTop = ObstacleSpawner(obstacleNode: topNode, obstaclePos: .top, parent: parent, interval: TimeInterval(4))
+        spawnTop = ObstacleSpawner(obstacleNode: topNode, obstaclePos: .top, parent: parent, upperInterval: CGFloat(4))
     }
     
     func updateSpawns(deltaTime: TimeInterval) {

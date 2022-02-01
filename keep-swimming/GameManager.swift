@@ -9,14 +9,18 @@ import Foundation
 import SpriteKit
 
 class GameManager {
-    static var speed = CGFloat(100)
+    static var initialSpeed = CGFloat(100)
+    static var speed = initialSpeed
     static var distance = CGFloat(0)
     static var distanceDisplayed = Int(0)
     
     static var accelaration = CGFloat(1)
     
     static func updateDistance(deltaTime: TimeInterval) -> NSAttributedString {
-        updateSpeed()
+        if speed <= 500 {
+            updateSpeed()
+        }
+        
         distance += (deltaTime / 30) * speed
         distanceDisplayed = Int(distance)
 
@@ -27,11 +31,11 @@ class GameManager {
     }
     
     static func updateSpeed() {
-        speed = 100 + self.accelaration * self.distance
+        speed = initialSpeed + self.accelaration * self.distance
     }
     
     static func reset() {
-        speed = CGFloat(100)
+        speed = initialSpeed
         distance = 0
         distanceDisplayed = 0
     }
