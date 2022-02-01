@@ -9,7 +9,7 @@ import Foundation
 import SpriteKit
 
 class Player: GameNode {
-    private var jumpVelocity = CGFloat(500)
+    private var jumpVelocity = CGFloat(300)
     
     override init(node: SKSpriteNode) {
         node.xScale = 0.3
