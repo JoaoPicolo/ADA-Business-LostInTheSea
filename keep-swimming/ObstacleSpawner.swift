@@ -68,8 +68,9 @@ class ObstacleSpawner {
     
     func spawn() {
         let new = obstacleNode.copy() as! SKSpriteNode
-        new.xScale = 0.5
-        new.yScale = 0.5
+//        new.xScale = 0.5
+//        new.yScale = 0.5
+        new.alpha = 1
         
         let body = SKPhysicsBody(circleOfRadius: 20)
         body.isDynamic = false
