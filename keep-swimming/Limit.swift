@@ -17,9 +17,9 @@ class Limit: GameNode {
         // Move limit - Moves 60px/second
         node.position.x -= GameManager.speed * deltaTime
         
-        if node.position.x <= 0 {
+        if node.position.x <= -60 {
             // The ground repeats every 30px
-            node.position.x += 30
+            node.position.x += 80
         }
     }
 }

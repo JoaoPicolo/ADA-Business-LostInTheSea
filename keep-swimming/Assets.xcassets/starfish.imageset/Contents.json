@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "starfish.png",
+      "filename" : "star.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "star2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "star3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

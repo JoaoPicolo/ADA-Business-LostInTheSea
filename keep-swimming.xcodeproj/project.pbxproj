@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5472223F27A9D1D8002A25BB /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5472223E27A9D1D8002A25BB /* GameKit.framework */; };
 		C429B99C27A37678004335BF /* ObstacleSpawner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C429B99B27A37678004335BF /* ObstacleSpawner.swift */; };
 		C497243C27A2BDF3004A121A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C497243B27A2BDF3004A121A /* AppDelegate.swift */; };
 		C497243E27A2BDF3004A121A /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = C497243D27A2BDF3004A121A /* GameScene.sks */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5472223E27A9D1D8002A25BB /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		C429B99B27A37678004335BF /* ObstacleSpawner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObstacleSpawner.swift; sourceTree = "<group>"; };
 		C497243827A2BDF3004A121A /* Keep Swimming.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Keep Swimming.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C497243B27A2BDF3004A121A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -46,17 +48,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5472223F27A9D1D8002A25BB /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5472223D27A9D1D8002A25BB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5472223E27A9D1D8002A25BB /* GameKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C497242F27A2BDF3004A121A = {
 			isa = PBXGroup;
 			children = (
 				C497243A27A2BDF3004A121A /* keep-swimming */,
 				C497243927A2BDF3004A121A /* Products */,
+				5472223D27A9D1D8002A25BB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -319,7 +331,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = HQJF9G685U;
+				DEVELOPMENT_TEAM = SKRWT528DU;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -349,7 +361,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = HQJF9G685U;
+				DEVELOPMENT_TEAM = SKRWT528DU;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
