@@ -12,8 +12,8 @@ class Player: GameNode {
     private var jumpVelocity = CGFloat(300)
     
     override init(node: SKSpriteNode) {
-        node.xScale = 0.3
-        node.yScale = 0.3
+//        node.xScale = 0.5
+//        node.yScale = 0.5
         node.texture = SKTexture(imageNamed: "fish")
         
         super.init(node: node)
