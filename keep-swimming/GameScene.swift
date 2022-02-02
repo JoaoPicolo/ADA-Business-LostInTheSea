@@ -25,6 +25,8 @@ class GameScene: SKScene {
     var lastUpdate = TimeInterval(0)
     var status: GameStatus = .intro
     
+    var updateScoreCallback: (Int) -> Void = { _ in }
+    
    override func didMove(to view: SKView) {
        physicsWorld.contactDelegate = self
        
@@ -113,6 +115,7 @@ class GameScene: SKScene {
             return
         }
 
+        updateScoreCallback(Int(GameManager.distance))
         addChild(gameOverNode)
         player.die()
         status = .gameOver

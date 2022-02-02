@@ -10,14 +10,17 @@ import SpriteKit
 import GameplayKit
 
 class GameViewController: UIViewController {
+    
+    var updateScoreCallback: (Int) -> Void = { _ in }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
-            if let scene = SKScene(fileNamed: "GameScene") {
+            if let scene = SKScene(fileNamed: "GameScene") as? GameScene {
                 // Set the scale mode to scale to fit the window
                 scene.scaleMode = .aspectFill
+                scene.updateScoreCallback = updateScoreCallback
                 
                 // Present the scene
                 view.presentScene(scene)

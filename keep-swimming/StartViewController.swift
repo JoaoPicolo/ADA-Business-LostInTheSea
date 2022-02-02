@@ -16,6 +16,7 @@ class StartViewController: UIViewController {
     var gcDefaultLeaderBoard = String() // Check the default leaderboardID
     
     override func viewDidLoad() {
+        authenticateLocalPlayer()
         super.viewDidLoad()
     }
 }
@@ -55,13 +56,18 @@ extension StartViewController: GKGameCenterControllerDelegate {
     
     func updateScore(with value:Int) {
         if (self.gcEnabled) {
-            GKLeaderboard.submitScore(value, context: 0, player: GKLocalPlayer.local, leaderboardIDs: [self.gcDefaultLeaderBoard], completionHandler: {error in})
+            GKLeaderboard.submitScore(value, context: 0, player: GKLocalPlayer.local, leaderboardIDs: [self.gcDefaultLeaderBoard], completionHandler: {error in
+                if error != nil {
+                    print("Error updating score: \(error!)")
+                }
+            })
         }
     }
     
     @IBAction func gameClicked(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let gameVC = storyboard.instantiateViewController(withIdentifier: "GameViewController") as! GameViewController
+        gameVC.updateScoreCallback = updateScore
         present(gameVC, animated: true, completion: nil)
     }
     
