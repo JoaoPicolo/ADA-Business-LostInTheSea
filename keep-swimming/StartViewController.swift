@@ -10,50 +10,17 @@ import GameKit
 import SpriteKit
 import GameplayKit
 
-class StartViewController: UIViewController, GKGameCenterControllerDelegate {
+class StartViewController: UIViewController {
     // Leaderboard variables
     var gcEnabled = Bool() // Check if the user has Game Center enabled
     var gcDefaultLeaderBoard = String() // Check the default leaderboardID
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        authenticateLocalPlayer()
-        
-        if let view = self.view as! SKView? {
-            // Load the SKScene from 'GameScene.sks'
-            if let scene = SKScene(fileNamed: "GameScene") {
-                // Set the scale mode to scale to fit the window
-                scene.scaleMode = .aspectFill
-                
-                // Present the scene
-                view.presentScene(scene)
-            }
-            
-            view.ignoresSiblingOrder = true
-            view.showsPhysics = false
-            
-            view.showsFPS = false
-            view.showsNodeCount = false
-        }
     }
+}
 
-    override var shouldAutorotate: Bool {
-        return true
-    }
-
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        if UIDevice.current.userInterfaceIdiom == .phone {
-            return .allButUpsideDown
-        } else {
-            return .all
-        }
-    }
-
-    override var prefersStatusBarHidden: Bool {
-        return true
-    }
-
+extension StartViewController: GKGameCenterControllerDelegate {
     func authenticateLocalPlayer() {
         let localPlayer: GKLocalPlayer = GKLocalPlayer.local
 
@@ -88,12 +55,13 @@ class StartViewController: UIViewController, GKGameCenterControllerDelegate {
     
     func updateScore(with value:Int) {
         if (self.gcEnabled) {
-            GKLeaderboard.submitScore(value, context:0, player: GKLocalPlayer.local, leaderboardIDs: [self.gcDefaultLeaderBoard], completionHandler: {error in})
+            GKLeaderboard.submitScore(value, context: 0, player: GKLocalPlayer.local, leaderboardIDs: [self.gcDefaultLeaderBoard], completionHandler: {error in})
         }
     }
     
     @IBAction func gameClicked(_ sender: Any) {
-        let gameVC = GameViewController()
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let gameVC = storyboard.instantiateViewController(withIdentifier: "GameViewController") as! GameViewController
         present(gameVC, animated: true, completion: nil)
     }
     

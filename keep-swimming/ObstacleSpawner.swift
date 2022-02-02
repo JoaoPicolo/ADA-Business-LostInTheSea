@@ -20,6 +20,8 @@ class ObstacleSpawner {
     private var interval = TimeInterval(3)
     private var currentTime = TimeInterval(0)
     
+    private var calls = 0
+    
     init(obstacleNode: SKSpriteNode, obstaclePos: ObstaclePosition, parent: SKNode, upperInterval: CGFloat) {
         self.obstacleNode = obstacleNode
         self.obstaclePos = obstaclePos
@@ -45,6 +47,7 @@ class ObstacleSpawner {
     
     func update(deltaTime: TimeInterval) {
         currentTime += deltaTime
+        calls += 1
         
         // Interval
         if currentTime > interval {
@@ -53,14 +56,19 @@ class ObstacleSpawner {
         }
         
         // Movement
-        for pipe in obstacles {
-            pipe.position.x -= GameManager.speed * deltaTime
+        for obstacle in obstacles {
+            obstacle.position.x -= GameManager.speed * deltaTime
+            
+//            print(deltaTime)
+//            if obstaclePos == .middle) {
+//                pipe.position.y = sin(pipe.position.x)
+//            }
         }
         
         // Only the first must be removed
-        if let firstPipe = obstacles.first {
-            if firstPipe.position.x < -450 {
-                firstPipe.removeFromParent()
+        if let firstObstacle = obstacles.first {
+            if firstObstacle.position.x < -450 {
+                firstObstacle.removeFromParent()
                 obstacles.removeFirst()
             }
         }
@@ -68,8 +76,6 @@ class ObstacleSpawner {
     
     func spawn() {
         let new = obstacleNode.copy() as! SKSpriteNode
-        new.xScale = 0.5
-        new.yScale = 0.5
         new.alpha = 1
         
         let body = SKPhysicsBody(circleOfRadius: 20)
@@ -104,7 +110,6 @@ class ObstacleSpawner {
         let randomOption = options.randomElement()
         let texture = SKTexture(imageNamed: randomOption!)
         new.texture = texture
-//        new.physicsBody = getObstacleBodyMask(texture: texture)
     }
     
     func getMiddleObstacle(new: SKSpriteNode) {
@@ -113,10 +118,10 @@ class ObstacleSpawner {
         let texture = SKTexture(imageNamed: randomOption!)
         new.texture = texture
         
-        let moveAction = SKAction.move(to: CGPoint(x: new.position.x, y: sin(new.position.x)), duration: 1)
-        let repeatAction = SKAction.repeatForever(moveAction)
-        new.run(repeatAction)
-//        new.physicsBody = getObstacleBodyMask(texture: texture)
+//        let move = SKAction.moveTo(y: sin(new.position.x), duration: 0.5)
+//        let repeatForever = SKAction.repeatForever(move)
+//        new.run(repeatForever)
+        
     }
     
     func getTopObstacle(new: SKSpriteNode) {
@@ -124,15 +129,6 @@ class ObstacleSpawner {
         let randomOption = options.randomElement()
         let texture = SKTexture(imageNamed: randomOption!)
         new.texture = texture
-//        new.physicsBody = getObstacleBodyMask(texture: texture)
-    }
-    
-    func getObstacleBodyMask(texture: SKTexture) -> SKPhysicsBody {
-        let body = SKPhysicsBody(texture: texture, size: texture.size())
-        body.isDynamic = false
-        body.categoryBitMask = Masks.obstacleMask
-        body.contactTestBitMask = Masks.playerMask
-        return body
     }
     
     func reset() {
