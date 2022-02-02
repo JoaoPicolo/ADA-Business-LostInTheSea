@@ -68,8 +68,8 @@ class ObstacleSpawner {
     
     func spawn() {
         let new = obstacleNode.copy() as! SKSpriteNode
-//        new.xScale = 0.5
-//        new.yScale = 0.5
+        new.xScale = 0.5
+        new.yScale = 0.5
         new.alpha = 1
         
         let body = SKPhysicsBody(circleOfRadius: 20)
@@ -112,6 +112,10 @@ class ObstacleSpawner {
         let randomOption = options.randomElement()
         let texture = SKTexture(imageNamed: randomOption!)
         new.texture = texture
+        
+        let moveAction = SKAction.move(to: CGPoint(x: new.position.x, y: sin(new.position.x)), duration: 1)
+        let repeatAction = SKAction.repeatForever(moveAction)
+        new.run(repeatAction)
 //        new.physicsBody = getObstacleBodyMask(texture: texture)
     }
     

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		C429B99C27A37678004335BF /* ObstacleSpawner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C429B99B27A37678004335BF /* ObstacleSpawner.swift */; };
+		C4674C4627AA94C1005E5308 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4674C4527AA94C1005E5308 /* StartViewController.swift */; };
+		C4674C4827AA99FF005E5308 /* StartScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = C4674C4727AA99FF005E5308 /* StartScene.sks */; };
 		C497243C27A2BDF3004A121A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C497243B27A2BDF3004A121A /* AppDelegate.swift */; };
 		C497243E27A2BDF3004A121A /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = C497243D27A2BDF3004A121A /* GameScene.sks */; };
 		C497244227A2BDF4004A121A /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C497244127A2BDF4004A121A /* GameScene.swift */; };
@@ -25,6 +27,8 @@
 
 /* Begin PBXFileReference section */
 		C429B99B27A37678004335BF /* ObstacleSpawner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObstacleSpawner.swift; sourceTree = "<group>"; };
+		C4674C4527AA94C1005E5308 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		C4674C4727AA99FF005E5308 /* StartScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = StartScene.sks; sourceTree = "<group>"; };
 		C497243827A2BDF3004A121A /* Keep Swimming.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Keep Swimming.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C497243B27A2BDF3004A121A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C497243D27A2BDF3004A121A /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -85,6 +89,8 @@
 				C429B99B27A37678004335BF /* ObstacleSpawner.swift */,
 				C4C710F727A40A9100927855 /* SpawnManager.swift */,
 				C4ED51D527A80661004C160B /* Masks.swift */,
+				C4674C4527AA94C1005E5308 /* StartViewController.swift */,
+				C4674C4727AA99FF005E5308 /* StartScene.sks */,
 			);
 			path = "keep-swimming";
 			sourceTree = "<group>";
@@ -150,6 +156,7 @@
 				C497244727A2BDF4004A121A /* Main.storyboard in Resources */,
 				C497243E27A2BDF3004A121A /* GameScene.sks in Resources */,
 				C497244927A2BDF5004A121A /* Assets.xcassets in Resources */,
+				C4674C4827AA99FF005E5308 /* StartScene.sks in Resources */,
 				C497244C27A2BDF5004A121A /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -166,6 +173,7 @@
 				C4C710F827A40A9100927855 /* SpawnManager.swift in Sources */,
 				C497245D27A2D3D9004A121A /* GameManager.swift in Sources */,
 				C497245727A2C5B2004A121A /* GameNode.swift in Sources */,
+				C4674C4627AA94C1005E5308 /* StartViewController.swift in Sources */,
 				C497244227A2BDF4004A121A /* GameScene.swift in Sources */,
 				C497244427A2BDF4004A121A /* GameViewController.swift in Sources */,
 				C497243C27A2BDF3004A121A /* AppDelegate.swift in Sources */,
