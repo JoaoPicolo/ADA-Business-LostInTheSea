@@ -11,7 +11,7 @@
         <!--Game View Controller-->
         <scene sceneID="tXr-a1-R10">
             <objects>
-                <viewController storyboardIdentifier="GameViewController" id="BV1-FR-VrT" customClass="GameViewController" customModule="Keep_Swimming" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GameViewController" modalTransitionStyle="crossDissolve" id="BV1-FR-VrT" customClass="GameViewController" customModule="Keep_Swimming" customModuleProvider="target" sceneMemberID="viewController">
                     <skView key="view" contentMode="scaleToFill" id="5C8-dW-VAJ">
                         <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -29,33 +29,74 @@
                         <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iDH-on-b9Q">
-                                <rect key="frame" x="346" y="243" width="204" height="49"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="ljh-tU-w8n">
+                                <rect key="frame" x="-20" y="-9" width="941" height="433"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="433" id="25b-2J-yn1"/>
+                                    <constraint firstAttribute="width" constant="941" id="zPL-wI-8CE"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oiD-dL-eCy">
+                                <rect key="frame" x="346" y="266" width="204" height="48"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="contentStretch" x="0.0" y="0.0" width="0.65000000000000002" height="1"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="204" id="7ic-n8-84z"/>
+                                    <constraint firstAttribute="height" constant="48" id="L80-xe-Zr7"/>
+                                </constraints>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Leaderboard"/>
-                                <connections>
-                                    <action selector="leaderBoardClicked:" destination="Xf2-FJ-yut" eventType="touchUpInside" id="DcZ-wK-Wwj"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oiD-dL-eCy">
-                                <rect key="frame" x="346" y="155" width="204" height="48"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Game Brow"/>
+                                <buttonConfiguration key="configuration" style="filled" image="start">
+                                    <color key="baseForegroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="baseBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
                                 <connections>
                                     <action selector="gameClicked:" destination="Xf2-FJ-yut" eventType="touchUpInside" id="Yfi-Lz-U0C"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="Niu-2O-w8C">
+                                <rect key="frame" x="310" y="93" width="276" height="147"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="276" id="55u-7W-08e"/>
+                                    <constraint firstAttribute="height" constant="147" id="tiL-D3-XaI"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iDH-on-b9Q">
+                                <rect key="frame" x="770" y="44" width="98" height="57"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="57" id="zAI-rV-nhg"/>
+                                </constraints>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" image="medal">
+                                    <color key="baseForegroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="baseBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="leaderBoardClicked:" destination="Xf2-FJ-yut" eventType="touchUpInside" id="DcZ-wK-Wwj"/>
                                 </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="dIJ-Iy-W3r"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="iDH-on-b9Q" firstAttribute="top" secondItem="dIJ-Iy-W3r" secondAttribute="top" id="0Ve-th-lLy"/>
+                            <constraint firstItem="ljh-tU-w8n" firstAttribute="leading" secondItem="zJE-5H-LaZ" secondAttribute="leadingMargin" constant="-80" id="FTR-9V-KSp"/>
+                            <constraint firstItem="ljh-tU-w8n" firstAttribute="top" secondItem="zJE-5H-LaZ" secondAttribute="topMargin" constant="-53" id="Lxj-i4-jYW"/>
+                            <constraint firstItem="dIJ-Iy-W3r" firstAttribute="bottom" secondItem="oiD-dL-eCy" secondAttribute="bottom" constant="79" id="O0E-bI-ZUT"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="iDH-on-b9Q" secondAttribute="trailing" constant="-32" id="ZED-39-9Az"/>
+                            <constraint firstItem="oiD-dL-eCy" firstAttribute="top" secondItem="Niu-2O-w8C" secondAttribute="bottom" constant="26" id="c0n-tc-ci1"/>
+                            <constraint firstItem="oiD-dL-eCy" firstAttribute="centerX" secondItem="Niu-2O-w8C" secondAttribute="centerX" id="cIY-vK-myH"/>
+                            <constraint firstItem="oiD-dL-eCy" firstAttribute="centerX" secondItem="zJE-5H-LaZ" secondAttribute="centerX" id="jQf-nH-FxS"/>
+                            <constraint firstItem="oiD-dL-eCy" firstAttribute="centerX" secondItem="ljh-tU-w8n" secondAttribute="centerX" constant="-2.5" id="vQl-0B-BPh"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ITO-eZ-PW9"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="chn-tG-VMA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-113" y="6"/>
+            <point key="canvasLocation" x="-113.16964285714285" y="5.7971014492753632"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="l58-MD-AgZ">
@@ -77,6 +118,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="background" width="812" height="375"/>
+        <image name="logo" width="287.5" height="140"/>
+        <image name="medal" width="74" height="86.5"/>
+        <image name="start" width="215" height="104"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
