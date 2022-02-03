@@ -102,7 +102,7 @@ class ObstacleSpawner {
     
     
     func getBottomObstacle(new: SKSpriteNode) {
-        let obstacle = Obstacles.ObstaclesBottom.seaweed1
+        let obstacle = Obstacles.obstaclesBottom.randomElement()!
         var textures = [SKTexture]()
         for frame in obstacle.imageSequence {
             textures.append(SKTexture(imageNamed: frame))
@@ -119,7 +119,7 @@ class ObstacleSpawner {
     }
     
     func getMiddleObstacle(new: SKSpriteNode) {
-        let obstacle = Obstacles.ObstaclesMiddle.fishes
+        let obstacle = Obstacles.obstaclesMiddle.randomElement()!
         var textures = [SKTexture]()
         for frame in obstacle.imageSequence {
             textures.append(SKTexture(imageNamed: frame))
@@ -140,7 +140,7 @@ class ObstacleSpawner {
     }
     
     func getTopObstacle(new: SKSpriteNode) {
-        let obstacle = Obstacles.ObstaclesTop.seaweed3
+        let obstacle = Obstacles.obstaclesTop.randomElement()!
         var textures = [SKTexture]()
         for frame in obstacle.imageSequence {
             textures.append(SKTexture(imageNamed: frame))
