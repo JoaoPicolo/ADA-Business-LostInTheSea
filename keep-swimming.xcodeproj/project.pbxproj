@@ -10,6 +10,7 @@
 		5405A05227AB7C7200725CF2 /* bip.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5405A05127AB7C7200725CF2 /* bip.wav */; };
 		5405A05427AB7D3D00725CF2 /* tum.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5405A05327AB7D3D00725CF2 /* tum.mp3 */; };
 		5405A05627AC023600725CF2 /* LifeBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5405A05527AC023600725CF2 /* LifeBar.swift */; };
+		5405A05827AC1AE200725CF2 /* garden.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5405A05727AC1AE200725CF2 /* garden.mp3 */; };
 		5472223F27A9D1D8002A25BB /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5472223E27A9D1D8002A25BB /* GameKit.framework */; };
 		C429B99C27A37678004335BF /* ObstacleSpawner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C429B99B27A37678004335BF /* ObstacleSpawner.swift */; };
 		C4674C4627AA94C1005E5308 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4674C4527AA94C1005E5308 /* StartViewController.swift */; };
@@ -38,6 +39,7 @@
 		5405A05127AB7C7200725CF2 /* bip.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bip.wav; sourceTree = "<group>"; };
 		5405A05327AB7D3D00725CF2 /* tum.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tum.mp3; sourceTree = "<group>"; };
 		5405A05527AC023600725CF2 /* LifeBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeBar.swift; sourceTree = "<group>"; };
+		5405A05727AC1AE200725CF2 /* garden.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = garden.mp3; sourceTree = "<group>"; };
 		5472223E27A9D1D8002A25BB /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		C429B99B27A37678004335BF /* ObstacleSpawner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObstacleSpawner.swift; sourceTree = "<group>"; };
 		C4674C4527AA94C1005E5308 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				C4674C6C27AB5F5F005E5308 /* rainFuse.mp3 */,
+				5405A05727AC1AE200725CF2 /* garden.mp3 */,
 			);
 			path = Songs;
 			sourceTree = "<group>";
@@ -260,6 +263,7 @@
 				C497244927A2BDF5004A121A /* Assets.xcassets in Resources */,
 				C4674C6D27AB5F5F005E5308 /* rainFuse.mp3 in Resources */,
 				5405A05227AB7C7200725CF2 /* bip.wav in Resources */,
+				5405A05827AC1AE200725CF2 /* garden.mp3 in Resources */,
 				C497244C27A2BDF5004A121A /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

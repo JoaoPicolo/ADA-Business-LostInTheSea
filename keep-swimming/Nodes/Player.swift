@@ -10,12 +10,23 @@ import SpriteKit
 
 class Player: GameNode {
     private var jumpVelocity = CGFloat(300)
+    private var animation: SKAction
     var life = CGFloat(100)
     
     override init(node: SKSpriteNode) {
-        //        node.xScale = 0.5
-        //        node.yScale = 0.5
-        node.texture = SKTexture(imageNamed: "fish")
+        node.texture = SKTexture(imageNamed: "coral1")
+        var textures = [SKTexture]()
+        textures.append(SKTexture(imageNamed: "coral1"))
+        textures.append(SKTexture(imageNamed: "coral2"))
+        textures.append(SKTexture(imageNamed: "coral3"))
+        textures.append(SKTexture(imageNamed: "coral1"))
+        
+        let frames = SKAction.animate(with: textures, timePerFrame: 0.1, resize: false, restore: true)
+        animation = SKAction.repeatForever(frames)
+        node.run(animation)
+        
+        let xConstraint = SKConstraint.positionX(SKRange(constantValue: node.position.x))
+        node.constraints = [xConstraint]
         
         super.init(node: node)
         
@@ -28,6 +39,7 @@ class Player: GameNode {
         body.affectedByGravity = true
         body.categoryBitMask = Masks.playerMask
         body.contactTestBitMask = Masks.groundMask | Masks.obstacleMask | Masks.lifeMask
+        body.collisionBitMask = Masks.groundMask
         
         node.physicsBody = body
     }
@@ -73,5 +85,6 @@ class Player: GameNode {
         node.position = startPosition
         node.physicsBody?.linearDamping = 0.1
         node.physicsBody?.isDynamic = false
+        node.run(animation)
     }
 }

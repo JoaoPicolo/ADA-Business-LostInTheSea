@@ -137,6 +137,8 @@ class GameScene: SKScene {
         spawnManager.resetSpawns()
         resetDistanceText()
         GameManager.shared.reset()
+        player.life = 100
+        lifeBar.updateLife(life: player.life)
     }
     
     func resetDistanceText() {
@@ -162,19 +164,14 @@ extension GameScene: SKPhysicsContactDelegate {
             let category = other.userData?.value(forKey: "category") as! String
             if  category == "obstacle" {
                 AudioManager.shared.play(effect: Audio.EffectFiles.tum)
-                
                 player.updateLife(points: -10)
-                
                 if player.life == 0 {
                     gameOver()
                 }
                 
             } else if category == "life" {
                 AudioManager.shared.play(effect: Audio.EffectFiles.life)
-                
                 player.updateLife(points: 10)
-                
-                
             }
             
             lifeBar.updateLife(life: player.life)

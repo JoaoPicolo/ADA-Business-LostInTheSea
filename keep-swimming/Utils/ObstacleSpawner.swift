@@ -78,6 +78,7 @@ class ObstacleSpawner {
         body.isDynamic = false
         body.categoryBitMask = Masks.obstacleMask
         body.contactTestBitMask = Masks.playerMask
+        body.collisionBitMask = 0
         new.physicsBody = body
         
         if obstaclePos == .middle {
@@ -90,44 +91,25 @@ class ObstacleSpawner {
     }
     
     func getSpawnObject(new: SKSpriteNode) {
+        var obstacle: ObstacleStruct
+        
         switch obstaclePos {
         case .bottom:
-            getBottomObstacle(new: new)
+            obstacle = Obstacles.obstaclesBottom.randomElement()!
         case .middle:
-            getMiddleObstacle(new: new)
+            obstacle = Obstacles.obstaclesMiddle.randomElement()!
         case .top:
-            getTopObstacle(new: new)
+            obstacle = Obstacles.obstaclesTop.randomElement()!
         }
-    }
-    
-    
-    func getBottomObstacle(new: SKSpriteNode) {
-        let obstacle = Obstacles.obstaclesBottom.randomElement()!
+        
         var textures = [SKTexture]()
         for frame in obstacle.imageSequence {
             textures.append(SKTexture(imageNamed: frame))
         }
-        
-        let frames = SKAction.animate(with: textures, timePerFrame: 0.1, resize: false, restore: true)
+        let frames = SKAction.animate(with: textures, timePerFrame: 0.5, resize: false, restore: true)
         let animation = SKAction.repeatForever(frames)
         new.run(animation)
         
-//        let options = ["seaweedUp-1", "seaweedUp-2"]
-//        let randomOption = options.randomElement()
-//        let texture = SKTexture(imageNamed: randomOption!)
-//        new.texture = texture
-    }
-    
-    func getMiddleObstacle(new: SKSpriteNode) {
-        let obstacle = Obstacles.obstaclesMiddle.randomElement()!
-        var textures = [SKTexture]()
-        for frame in obstacle.imageSequence {
-            textures.append(SKTexture(imageNamed: frame))
-        }
-        
-        let frames = SKAction.animate(with: textures, timePerFrame: 0.1, resize: false, restore: true)
-        let animation = SKAction.repeatForever(frames)
-        new.run(animation)
         // Change start pointing depending on object initial position
         // Calibrate range, timing, etc
 //        let move = SKAction.moveTo(y: 5, duration: 1)
@@ -137,18 +119,6 @@ class ObstacleSpawner {
 //        let sequence = SKAction.sequence([move, moveBack])
 //        let repeatForever = SKAction.repeatForever(sequence)
 //        new.run(repeatForever)
-    }
-    
-    func getTopObstacle(new: SKSpriteNode) {
-        let obstacle = Obstacles.obstaclesTop.randomElement()!
-        var textures = [SKTexture]()
-        for frame in obstacle.imageSequence {
-            textures.append(SKTexture(imageNamed: frame))
-        }
-        
-        let frames = SKAction.animate(with: textures, timePerFrame: 0.1, resize: false, restore: true)
-        let animation = SKAction.repeatForever(frames)
-        new.run(animation)
     }
     
     func reset() {

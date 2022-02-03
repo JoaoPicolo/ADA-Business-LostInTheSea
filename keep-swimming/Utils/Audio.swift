@@ -31,7 +31,7 @@ public struct Effect: SoundFile {
 
 struct Audio {
     struct MusicFiles {
-        static let background = Music(filename: "rainFuse", type: "mp3")
+        static let background = Music(filename: "garden", type: "mp3")
     }
     
     struct EffectFiles {
