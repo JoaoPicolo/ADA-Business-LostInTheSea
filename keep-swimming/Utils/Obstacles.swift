@@ -24,7 +24,7 @@ struct Obstacles {
     static let obstaclesTop: [ObstacleStruct] = [
         ObstacleStruct(position: .top, imageSequence:["seeweedb1", "seeweedb2","seeweedb3","seeweedb1"], damage: 5)
     ]
-
+    
     static let obstaclesMiddle: [ObstacleStruct] = [
         ObstacleStruct(position: .middle, imageSequence: ["fish1", "fish2","fish1"], range: 10, damage: 10),
         ObstacleStruct(position: .middle, imageSequence: ["star1", "star2","star3","star1"], range: 5, damage: 5),

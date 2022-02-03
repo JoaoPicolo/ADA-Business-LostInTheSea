@@ -8,7 +8,7 @@
 import Foundation
 import SpriteKit
 
-class LifeBar {
+class Lifebar {
     var lifeNode : SKSpriteNode
     init (lifeNode: SKSpriteNode) {
         

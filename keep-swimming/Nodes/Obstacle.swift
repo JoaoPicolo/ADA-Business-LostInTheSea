@@ -1,16 +1,16 @@
 //
-//  ObstacleSpawner.swift
+//  Obstacle.swift
 //  keep-swimming
 //
-//  Created by João Pedro Picolo on 27/01/22.
+//  Created by João Pedro Picolo on 03/02/22.
 //
 
 import Foundation
 import SpriteKit
 
-class ObstacleSpawner {
-    private var obstacleNode: SKSpriteNode
-    private var obstaclePos: ObjectPosition
+class Obstacle {
+    private var node: SKSpriteNode
+    private var position: ObjectPosition
     private var parent: SKNode // Scene root node
     private var obstacles = [SKNode]()
     
@@ -22,9 +22,9 @@ class ObstacleSpawner {
     
     private var calls = 0
     
-    init(obstacleNode: SKSpriteNode, obstaclePos: ObjectPosition, parent: SKNode, upperInterval: CGFloat) {
-        self.obstacleNode = obstacleNode
-        self.obstaclePos = obstaclePos
+    init(node: SKSpriteNode, position: ObjectPosition, parent: SKNode, upperInterval: CGFloat) {
+        self.node = node
+        self.position = position
         self.parent = parent
         self.upperInterval = upperInterval
         
@@ -71,17 +71,16 @@ class ObstacleSpawner {
     }
     
     func spawn() {
-        let new = obstacleNode.copy() as! SKSpriteNode
-        new.alpha = 1
+        let new = node.copy() as! SKSpriteNode
         
         let body = SKPhysicsBody(circleOfRadius: 20)
         body.isDynamic = false
         body.categoryBitMask = Masks.obstacleMask
         body.contactTestBitMask = Masks.playerMask
-        body.collisionBitMask = 0
+        body.collisionBitMask = Masks.none
         new.physicsBody = body
         
-        if obstaclePos == .middle {
+        if position == .middle {
             new.position.y = CGFloat.random(in: -80...120)
         }
         
@@ -93,7 +92,7 @@ class ObstacleSpawner {
     func getSpawnObject(new: SKSpriteNode) {
         var obstacle: ObstacleStruct
         
-        switch obstaclePos {
+        switch position {
         case .bottom:
             obstacle = Obstacles.obstaclesBottom.randomElement()!
         case .middle:
@@ -102,6 +101,10 @@ class ObstacleSpawner {
             obstacle = Obstacles.obstaclesTop.randomElement()!
         }
         
+        addAnimations(new: new, obstacle: obstacle)
+    }
+    
+    func addAnimations(new: SKSpriteNode, obstacle: ObstacleStruct) {
         var textures = [SKTexture]()
         for frame in obstacle.imageSequence {
             textures.append(SKTexture(imageNamed: frame))
@@ -110,23 +113,26 @@ class ObstacleSpawner {
         let animation = SKAction.repeatForever(frames)
         new.run(animation)
         
-        // Change start pointing depending on object initial position
-        // Calibrate range, timing, etc
-//        let move = SKAction.moveTo(y: 5, duration: 1)
-//        move.timingMode = .easeInEaseOut // Does sin()
-//        let moveBack = SKAction.moveTo(y: -5, duration: 1)
-//        move.timingMode = .easeInEaseOut
-//        let sequence = SKAction.sequence([move, moveBack])
-//        let repeatForever = SKAction.repeatForever(sequence)
-//        new.run(repeatForever)
+        if position == .middle {
+            // Change start pointing depending on object initial position
+            // Calibrate range, timing, etc
+            let move = SKAction.moveTo(y: 5, duration: 1)
+            move.timingMode = .easeInEaseOut // Does sin()
+            let moveBack = SKAction.moveTo(y: -5, duration: 1)
+            move.timingMode = .easeInEaseOut
+            let sequence = SKAction.sequence([move, moveBack])
+            let repeatForever = SKAction.repeatForever(sequence)
+            new.run(repeatForever)
+        }
     }
     
     func reset() {
-        for pipe in obstacles {
-            pipe.removeFromParent()
+        for obstacle in obstacles {
+            obstacle.removeFromParent()
         }
         obstacles.removeAll()
         
         setTimeConfig()
     }
 }
+

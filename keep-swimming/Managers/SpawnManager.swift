@@ -16,10 +16,12 @@ enum ObjectPosition: CaseIterable {
 
 class SpawnManager {
     private var parent: SKNode!
-    private var spawnBottom: ObstacleSpawner!
-    private var spawnMiddle: ObstacleSpawner!
-    private var spawnTop: ObstacleSpawner!
+    private var bottomObstacle: Obstacle!
+    private var middleObstacle: Obstacle!
+    private var topObstacle: Obstacle!
 
+    private var life: Life!
+    
     init(parent: SKNode) {
         self.parent = parent
         setSpawnObstacles()
@@ -27,24 +29,29 @@ class SpawnManager {
     
     func setSpawnObstacles() {
         let bottomNode = parent.childNode(withName: "bottomObstacle") as! SKSpriteNode
-        spawnBottom = ObstacleSpawner(obstacleNode: bottomNode, obstaclePos: .bottom, parent: parent, upperInterval: CGFloat(5))
+        bottomObstacle = Obstacle(node: bottomNode, position: .bottom, parent: parent, upperInterval: CGFloat(5))
         
         let middleNode = parent.childNode(withName: "middleObstacle") as! SKSpriteNode
-        spawnMiddle = ObstacleSpawner(obstacleNode: middleNode, obstaclePos: .middle, parent: parent, upperInterval: CGFloat(3))
+        middleObstacle = Obstacle(node: middleNode, position: .middle, parent: parent, upperInterval: CGFloat(3))
         
         let topNode = parent.childNode(withName: "topObstacle") as! SKSpriteNode
-        spawnTop = ObstacleSpawner(obstacleNode: topNode, obstaclePos: .top, parent: parent, upperInterval: CGFloat(4))
+        topObstacle = Obstacle(node: topNode, position: .top, parent: parent, upperInterval: CGFloat(4))
+        
+        let lifeNode = parent.childNode(withName: "life") as! SKSpriteNode
+        life = Life(node: lifeNode, position: .middle, parent: parent, upperInterval: CGFloat(25))
     }
-    
+
     func updateSpawns(deltaTime: TimeInterval) {
-        spawnBottom.update(deltaTime: deltaTime)
-        spawnMiddle.update(deltaTime: deltaTime)
-        spawnTop.update(deltaTime: deltaTime)
+        bottomObstacle.update(deltaTime: deltaTime)
+        middleObstacle.update(deltaTime: deltaTime)
+        topObstacle.update(deltaTime: deltaTime)
+        life.update(deltaTime: deltaTime)
     }
     
     func resetSpawns() {
-        spawnBottom.reset()
-        spawnMiddle.reset()
-        spawnTop.reset()
+        bottomObstacle.reset()
+        middleObstacle.reset()
+        topObstacle.reset()
+        life.reset()
     }
 }

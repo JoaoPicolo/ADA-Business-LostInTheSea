@@ -25,7 +25,7 @@ class GameManager: NSObject {
         
         distance += (deltaTime / 30) * speed
         distanceDisplayed = Int(distance)
-
+        
         let value = "\(distanceDisplayed) m"
         let attributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.white]
         let finalString = NSAttributedString(string: value, attributes: attributes)

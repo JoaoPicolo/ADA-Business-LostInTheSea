@@ -14,11 +14,10 @@ class GameScene: SKScene {
     var player: Player!
     var ground: Limit!
     var ceil: Limit!
+    var lifebar: Lifebar!
     var introNode: SKSpriteNode!
     var gameOverNode: SKSpriteNode!
     var distanceText: SKLabelNode!
-    
-    var lifeBar: LifeBar!
     
     // Managers
     var spawnManager: SpawnManager!
@@ -45,7 +44,7 @@ class GameScene: SKScene {
         // LifeBar Node
         let lifeBarParent = childNode(withName: "lifeBar")!
         let lifeBarNode = lifeBarParent.childNode(withName: "life") as! SKSpriteNode
-        lifeBar = LifeBar(lifeNode: lifeBarNode)
+        lifebar = Lifebar(lifeNode: lifeBarNode)
         
         
         // Intro Node
@@ -138,7 +137,7 @@ class GameScene: SKScene {
         resetDistanceText()
         GameManager.shared.reset()
         player.life = 100
-        lifeBar.updateLife(life: player.life)
+        lifebar.updateLife(life: player.life)
     }
     
     func resetDistanceText() {
@@ -174,7 +173,7 @@ extension GameScene: SKPhysicsContactDelegate {
                 player.updateLife(points: 10)
             }
             
-            lifeBar.updateLife(life: player.life)
+            lifebar.updateLife(life: player.life)
         }
     }
 }

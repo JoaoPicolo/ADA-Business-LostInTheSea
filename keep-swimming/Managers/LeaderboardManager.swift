@@ -9,14 +9,14 @@ import GameKit
 
 class LeaderboardManager: NSObject, GKGameCenterControllerDelegate {
     static let shared = LeaderboardManager()
-
+    
     // Leaderboard variables
     var gcEnabled = Bool() // Check if the user has Game Center enabled
     var gcDefaultLeaderBoard = String() // Check the default leaderboardID
     
     func authenticateLocalPlayer(presentingVC: UIViewController?) {
         let localPlayer: GKLocalPlayer = GKLocalPlayer.local
-
+        
         localPlayer.authenticateHandler = {(ViewController, error) -> Void in
             if ((ViewController) != nil) {
                 // Show game center login if player is not logged in
@@ -26,7 +26,7 @@ class LeaderboardManager: NSObject, GKGameCenterControllerDelegate {
                 
                 // Player is already authenticated and logged in
                 self.gcEnabled = true
-
+                
                 // Get the default leaderboard ID
                 localPlayer.loadDefaultLeaderboardIdentifier(completionHandler: { (leaderboardIdentifer, error) in
                     if error != nil {
@@ -35,7 +35,7 @@ class LeaderboardManager: NSObject, GKGameCenterControllerDelegate {
                     else {
                         self.gcDefaultLeaderBoard = leaderboardIdentifer!
                     }
-                 })
+                })
             }
             else {
                 // Game center is not enabled on the user's device
