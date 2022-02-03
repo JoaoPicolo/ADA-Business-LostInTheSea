@@ -47,7 +47,6 @@ class LeaderboardManager: NSObject, GKGameCenterControllerDelegate {
     }
     
     func updateScore(with value:Int) {
-        print("Will update with: \(value)")
         if (self.gcEnabled) {
             GKLeaderboard.submitScore(value, context: 0, player: GKLocalPlayer.local, leaderboardIDs: [self.gcDefaultLeaderBoard], completionHandler: {error in
                 if error != nil {

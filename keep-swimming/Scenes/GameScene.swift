@@ -105,7 +105,7 @@ class GameScene: SKScene {
         ground.update(deltaTime: deltaTime)
         ceil.update(deltaTime: deltaTime)
         spawnManager.updateSpawns(deltaTime: deltaTime)
-        distanceText.attributedText = GameManager.updateDistance(deltaTime: deltaTime)
+        distanceText.attributedText = GameManager.shared.updateDistance(deltaTime: deltaTime)
     }
     
     func gameOver() {
@@ -113,7 +113,7 @@ class GameScene: SKScene {
             return
         }
 
-        LeaderboardManager.shared.updateScore(with: Int(GameManager.distance))
+        LeaderboardManager.shared.updateScore(with: Int(GameManager.shared.distance))
         addChild(gameOverNode)
         player.die()
         status = .gameOver
@@ -128,7 +128,7 @@ class GameScene: SKScene {
         player.reset()
         spawnManager.resetSpawns()
         resetDistanceText()
-        GameManager.reset()
+        GameManager.shared.reset()
     }
     
     func resetDistanceText() {

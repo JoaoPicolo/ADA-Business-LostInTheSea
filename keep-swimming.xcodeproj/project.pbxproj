@@ -67,6 +67,53 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C4674C4F27AB5529005E5308 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				C497245C27A2D3D9004A121A /* GameManager.swift */,
+				C4C710F727A40A9100927855 /* SpawnManager.swift */,
+				C4674C4D27AB4D7F005E5308 /* LeaderboardManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		C4674C5027AB5544005E5308 /* Nodes */ = {
+			isa = PBXGroup;
+			children = (
+				C497245227A2BFDB004A121A /* Player.swift */,
+				C497245427A2C23A004A121A /* Limit.swift */,
+				C497245627A2C5B2004A121A /* GameNode.swift */,
+			);
+			path = Nodes;
+			sourceTree = "<group>";
+		};
+		C4674C5127AB5565005E5308 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				C4ED51D527A80661004C160B /* Masks.swift */,
+				C429B99B27A37678004335BF /* ObstacleSpawner.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		C4674C5227AB557A005E5308 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				C497243D27A2BDF3004A121A /* GameScene.sks */,
+				C497244127A2BDF4004A121A /* GameScene.swift */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		C4674C5327AB5587005E5308 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C497244327A2BDF4004A121A /* GameViewController.swift */,
+				C4674C4527AA94C1005E5308 /* StartViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		C497242F27A2BDF3004A121A = {
 			isa = PBXGroup;
 			children = (
@@ -87,22 +134,15 @@
 		C497243A27A2BDF3004A121A /* keep-swimming */ = {
 			isa = PBXGroup;
 			children = (
+				C4674C5327AB5587005E5308 /* Controllers */,
+				C4674C5227AB557A005E5308 /* Scenes */,
+				C4674C5127AB5565005E5308 /* Utils */,
+				C4674C5027AB5544005E5308 /* Nodes */,
+				C4674C4F27AB5529005E5308 /* Managers */,
 				C497243B27A2BDF3004A121A /* AppDelegate.swift */,
-				C497243D27A2BDF3004A121A /* GameScene.sks */,
-				C497244127A2BDF4004A121A /* GameScene.swift */,
-				C497244327A2BDF4004A121A /* GameViewController.swift */,
 				C497244527A2BDF4004A121A /* Main.storyboard */,
 				C497244827A2BDF5004A121A /* Assets.xcassets */,
 				C497244A27A2BDF5004A121A /* LaunchScreen.storyboard */,
-				C497245227A2BFDB004A121A /* Player.swift */,
-				C497245427A2C23A004A121A /* Limit.swift */,
-				C497245627A2C5B2004A121A /* GameNode.swift */,
-				C497245C27A2D3D9004A121A /* GameManager.swift */,
-				C429B99B27A37678004335BF /* ObstacleSpawner.swift */,
-				C4C710F727A40A9100927855 /* SpawnManager.swift */,
-				C4ED51D527A80661004C160B /* Masks.swift */,
-				C4674C4527AA94C1005E5308 /* StartViewController.swift */,
-				C4674C4D27AB4D7F005E5308 /* LeaderboardManager.swift */,
 			);
 			path = "keep-swimming";
 			sourceTree = "<group>";

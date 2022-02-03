@@ -37,7 +37,7 @@ class ObstacleSpawner {
     }
     
     func updateInterval() {
-        let newValue = (upperInterval * GameManager.initialSpeed) / GameManager.speed
+        let newValue = (upperInterval * GameManager.shared.initialSpeed) / GameManager.shared.speed
         if newValue >= lowerInterval {
             interval = CGFloat.random(in: lowerInterval...newValue)
         }
@@ -57,7 +57,7 @@ class ObstacleSpawner {
         
         // Movement
         for obstacle in obstacles {
-            obstacle.position.x -= GameManager.speed * deltaTime
+            obstacle.position.x -= GameManager.shared.speed * deltaTime
             
 //            print(deltaTime)
 //            if obstaclePos == .middle) {

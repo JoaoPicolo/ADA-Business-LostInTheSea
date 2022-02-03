@@ -15,7 +15,7 @@ class Limit: GameNode {
     
     func update(deltaTime: TimeInterval) {
         // Move limit - Moves 60px/second
-        node.position.x -= GameManager.speed * deltaTime
+        node.position.x -= GameManager.shared.speed * deltaTime
         
         if node.position.x <= -60 {
             // The ground repeats every 30px
