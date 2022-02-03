@@ -102,34 +102,53 @@ class ObstacleSpawner {
     
     
     func getBottomObstacle(new: SKSpriteNode) {
-        let options = ["seaweedUp-1", "seaweedUp-2"]
-        let randomOption = options.randomElement()
-        let texture = SKTexture(imageNamed: randomOption!)
-        new.texture = texture
+        let obstacle = Obstacles.ObstaclesBottom.seaweed1
+        var textures = [SKTexture]()
+        for frame in obstacle.imageSequence {
+            textures.append(SKTexture(imageNamed: frame))
+        }
+        
+        let frames = SKAction.animate(with: textures, timePerFrame: 0.1, resize: false, restore: true)
+        let animation = SKAction.repeatForever(frames)
+        new.run(animation)
+        
+//        let options = ["seaweedUp-1", "seaweedUp-2"]
+//        let randomOption = options.randomElement()
+//        let texture = SKTexture(imageNamed: randomOption!)
+//        new.texture = texture
     }
     
     func getMiddleObstacle(new: SKSpriteNode) {
-        let options = ["jellyfish", "seahorse", "starfish"]
-        let randomOption = options.randomElement()
-        let texture = SKTexture(imageNamed: randomOption!)
-        new.texture = texture
+        let obstacle = Obstacles.ObstaclesMiddle.fishes
+        var textures = [SKTexture]()
+        for frame in obstacle.imageSequence {
+            textures.append(SKTexture(imageNamed: frame))
+        }
         
+        let frames = SKAction.animate(with: textures, timePerFrame: 0.1, resize: false, restore: true)
+        let animation = SKAction.repeatForever(frames)
+        new.run(animation)
         // Change start pointing depending on object initial position
         // Calibrate range, timing, etc
-        let move = SKAction.moveTo(y: 5, duration: 1)
-        move.timingMode = .easeInEaseOut // Does sin()
-        let moveBack = SKAction.moveTo(y: -5, duration: 1)
-        move.timingMode = .easeInEaseOut
-        let sequence = SKAction.sequence([move, moveBack])
-        let repeatForever = SKAction.repeatForever(sequence)
-        new.run(repeatForever)
+//        let move = SKAction.moveTo(y: 5, duration: 1)
+//        move.timingMode = .easeInEaseOut // Does sin()
+//        let moveBack = SKAction.moveTo(y: -5, duration: 1)
+//        move.timingMode = .easeInEaseOut
+//        let sequence = SKAction.sequence([move, moveBack])
+//        let repeatForever = SKAction.repeatForever(sequence)
+//        new.run(repeatForever)
     }
     
     func getTopObstacle(new: SKSpriteNode) {
-        let options = ["seaweedDown"]
-        let randomOption = options.randomElement()
-        let texture = SKTexture(imageNamed: randomOption!)
-        new.texture = texture
+        let obstacle = Obstacles.ObstaclesTop.seaweed3
+        var textures = [SKTexture]()
+        for frame in obstacle.imageSequence {
+            textures.append(SKTexture(imageNamed: frame))
+        }
+        
+        let frames = SKAction.animate(with: textures, timePerFrame: 0.1, resize: false, restore: true)
+        let animation = SKAction.repeatForever(frames)
+        new.run(animation)
     }
     
     func reset() {
