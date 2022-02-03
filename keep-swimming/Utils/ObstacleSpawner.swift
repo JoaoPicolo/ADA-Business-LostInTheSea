@@ -108,7 +108,7 @@ class ObstacleSpawner {
             textures.append(SKTexture(imageNamed: frame))
         }
         
-        let frames = SKAction.animate(with: textures, timePerFrame: 0.1, resize: false, restore: true)
+        let frames = SKAction.animate(with: textures, timePerFrame: 0.5, resize: false, restore: true)
         let animation = SKAction.repeatForever(frames)
         new.run(animation)
         
@@ -125,7 +125,7 @@ class ObstacleSpawner {
             textures.append(SKTexture(imageNamed: frame))
         }
         
-        let frames = SKAction.animate(with: textures, timePerFrame: 0.1, resize: false, restore: true)
+        let frames = SKAction.animate(with: textures, timePerFrame: 0.5, resize: false, restore: true)
         let animation = SKAction.repeatForever(frames)
         new.run(animation)
         // Change start pointing depending on object initial position
@@ -146,7 +146,7 @@ class ObstacleSpawner {
             textures.append(SKTexture(imageNamed: frame))
         }
         
-        let frames = SKAction.animate(with: textures, timePerFrame: 0.1, resize: false, restore: true)
+        let frames = SKAction.animate(with: textures, timePerFrame: 0.5, resize: false, restore: true)
         let animation = SKAction.repeatForever(frames)
         new.run(animation)
     }

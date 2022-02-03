@@ -15,7 +15,16 @@ class Player: GameNode {
     override init(node: SKSpriteNode) {
         //        node.xScale = 0.5
         //        node.yScale = 0.5
-        node.texture = SKTexture(imageNamed: "fish")
+   node.texture = SKTexture(imageNamed: "coral1")
+        var textures = [SKTexture]()
+                textures.append(SKTexture(imageNamed: "coral1"))
+                textures.append(SKTexture(imageNamed: "coral2"))
+                textures.append(SKTexture(imageNamed: "coral3"))
+                textures.append(SKTexture(imageNamed: "coral1"))
+                
+                let frames = SKAction.animate(with: textures, timePerFrame: 0.1, resize: false, restore: true)
+                let animation = SKAction.repeatForever(frames)
+                node.run(animation)
         
         super.init(node: node)
         
