@@ -10,7 +10,7 @@ import SpriteKit
 
 class ObstacleSpawner {
     private var obstacleNode: SKSpriteNode
-    private var obstaclePos: ObstaclePosition
+    private var obstaclePos: ObjectPosition
     private var parent: SKNode // Scene root node
     private var obstacles = [SKNode]()
     
@@ -22,7 +22,7 @@ class ObstacleSpawner {
     
     private var calls = 0
     
-    init(obstacleNode: SKSpriteNode, obstaclePos: ObstaclePosition, parent: SKNode, upperInterval: CGFloat) {
+    init(obstacleNode: SKSpriteNode, obstaclePos: ObjectPosition, parent: SKNode, upperInterval: CGFloat) {
         self.obstacleNode = obstacleNode
         self.obstaclePos = obstaclePos
         self.parent = parent
@@ -37,6 +37,7 @@ class ObstacleSpawner {
     }
     
     func updateInterval() {
+        // Keep incrementing a value, instead of using just game speed -> Adds a value
         let newValue = (upperInterval * GameManager.shared.initialSpeed) / GameManager.shared.speed
         if newValue >= lowerInterval {
             interval = CGFloat.random(in: lowerInterval...newValue)
@@ -58,11 +59,6 @@ class ObstacleSpawner {
         // Movement
         for obstacle in obstacles {
             obstacle.position.x -= GameManager.shared.speed * deltaTime
-            
-//            print(deltaTime)
-//            if obstaclePos == .middle) {
-//                pipe.position.y = sin(pipe.position.x)
-//            }
         }
         
         // Only the first must be removed
@@ -118,10 +114,15 @@ class ObstacleSpawner {
         let texture = SKTexture(imageNamed: randomOption!)
         new.texture = texture
         
-//        let move = SKAction.moveTo(y: sin(new.position.x), duration: 0.5)
-//        let repeatForever = SKAction.repeatForever(move)
-//        new.run(repeatForever)
-        
+        // Change start pointing depending on object initial position
+        // Calibrate range, timing, etc
+        let move = SKAction.moveTo(y: 5, duration: 1)
+        move.timingMode = .easeInEaseOut // Does sin()
+        let moveBack = SKAction.moveTo(y: -5, duration: 1)
+        move.timingMode = .easeInEaseOut
+        let sequence = SKAction.sequence([move, moveBack])
+        let repeatForever = SKAction.repeatForever(sequence)
+        new.run(repeatForever)
     }
     
     func getTopObstacle(new: SKSpriteNode) {

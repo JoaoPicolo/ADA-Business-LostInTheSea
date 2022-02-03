@@ -17,6 +17,7 @@
 		C4674C6D27AB5F5F005E5308 /* rainFuse.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C4674C6C27AB5F5F005E5308 /* rainFuse.mp3 */; };
 		C4674C6F27AB5F65005E5308 /* life.wav in Resources */ = {isa = PBXBuildFile; fileRef = C4674C6E27AB5F65005E5308 /* life.wav */; };
 		C4674C7327AB6206005E5308 /* Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4674C7227AB6206005E5308 /* Audio.swift */; };
+		C47B370227AC04E800B734F6 /* Obstacles.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47B370127AC04E800B734F6 /* Obstacles.swift */; };
 		C497243C27A2BDF3004A121A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C497243B27A2BDF3004A121A /* AppDelegate.swift */; };
 		C497243E27A2BDF3004A121A /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = C497243D27A2BDF3004A121A /* GameScene.sks */; };
 		C497244227A2BDF4004A121A /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C497244127A2BDF4004A121A /* GameScene.swift */; };
@@ -43,6 +44,7 @@
 		C4674C6C27AB5F5F005E5308 /* rainFuse.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = rainFuse.mp3; sourceTree = "<group>"; };
 		C4674C6E27AB5F65005E5308 /* life.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = life.wav; sourceTree = "<group>"; };
 		C4674C7227AB6206005E5308 /* Audio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Audio.swift; sourceTree = "<group>"; };
+		C47B370127AC04E800B734F6 /* Obstacles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Obstacles.swift; sourceTree = "<group>"; };
 		C497243827A2BDF3004A121A /* Keep Swimming.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Keep Swimming.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C497243B27A2BDF3004A121A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C497243D27A2BDF3004A121A /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				C4ED51D527A80661004C160B /* Masks.swift */,
 				C429B99B27A37678004335BF /* ObstacleSpawner.swift */,
 				C4674C7227AB6206005E5308 /* Audio.swift */,
+				C47B370127AC04E800B734F6 /* Obstacles.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 				C429B99C27A37678004335BF /* ObstacleSpawner.swift in Sources */,
 				C497245527A2C23A004A121A /* Limit.swift in Sources */,
 				C4674C4E27AB4D7F005E5308 /* LeaderboardManager.swift in Sources */,
+				C47B370227AC04E800B734F6 /* Obstacles.swift in Sources */,
 				C4674C6127AB5C42005E5308 /* AudioManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,7 +8,7 @@
 import Foundation
 import SpriteKit
 
-enum ObstaclePosition: CaseIterable {
+enum ObjectPosition: CaseIterable {
     case bottom
     case middle
     case top
