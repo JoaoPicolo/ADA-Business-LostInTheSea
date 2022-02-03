@@ -13,6 +13,7 @@ import GameplayKit
 class StartViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
+        AudioManager.shared.play(music: Audio.MusicFiles.background)
         LeaderboardManager.shared.authenticateLocalPlayer(presentingVC: self)
     }
     

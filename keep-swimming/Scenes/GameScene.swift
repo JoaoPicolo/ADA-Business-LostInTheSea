@@ -150,9 +150,12 @@ extension GameScene: SKPhysicsContactDelegate {
     }
     
     func hasColided(other: SKNode) {
-        let category = other.userData?.value(forKey: "category") as! String
-        if  category == "obstacle" {
-            gameOver()
+        if status != .gameOver {
+            let category = other.userData?.value(forKey: "category") as! String
+            if  category == "obstacle" {
+                AudioManager.shared.play(effect: Audio.EffectFiles.life)
+                gameOver()
+            }
         }
     }
 }
