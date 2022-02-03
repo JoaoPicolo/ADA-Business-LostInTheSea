@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5405A05227AB7C7200725CF2 /* bip.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5405A05127AB7C7200725CF2 /* bip.wav */; };
+		5405A05427AB7D3D00725CF2 /* tum.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5405A05327AB7D3D00725CF2 /* tum.mp3 */; };
 		5472223F27A9D1D8002A25BB /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5472223E27A9D1D8002A25BB /* GameKit.framework */; };
 		C429B99C27A37678004335BF /* ObstacleSpawner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C429B99B27A37678004335BF /* ObstacleSpawner.swift */; };
 		C4674C4627AA94C1005E5308 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4674C4527AA94C1005E5308 /* StartViewController.swift */; };
@@ -31,6 +33,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5405A05127AB7C7200725CF2 /* bip.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bip.wav; sourceTree = "<group>"; };
+		5405A05327AB7D3D00725CF2 /* tum.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tum.mp3; sourceTree = "<group>"; };
 		5472223E27A9D1D8002A25BB /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		C429B99B27A37678004335BF /* ObstacleSpawner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObstacleSpawner.swift; sourceTree = "<group>"; };
 		C4674C4527AA94C1005E5308 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
@@ -144,6 +148,8 @@
 		C4674C6B27AB5F56005E5308 /* Effects */ = {
 			isa = PBXGroup;
 			children = (
+				5405A05127AB7C7200725CF2 /* bip.wav */,
+				5405A05327AB7D3D00725CF2 /* tum.mp3 */,
 				C4674C6E27AB5F65005E5308 /* life.wav */,
 			);
 			path = Effects;
@@ -244,8 +250,10 @@
 				C4674C6F27AB5F65005E5308 /* life.wav in Resources */,
 				C497244727A2BDF4004A121A /* Main.storyboard in Resources */,
 				C497243E27A2BDF3004A121A /* GameScene.sks in Resources */,
+				5405A05427AB7D3D00725CF2 /* tum.mp3 in Resources */,
 				C497244927A2BDF5004A121A /* Assets.xcassets in Resources */,
 				C4674C6D27AB5F5F005E5308 /* rainFuse.mp3 in Resources */,
+				5405A05227AB7C7200725CF2 /* bip.wav in Resources */,
 				C497244C27A2BDF5004A121A /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

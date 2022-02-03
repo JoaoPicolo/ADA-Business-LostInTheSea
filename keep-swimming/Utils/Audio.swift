@@ -35,6 +35,6 @@ struct Audio {
     }
     
     struct EffectFiles {
-        static let life = Effect(filename: "life", type: "wav")
+        static let life = Effect(filename: "tum", type: "mp3")
     }
 }
