@@ -17,7 +17,9 @@ class GameScene: SKScene {
     var introNode: SKSpriteNode!
     var gameOverNode: SKSpriteNode!
     var distanceText: SKLabelNode!
-
+    
+    var lifeBar: LifeBar!
+    
     // Managers
     var spawnManager: SpawnManager!
     
@@ -25,36 +27,42 @@ class GameScene: SKScene {
     var lastUpdate = TimeInterval(0)
     var status: GameStatus = .intro
     
-   override func didMove(to view: SKView) {
-       physicsWorld.contactDelegate = self
-       
-       // Player Node
-       let playerNode = childNode(withName: "player") as! SKSpriteNode
-       player = Player(node: playerNode)
-
-       // Ground Node
-       let groundNode = childNode(withName: "ground") as! SKSpriteNode
-       ground = Limit(node: groundNode)
-       
-       // Ceil Node
-       let ceilNode = childNode(withName: "ceil") as! SKSpriteNode
-       ceil = Limit(node: ceilNode)
-       
-       // Intro Node
-       introNode = childNode(withName: "intro") as? SKSpriteNode
-       
-       // Game over Node
-       gameOverNode = childNode(withName: "gameOver") as? SKSpriteNode
-       gameOverNode.removeFromParent()
-       
-       // Distance text
-       distanceText = childNode(withName: "distanceText") as? SKLabelNode
-       resetDistanceText()
-       
-       // Spawn Manager
-       spawnManager = SpawnManager(parent: self)
-   }
-
+    override func didMove(to view: SKView) {
+        physicsWorld.contactDelegate = self
+        
+        // Player Node
+        let playerNode = childNode(withName: "player") as! SKSpriteNode
+        player = Player(node: playerNode)
+        
+        // Ground Node
+        let groundNode = childNode(withName: "ground") as! SKSpriteNode
+        ground = Limit(node: groundNode)
+        
+        // Ceil Node
+        let ceilNode = childNode(withName: "ceil") as! SKSpriteNode
+        ceil = Limit(node: ceilNode)
+        
+        // LifeBar Node
+        let lifeBarParent = childNode(withName: "lifeBar")!
+        let lifeBarNode = lifeBarParent.childNode(withName: "life") as! SKSpriteNode
+        lifeBar = LifeBar(lifeNode: lifeBarNode)
+        
+        
+        // Intro Node
+        introNode = childNode(withName: "intro") as? SKSpriteNode
+        
+        // Game over Node
+        gameOverNode = childNode(withName: "gameOver") as? SKSpriteNode
+        gameOverNode.removeFromParent()
+        
+        // Distance text
+        distanceText = childNode(withName: "distanceText") as? SKLabelNode
+        resetDistanceText()
+        
+        // Spawn Manager
+        spawnManager = SpawnManager(parent: self)
+    }
+    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         switch status {
@@ -112,7 +120,7 @@ class GameScene: SKScene {
         if status == .gameOver {
             return
         }
-
+        
         LeaderboardManager.shared.updateScore(with: Int(GameManager.shared.distance))
         addChild(gameOverNode)
         player.die()
@@ -153,9 +161,23 @@ extension GameScene: SKPhysicsContactDelegate {
         if status != .gameOver {
             let category = other.userData?.value(forKey: "category") as! String
             if  category == "obstacle" {
+                AudioManager.shared.play(effect: Audio.EffectFiles.tum)
+                
+                player.updateLife(points: -10)
+                
+                if player.life == 0 {
+                    gameOver()
+                }
+                
+            } else if category == "life" {
                 AudioManager.shared.play(effect: Audio.EffectFiles.life)
-                gameOver()
+                
+                player.updateLife(points: 10)
+                
+                
             }
+            
+            lifeBar.updateLife(life: player.life)
         }
     }
 }
