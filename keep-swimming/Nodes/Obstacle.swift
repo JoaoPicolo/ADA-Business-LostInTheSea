@@ -9,10 +9,10 @@ import Foundation
 import SpriteKit
 
 class Obstacle {
-    private var node: SKSpriteNode
-    private var position: ObjectPosition
-    private var parent: SKNode // Scene root node
-    private var obstacles = [SKNode]()
+     var node: SKSpriteNode
+     var position: ObjectPosition
+     var parent: SKNode // Scene root node
+     var obstacles = [ObstacleSpriteNode]()
     
     // Will spawn every 3 seconds
     private var lowerInterval = CGFloat(1)
@@ -70,8 +70,8 @@ class Obstacle {
         }
     }
     
-    func spawn() {
-        let new = node.copy() as! SKSpriteNode
+    func spawn() { // to do (fix)
+        let new = node.copy() as! ObstacleSpriteNode
         
         let body = SKPhysicsBody(circleOfRadius: 20)
         body.isDynamic = false
@@ -90,7 +90,7 @@ class Obstacle {
     }
     
     func getSpawnObject(new: SKSpriteNode) {
-        var obstacle: ObstacleStruct
+        var obstacle: ObstacleSpriteNode
         
         switch position {
         case .bottom:
@@ -104,7 +104,7 @@ class Obstacle {
         addAnimations(new: new, obstacle: obstacle)
     }
     
-    func addAnimations(new: SKSpriteNode, obstacle: ObstacleStruct) {
+    func addAnimations(new: SKSpriteNode, obstacle: ObstacleSpriteNode) {
         var textures = [SKTexture]()
         for frame in obstacle.imageSequence {
             textures.append(SKTexture(imageNamed: frame))
@@ -124,6 +124,7 @@ class Obstacle {
             let repeatForever = SKAction.repeatForever(sequence)
             new.run(repeatForever)
         }
+        print(new)
     }
     
     func reset() {

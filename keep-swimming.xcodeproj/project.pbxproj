@@ -11,6 +11,7 @@
 		5405A05427AB7D3D00725CF2 /* tum.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5405A05327AB7D3D00725CF2 /* tum.mp3 */; };
 		5405A05627AC023600725CF2 /* Lifebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5405A05527AC023600725CF2 /* Lifebar.swift */; };
 		5405A05827AC1AE200725CF2 /* garden.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5405A05727AC1AE200725CF2 /* garden.mp3 */; };
+		5405A05A27AD49DC00725CF2 /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5405A05927AD49DC00725CF2 /* HapticsManager.swift */; };
 		5472223F27A9D1D8002A25BB /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5472223E27A9D1D8002A25BB /* GameKit.framework */; };
 		C4674C4627AA94C1005E5308 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4674C4527AA94C1005E5308 /* StartViewController.swift */; };
 		C4674C4E27AB4D7F005E5308 /* LeaderboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4674C4D27AB4D7F005E5308 /* LeaderboardManager.swift */; };
@@ -41,6 +42,7 @@
 		5405A05327AB7D3D00725CF2 /* tum.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tum.mp3; sourceTree = "<group>"; };
 		5405A05527AC023600725CF2 /* Lifebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lifebar.swift; sourceTree = "<group>"; };
 		5405A05727AC1AE200725CF2 /* garden.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = garden.mp3; sourceTree = "<group>"; };
+		5405A05927AD49DC00725CF2 /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
 		5472223E27A9D1D8002A25BB /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		C4674C4527AA94C1005E5308 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		C4674C4D27AB4D7F005E5308 /* LeaderboardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardManager.swift; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 				C4C710F727A40A9100927855 /* SpawnManager.swift */,
 				C4674C4D27AB4D7F005E5308 /* LeaderboardManager.swift */,
 				C4674C6027AB5C42005E5308 /* AudioManager.swift */,
+				5405A05927AD49DC00725CF2 /* HapticsManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5405A05A27AD49DC00725CF2 /* HapticsManager.swift in Sources */,
 				C497245327A2BFDB004A121A /* Player.swift in Sources */,
 				C4ED51D627A80661004C160B /* Masks.swift in Sources */,
 				C4C710F827A40A9100927855 /* SpawnManager.swift in Sources */,
@@ -443,7 +447,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = HQJF9G685U;
+				DEVELOPMENT_TEAM = SKRWT528DU;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -473,7 +477,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = HQJF9G685U;
+				DEVELOPMENT_TEAM = SKRWT528DU;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;

@@ -18,6 +18,8 @@ class GameScene: SKScene {
     var introNode: SKSpriteNode!
     var gameOverNode: SKSpriteNode!
     var distanceText: SKLabelNode!
+    var hapticsManeger = HapticsManager()
+    
     
     // Managers
     var spawnManager: SpawnManager!
@@ -162,15 +164,23 @@ extension GameScene: SKPhysicsContactDelegate {
         if status != .gameOver {
             let category = other.userData?.value(forKey: "category") as! String
             if  category == "obstacle" {
+                
+                hapticsManeger.vibrateByImpact(intensity: CGFloat(15))
+                
                 AudioManager.shared.play(effect: Audio.EffectFiles.tum)
+                spawnManager.hasColided(node: other)
+                
                 player.updateLife(points: -10)
                 if player.life == 0 {
                     gameOver()
                 }
                 
             } else if category == "life" {
+                
+                hapticsManeger.vibrateByImpact(intensity: CGFloat(8))
                 AudioManager.shared.play(effect: Audio.EffectFiles.life)
                 player.updateLife(points: 10)
+                other.alpha = 0
             }
             
             lifebar.updateLife(life: player.life)
