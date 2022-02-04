@@ -20,7 +20,7 @@
 		C4674C6F27AB5F65005E5308 /* life.wav in Resources */ = {isa = PBXBuildFile; fileRef = C4674C6E27AB5F65005E5308 /* life.wav */; };
 		C4674C7327AB6206005E5308 /* Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4674C7227AB6206005E5308 /* Audio.swift */; };
 		C47B370227AC04E800B734F6 /* Obstacles.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47B370127AC04E800B734F6 /* Obstacles.swift */; };
-		C47B370427AC459500B734F6 /* Obstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47B370327AC459500B734F6 /* Obstacle.swift */; };
+		C47B370427AC459500B734F6 /* ObstacleSpawner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47B370327AC459500B734F6 /* ObstacleSpawner.swift */; };
 		C47B370627AC48EE00B734F6 /* Life.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47B370527AC48EE00B734F6 /* Life.swift */; };
 		C497243C27A2BDF3004A121A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C497243B27A2BDF3004A121A /* AppDelegate.swift */; };
 		C497243E27A2BDF3004A121A /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = C497243D27A2BDF3004A121A /* GameScene.sks */; };
@@ -51,7 +51,7 @@
 		C4674C6E27AB5F65005E5308 /* life.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = life.wav; sourceTree = "<group>"; };
 		C4674C7227AB6206005E5308 /* Audio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Audio.swift; sourceTree = "<group>"; };
 		C47B370127AC04E800B734F6 /* Obstacles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Obstacles.swift; sourceTree = "<group>"; };
-		C47B370327AC459500B734F6 /* Obstacle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Obstacle.swift; sourceTree = "<group>"; };
+		C47B370327AC459500B734F6 /* ObstacleSpawner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObstacleSpawner.swift; sourceTree = "<group>"; };
 		C47B370527AC48EE00B734F6 /* Life.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Life.swift; sourceTree = "<group>"; };
 		C497243827A2BDF3004A121A /* Keep Swimming.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Keep Swimming.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C497243B27A2BDF3004A121A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -108,7 +108,7 @@
 				C497245427A2C23A004A121A /* Limit.swift */,
 				C497245627A2C5B2004A121A /* GameNode.swift */,
 				5405A05527AC023600725CF2 /* Lifebar.swift */,
-				C47B370327AC459500B734F6 /* Obstacle.swift */,
+				C47B370327AC459500B734F6 /* ObstacleSpawner.swift */,
 				C47B370527AC48EE00B734F6 /* Life.swift */,
 			);
 			path = Nodes;
@@ -287,7 +287,7 @@
 				C4C710F827A40A9100927855 /* SpawnManager.swift in Sources */,
 				5405A05627AC023600725CF2 /* Lifebar.swift in Sources */,
 				C497245D27A2D3D9004A121A /* GameManager.swift in Sources */,
-				C47B370427AC459500B734F6 /* Obstacle.swift in Sources */,
+				C47B370427AC459500B734F6 /* ObstacleSpawner.swift in Sources */,
 				C497245727A2C5B2004A121A /* GameNode.swift in Sources */,
 				C4674C4627AA94C1005E5308 /* StartViewController.swift in Sources */,
 				C4674C7327AB6206005E5308 /* Audio.swift in Sources */,
@@ -447,7 +447,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = SKRWT528DU;
+				DEVELOPMENT_TEAM = HQJF9G685U;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -477,7 +477,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = SKRWT528DU;
+				DEVELOPMENT_TEAM = HQJF9G685U;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;

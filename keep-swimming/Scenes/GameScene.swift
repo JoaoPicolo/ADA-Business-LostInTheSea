@@ -168,15 +168,14 @@ extension GameScene: SKPhysicsContactDelegate {
                 hapticsManeger.vibrateByImpact(intensity: CGFloat(15))
                 
                 AudioManager.shared.play(effect: Audio.EffectFiles.tum)
-                spawnManager.hasColided(node: other)
-                
-                player.updateLife(points: -10)
+                let damage = spawnManager.getDamage(node: other)
+                player.updateLife(points: -damage)
+                cameraShake(duration: 0.2)
                 if player.life == 0 {
                     gameOver()
                 }
                 
             } else if category == "life" {
-                
                 hapticsManeger.vibrateByImpact(intensity: CGFloat(8))
                 AudioManager.shared.play(effect: Audio.EffectFiles.life)
                 player.updateLife(points: 10)
@@ -186,4 +185,54 @@ extension GameScene: SKPhysicsContactDelegate {
             lifebar.updateLife(life: player.life)
         }
     }
+    
+    private func cameraShake(duration: CGFloat) {
+        let size = CGFloat(5)
+        
+        var currentDuration = CGFloat(0)
+        let iterationDuration = TimeInterval(0.07)
+        
+        let originalPosition = self.camera?.position ?? CGPoint.zero
+        print(originalPosition, CGPoint.zero)
+        
+        _ = Timer.scheduledTimer(withTimeInterval: iterationDuration, repeats: true, block: { (timer) in
+            if currentDuration > duration {
+                timer.invalidate()
+                self.camera?.position = originalPosition
+                return
+            }
+            
+            let randomX = CGFloat.random(in: -size...size)
+            let randomY = CGFloat.random(in: -size...size)
+            
+            self.camera?.position = originalPosition + CGPoint(x: randomX, y: randomY)
+            
+            currentDuration += CGFloat(iterationDuration)
+        })
+    }
+}
+
+
+func + (left: CGPoint, right: CGPoint) -> CGPoint {
+    return CGPoint(x: left.x + right.x, y: left.y + right.y)
+}
+
+func + (left: CGPoint, scalar: CGFloat) -> CGPoint {
+    return CGPoint(x: left.x + scalar, y: left.y + scalar)
+}
+
+func - (left: CGPoint, scalar: CGFloat) -> CGPoint {
+    return CGPoint(x: left.x - scalar, y: left.y - scalar)
+}
+
+func - (left: CGPoint, right: CGPoint) -> CGPoint {
+    return CGPoint(x: left.x - right.x, y: left.y - right.y)
+}
+
+func * (left: CGPoint, scalar: CGFloat) -> CGPoint {
+    return CGPoint(x: left.x * scalar, y: left.y * scalar)
+}
+
+func / (left: CGPoint, scalar: CGFloat) -> CGPoint {
+    return CGPoint(x: left.x / scalar, y: left.y / scalar)
 }

@@ -21,7 +21,7 @@ class Player: GameNode {
         textures.append(SKTexture(imageNamed: "coral3"))
         textures.append(SKTexture(imageNamed: "coral1"))
         
-        let frames = SKAction.animate(with: textures, timePerFrame: 0.1, resize: false, restore: true)
+        let frames = SKAction.animate(with: textures, timePerFrame: 0.1, resize: true, restore: true)
         animation = SKAction.repeatForever(frames)
         node.run(animation)
         
