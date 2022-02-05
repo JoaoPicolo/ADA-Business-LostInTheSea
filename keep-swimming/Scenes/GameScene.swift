@@ -180,7 +180,7 @@ extension GameScene: SKPhysicsContactDelegate {
         AudioManager.shared.play(effect: Audio.EffectFiles.tum)
         hapticsManeger.vibrateByImpact(intensity: CGFloat(15))
         cameraManager.cameraShake(duration: 0.2)
-
+        
         let damage = spawnManager.getDamage(node: node)
         player.updateLife(points: -damage)
         
@@ -193,7 +193,7 @@ extension GameScene: SKPhysicsContactDelegate {
         AudioManager.shared.play(effect: Audio.EffectFiles.life)
         hapticsManeger.vibrateByImpact(intensity: CGFloat(8))
         player.updateLife(points: 10)
-
+        
         node.alpha = 0
     }
     

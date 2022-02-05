@@ -40,7 +40,7 @@ struct Objects {
 class SpawnManager {
     private var parent: SKNode!
     private var spawnIntervals = SpawnTimes()
-    private var lowerInterval = CGFloat(1)
+    private var lowerInterval = CGFloat(2)
     
     // Obstacles
     private var obstacles = [Obstacle]()
@@ -80,9 +80,9 @@ class SpawnManager {
     
     func updateInterval(currentTime: TimeInterval, currentInterval: TimeInterval) -> (time: TimeInterval, interval: TimeInterval) {
         // Keep incrementing a value, instead of using just game speed -> Adds a value
-        let newValue = (currentInterval * GameManager.shared.initialSpeed) / GameManager.shared.speed
+        let newValue = ((currentInterval * GameManager.shared.initialSpeed) / GameManager.shared.speed)
         var newInterval = currentInterval
-
+        
         if newValue >= lowerInterval {
             newInterval = CGFloat.random(in: lowerInterval...newValue)
         }
@@ -100,11 +100,13 @@ class SpawnManager {
             spawnIntervals.bottom = updatedTime.interval
         }
         if obstaclesTimes.middle > spawnIntervals.middle {
+            spawnObstacle(pos: Positions.middle)
             let updatedTime = updateInterval(currentTime: obstaclesTimes.middle, currentInterval: spawnIntervals.middle)
             obstaclesTimes.middle = updatedTime.time
             spawnIntervals.middle = updatedTime.interval
         }
         if obstaclesTimes.top > spawnIntervals.top {
+            spawnObstacle(pos: Positions.top)
             let updatedTime = updateInterval(currentTime: obstaclesTimes.top, currentInterval: spawnIntervals.top)
             obstaclesTimes.top = updatedTime.time
             spawnIntervals.top = updatedTime.interval
@@ -120,7 +122,7 @@ class SpawnManager {
     func spawnObstacle(pos: Positions) {
         let newObstacle: ObstacleStruct
         let newNode = SKSpriteNode()
-
+        
         switch pos {
         case .bottom:
             newObstacle = Obstacles.obstaclesBottom.randomElement()!
@@ -135,14 +137,14 @@ class SpawnManager {
         
         // Adds node and mounts obstacle
         let obstacle = Obstacle(node: newNode, obstacleStruct: newObstacle, position: pos)
-        parent.addChild(newNode)
         obstacles.append(obstacle)
+        parent.addChild(newNode)
     }
     
     func spawnLife() {
         let newNode = SKSpriteNode()
         newNode.position = Objects.MiddleObstacle.position
-
+        
         let life = Life(node: newNode)
         lives.append(life)
         parent.addChild(newNode)
@@ -181,7 +183,12 @@ class SpawnManager {
     func getDamage(node: SKNode) -> CGFloat {
         for obstacle in obstacles {
             if obstacle.node == node {
-                return obstacle.obstacleStruct.damage
+                if obstacle.obstacleStruct.contactEnabled {
+                    obstacle.obstacleStruct.contactEnabled = false
+                    return obstacle.obstacleStruct.damage
+                } else {
+                    return 0
+                }
             }
         }
         return 20

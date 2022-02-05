@@ -10,7 +10,7 @@ import SpriteKit
 
 class Lifebar {
     private var lifeNode: SKSpriteNode
-
+    
     init (lifeNode: SKSpriteNode) {
         self.lifeNode = lifeNode
     }

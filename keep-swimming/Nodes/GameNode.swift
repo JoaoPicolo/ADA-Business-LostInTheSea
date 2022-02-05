@@ -24,7 +24,7 @@ class GameNode {
     }
     
     private func setupConstraints() {
-        node.zPosition = 1
+        node.zPosition = 0
         node.alpha = 1
     }
 }

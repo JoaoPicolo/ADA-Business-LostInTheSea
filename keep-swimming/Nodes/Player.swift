@@ -16,12 +16,12 @@ class Player: GameNode {
     override init(node: SKSpriteNode) {
         super.init(node: node)
         
-        physicsSetup()
         setTextures()
+        physicsSetup()
     }
     
     private func physicsSetup() {
-        let body = SKPhysicsBody(circleOfRadius: 8)
+        let body = SKPhysicsBody(circleOfRadius: 10)
         body.isDynamic = false
         body.affectedByGravity = true
         body.categoryBitMask = Masks.playerMask
@@ -36,7 +36,9 @@ class Player: GameNode {
     }
     
     private func setTextures() {
-        node.texture = SKTexture(imageNamed: "coral1")
+        let texture = SKTexture(imageNamed: "coral1")
+        node.texture = texture
+        node.size = texture.size()
         
         var textures = [SKTexture]()
         textures.append(SKTexture(imageNamed: "coral1"))
@@ -86,7 +88,7 @@ class Player: GameNode {
     
     func reset() {
         life = 100
-
+        
         node.yScale = startScaleY
         node.xScale = startScaleX
         node.position = startPosition
