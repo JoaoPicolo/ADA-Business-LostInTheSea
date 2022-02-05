@@ -18,11 +18,12 @@ class GameScene: SKScene {
     var introNode: SKSpriteNode!
     var gameOverNode: SKSpriteNode!
     var distanceText: SKLabelNode!
-    var hapticsManeger = HapticsManager()
     
     
     // Managers
     var spawnManager: SpawnManager!
+    var cameraManager: CameraManager!
+    var hapticsManeger = HapticsManager()
     
     // Control
     var lastUpdate = TimeInterval(0)
@@ -62,6 +63,9 @@ class GameScene: SKScene {
         
         // Spawn Manager
         spawnManager = SpawnManager(parent: self)
+        
+        // Camera Manager
+        cameraManager = CameraManager(parent: self)
     }
     
     
@@ -113,7 +117,7 @@ class GameScene: SKScene {
     func playingUpdate(deltaTime: TimeInterval) {
         ground.update(deltaTime: deltaTime)
         ceil.update(deltaTime: deltaTime)
-        spawnManager.updateSpawns(deltaTime: deltaTime)
+        spawnManager.updateObjects(deltaTime: deltaTime)
         distanceText.attributedText = GameManager.shared.updateDistance(deltaTime: deltaTime)
     }
     
@@ -138,8 +142,7 @@ class GameScene: SKScene {
         spawnManager.resetSpawns()
         resetDistanceText()
         GameManager.shared.reset()
-        player.life = 100
-        lifebar.updateLife(life: player.life)
+        lifebar.lifeUpdate(life: player.life)
     }
     
     func resetDistanceText() {
@@ -164,75 +167,34 @@ extension GameScene: SKPhysicsContactDelegate {
         if status != .gameOver {
             let category = other.userData?.value(forKey: "category") as! String
             if  category == "obstacle" {
-                
-                hapticsManeger.vibrateByImpact(intensity: CGFloat(15))
-                
-                AudioManager.shared.play(effect: Audio.EffectFiles.tum)
-                let damage = spawnManager.getDamage(node: other)
-                player.updateLife(points: -damage)
-                cameraShake(duration: 0.2)
-                if player.life == 0 {
-                    gameOver()
-                }
-                
+                obstacleCollision(node: other)
             } else if category == "life" {
-                hapticsManeger.vibrateByImpact(intensity: CGFloat(8))
-                AudioManager.shared.play(effect: Audio.EffectFiles.life)
-                player.updateLife(points: 10)
-                other.alpha = 0
+                lifeCollision(node: other)
             }
             
-            lifebar.updateLife(life: player.life)
+            lifebar.lifeUpdate(life: player.life)
         }
     }
     
-    private func cameraShake(duration: CGFloat) {
-        let size = CGFloat(5)
+    private func obstacleCollision(node: SKNode) {
+        AudioManager.shared.play(effect: Audio.EffectFiles.tum)
+        hapticsManeger.vibrateByImpact(intensity: CGFloat(15))
+        cameraManager.cameraShake(duration: 0.2)
+
+        let damage = spawnManager.getDamage(node: node)
+        player.updateLife(points: -damage)
         
-        var currentDuration = CGFloat(0)
-        let iterationDuration = TimeInterval(0.07)
-        
-        let originalPosition = self.camera?.position ?? CGPoint.zero
-        print(originalPosition, CGPoint.zero)
-        
-        _ = Timer.scheduledTimer(withTimeInterval: iterationDuration, repeats: true, block: { (timer) in
-            if currentDuration > duration {
-                timer.invalidate()
-                self.camera?.position = originalPosition
-                return
-            }
-            
-            let randomX = CGFloat.random(in: -size...size)
-            let randomY = CGFloat.random(in: -size...size)
-            
-            self.camera?.position = originalPosition + CGPoint(x: randomX, y: randomY)
-            
-            currentDuration += CGFloat(iterationDuration)
-        })
+        if player.life == 0 {
+            gameOver()
+        }
     }
-}
+    
+    private func lifeCollision(node: SKNode) {
+        AudioManager.shared.play(effect: Audio.EffectFiles.life)
+        hapticsManeger.vibrateByImpact(intensity: CGFloat(8))
+        player.updateLife(points: 10)
 
-
-func + (left: CGPoint, right: CGPoint) -> CGPoint {
-    return CGPoint(x: left.x + right.x, y: left.y + right.y)
-}
-
-func + (left: CGPoint, scalar: CGFloat) -> CGPoint {
-    return CGPoint(x: left.x + scalar, y: left.y + scalar)
-}
-
-func - (left: CGPoint, scalar: CGFloat) -> CGPoint {
-    return CGPoint(x: left.x - scalar, y: left.y - scalar)
-}
-
-func - (left: CGPoint, right: CGPoint) -> CGPoint {
-    return CGPoint(x: left.x - right.x, y: left.y - right.y)
-}
-
-func * (left: CGPoint, scalar: CGFloat) -> CGPoint {
-    return CGPoint(x: left.x * scalar, y: left.y * scalar)
-}
-
-func / (left: CGPoint, scalar: CGFloat) -> CGPoint {
-    return CGPoint(x: left.x / scalar, y: left.y / scalar)
+        node.alpha = 0
+    }
+    
 }

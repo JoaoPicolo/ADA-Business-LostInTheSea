@@ -10,30 +10,17 @@ import SpriteKit
 
 class Player: GameNode {
     private var jumpVelocity = CGFloat(300)
-    private var animation: SKAction
+    private var animation = SKAction()
     var life = CGFloat(100)
     
     override init(node: SKSpriteNode) {
-        node.texture = SKTexture(imageNamed: "coral1")
-        var textures = [SKTexture]()
-        textures.append(SKTexture(imageNamed: "coral1"))
-        textures.append(SKTexture(imageNamed: "coral2"))
-        textures.append(SKTexture(imageNamed: "coral3"))
-        textures.append(SKTexture(imageNamed: "coral1"))
-        
-        let frames = SKAction.animate(with: textures, timePerFrame: 0.1, resize: true, restore: true)
-        animation = SKAction.repeatForever(frames)
-        node.run(animation)
-        
-        let xConstraint = SKConstraint.positionX(SKRange(constantValue: node.position.x))
-        node.constraints = [xConstraint]
-        
         super.init(node: node)
         
         physicsSetup()
+        setTextures()
     }
     
-    func physicsSetup() {
+    private func physicsSetup() {
         let body = SKPhysicsBody(circleOfRadius: 8)
         body.isDynamic = false
         body.affectedByGravity = true
@@ -42,6 +29,25 @@ class Player: GameNode {
         body.collisionBitMask = Masks.groundMask
         
         node.physicsBody = body
+        
+        let xConstraint = SKConstraint.positionX(SKRange(constantValue: node.position.x))
+        let zConstraint = SKConstraint.zRotation(SKRange(constantValue: 0))
+        node.constraints = [xConstraint, zConstraint]
+    }
+    
+    private func setTextures() {
+        node.texture = SKTexture(imageNamed: "coral1")
+        
+        var textures = [SKTexture]()
+        textures.append(SKTexture(imageNamed: "coral1"))
+        textures.append(SKTexture(imageNamed: "coral2"))
+        textures.append(SKTexture(imageNamed: "coral3"))
+        textures.append(SKTexture(imageNamed: "coral1"))
+        
+        let frames = SKAction.animate(with: textures, timePerFrame: 0.1, resize: true, restore: true)
+        animation = SKAction.repeatForever(frames)
+        
+        node.run(animation)
     }
     
     
@@ -79,7 +85,8 @@ class Player: GameNode {
     }
     
     func reset() {
-        node.zRotation = 0
+        life = 100
+
         node.yScale = startScaleY
         node.xScale = startScaleX
         node.position = startPosition

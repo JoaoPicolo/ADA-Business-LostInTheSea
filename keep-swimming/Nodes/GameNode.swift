@@ -19,5 +19,12 @@ class GameNode {
         startPosition = node.position
         startScaleX = node.xScale
         startScaleY = node.yScale
+        
+        setupConstraints()
+    }
+    
+    private func setupConstraints() {
+        node.zPosition = 1
+        node.alpha = 1
     }
 }

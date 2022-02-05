@@ -9,13 +9,13 @@ import Foundation
 import SpriteKit
 
 class Lifebar {
-    var lifeNode : SKSpriteNode
+    private var lifeNode: SKSpriteNode
+
     init (lifeNode: SKSpriteNode) {
-        
         self.lifeNode = lifeNode
     }
     
-    func updateLife (life: CGFloat) {
+    func lifeUpdate(life: CGFloat) {
         if life < 0 {
             return
         }
