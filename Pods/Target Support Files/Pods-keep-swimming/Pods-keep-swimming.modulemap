@@ -1,0 +1,6 @@
+framework module Pods_keep_swimming {
+  umbrella header "Pods-keep-swimming-umbrella.h"
+
+  export *
+  module * { export * }
+}

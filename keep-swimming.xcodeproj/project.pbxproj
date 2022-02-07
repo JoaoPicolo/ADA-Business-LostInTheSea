@@ -36,10 +36,13 @@
 		C497245727A2C5B2004A121A /* GameNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C497245627A2C5B2004A121A /* GameNode.swift */; };
 		C497245D27A2D3D9004A121A /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C497245C27A2D3D9004A121A /* GameManager.swift */; };
 		C4C710F827A40A9100927855 /* SpawnManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C710F727A40A9100927855 /* SpawnManager.swift */; };
+		C4CA2B5B27B141A900C23615 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C4CA2B5A27B141A900C23615 /* GoogleService-Info.plist */; };
 		C4ED51D627A80661004C160B /* Masks.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4ED51D527A80661004C160B /* Masks.swift */; };
+		DE3FB28B4C4E4782C59B5FA6 /* Pods_keep_swimming.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B1B879CDFEA7FF675727C56 /* Pods_keep_swimming.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2B1B879CDFEA7FF675727C56 /* Pods_keep_swimming.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_keep_swimming.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5405A05127AB7C7200725CF2 /* bip.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bip.wav; sourceTree = "<group>"; };
 		5405A05327AB7D3D00725CF2 /* tum.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tum.mp3; sourceTree = "<group>"; };
 		5405A05527AC023600725CF2 /* Lifebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lifebar.swift; sourceTree = "<group>"; };
@@ -70,7 +73,10 @@
 		C497245627A2C5B2004A121A /* GameNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameNode.swift; sourceTree = "<group>"; };
 		C497245C27A2D3D9004A121A /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
 		C4C710F727A40A9100927855 /* SpawnManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpawnManager.swift; sourceTree = "<group>"; };
+		C4CA2B5A27B141A900C23615 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C4ED51D527A80661004C160B /* Masks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Masks.swift; sourceTree = "<group>"; };
+		C7C3541C43080B6A66A93305 /* Pods-keep-swimming.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-keep-swimming.debug.xcconfig"; path = "Target Support Files/Pods-keep-swimming/Pods-keep-swimming.debug.xcconfig"; sourceTree = "<group>"; };
+		EB72A12B56DB49DAE8E4D4D2 /* Pods-keep-swimming.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-keep-swimming.release.xcconfig"; path = "Target Support Files/Pods-keep-swimming/Pods-keep-swimming.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +85,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5472223F27A9D1D8002A25BB /* GameKit.framework in Frameworks */,
+				DE3FB28B4C4E4782C59B5FA6 /* Pods_keep_swimming.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,8 +96,18 @@
 			isa = PBXGroup;
 			children = (
 				5472223E27A9D1D8002A25BB /* GameKit.framework */,
+				2B1B879CDFEA7FF675727C56 /* Pods_keep_swimming.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8DECAC3AE2A7CD22D1754E6D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C7C3541C43080B6A66A93305 /* Pods-keep-swimming.debug.xcconfig */,
+				EB72A12B56DB49DAE8E4D4D2 /* Pods-keep-swimming.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 		C4674C4F27AB5529005E5308 /* Managers */ = {
@@ -182,6 +199,7 @@
 				C497243A27A2BDF3004A121A /* keep-swimming */,
 				C497243927A2BDF3004A121A /* Products */,
 				5472223D27A9D1D8002A25BB /* Frameworks */,
+				8DECAC3AE2A7CD22D1754E6D /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -196,6 +214,7 @@
 		C497243A27A2BDF3004A121A /* keep-swimming */ = {
 			isa = PBXGroup;
 			children = (
+				C4CA2B5A27B141A900C23615 /* GoogleService-Info.plist */,
 				C4674C6627AB5F0E005E5308 /* Music */,
 				C4674C5327AB5587005E5308 /* Controllers */,
 				C4674C5227AB557A005E5308 /* Scenes */,
@@ -217,9 +236,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C497244F27A2BDF5004A121A /* Build configuration list for PBXNativeTarget "keep-swimming" */;
 			buildPhases = (
+				AAF31C7C5D0830F47FF994DA /* [CP] Check Pods Manifest.lock */,
 				C497243427A2BDF3004A121A /* Sources */,
 				C497243527A2BDF3004A121A /* Frameworks */,
 				C497243627A2BDF3004A121A /* Resources */,
+				C84D58884F070DCD914D09E9 /* [CP] Embed Pods Frameworks */,
+				C4CA2B5C27B1439B00C23615 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -275,12 +297,74 @@
 				C497244927A2BDF5004A121A /* Assets.xcassets in Resources */,
 				C4674C6D27AB5F5F005E5308 /* rainFuse.mp3 in Resources */,
 				5405A05227AB7C7200725CF2 /* bip.wav in Resources */,
+				C4CA2B5B27B141A900C23615 /* GoogleService-Info.plist in Resources */,
 				5405A05827AC1AE200725CF2 /* garden.mp3 in Resources */,
 				C497244C27A2BDF5004A121A /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		AAF31C7C5D0830F47FF994DA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-keep-swimming-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C4CA2B5C27B1439B00C23615 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
+		};
+		C84D58884F070DCD914D09E9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-keep-swimming/Pods-keep-swimming-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-keep-swimming/Pods-keep-swimming-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-keep-swimming/Pods-keep-swimming-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C497243427A2BDF3004A121A /* Sources */ = {
@@ -450,11 +534,13 @@
 		};
 		C497245027A2BDF5004A121A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C7C3541C43080B6A66A93305 /* Pods-keep-swimming.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = HQJF9G685U;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -481,6 +567,7 @@
 		};
 		C497245127A2BDF5004A121A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EB72A12B56DB49DAE8E4D4D2 /* Pods-keep-swimming.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

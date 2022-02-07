@@ -8,6 +8,8 @@
 import SpriteKit
 import GameplayKit
 
+import FirebaseAnalytics
+
 
 class GameScene: SKScene {
     // Nodes
@@ -112,6 +114,8 @@ class GameScene: SKScene {
         status = .playing
         introNode.removeFromParent()
         player.start()
+        
+        Analytics.logEvent("level_start", parameters: nil)
     }
     
     func playingUpdate(deltaTime: TimeInterval) {
@@ -130,6 +134,8 @@ class GameScene: SKScene {
         addChild(gameOverNode)
         player.die()
         status = .gameOver
+        Analytics.logEvent("level_end", parameters: nil)
+        Analytics.setUserProperty(GameManager.shared.distanceDisplayed.description, forName: "player_distance")
     }
     
     func reset() {
@@ -143,6 +149,8 @@ class GameScene: SKScene {
         resetDistanceText()
         GameManager.shared.reset()
         lifebar.lifeUpdate(life: player.life)
+        
+        Analytics.logEvent("level_reset", parameters: nil)
     }
     
     func resetDistanceText() {
