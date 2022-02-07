@@ -8,4 +8,5 @@ target 'keep-swimming' do
   # Pods for keep-swimming
   pod 'Firebase/Analytics'
   pod 'Firebase/Crashlytics'
+  pod 'Google-Mobile-Ads-SDK'
 end

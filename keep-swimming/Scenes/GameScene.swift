@@ -31,6 +31,9 @@ class GameScene: SKScene {
     var lastUpdate = TimeInterval(0)
     var status: GameStatus = .intro
     
+    // Double reference, thus weak
+    weak var gameVC: GameViewController!
+    
     override func didMove(to view: SKView) {
         physicsWorld.contactDelegate = self
         
@@ -78,7 +81,7 @@ class GameScene: SKScene {
         case .playing:
             player.jump()
         case .gameOver:
-            reset()
+            gameVC.showAd()
         }
     }
     

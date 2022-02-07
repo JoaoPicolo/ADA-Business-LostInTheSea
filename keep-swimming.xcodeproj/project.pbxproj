@@ -74,6 +74,7 @@
 		C497245C27A2D3D9004A121A /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
 		C4C710F727A40A9100927855 /* SpawnManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpawnManager.swift; sourceTree = "<group>"; };
 		C4CA2B5A27B141A900C23615 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C4CA2B5D27B1527100C23615 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		C4ED51D527A80661004C160B /* Masks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Masks.swift; sourceTree = "<group>"; };
 		C7C3541C43080B6A66A93305 /* Pods-keep-swimming.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-keep-swimming.debug.xcconfig"; path = "Target Support Files/Pods-keep-swimming/Pods-keep-swimming.debug.xcconfig"; sourceTree = "<group>"; };
 		EB72A12B56DB49DAE8E4D4D2 /* Pods-keep-swimming.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-keep-swimming.release.xcconfig"; path = "Target Support Files/Pods-keep-swimming/Pods-keep-swimming.release.xcconfig"; sourceTree = "<group>"; };
@@ -214,6 +215,7 @@
 		C497243A27A2BDF3004A121A /* keep-swimming */ = {
 			isa = PBXGroup;
 			children = (
+				C4CA2B5D27B1527100C23615 /* Info.plist */,
 				C4CA2B5A27B141A900C23615 /* GoogleService-Info.plist */,
 				C4674C6627AB5F0E005E5308 /* Music */,
 				C4674C5327AB5587005E5308 /* Controllers */,
@@ -543,6 +545,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = HQJF9G685U;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "keep-swimming/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -575,6 +578,7 @@
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = HQJF9G685U;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "keep-swimming/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
