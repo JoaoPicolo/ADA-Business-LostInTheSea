@@ -21,8 +21,7 @@ class StartViewController: UIViewController {
         LeaderboardManager.shared.navigateToGame(presentingVC: self)
     }
     
-    @IBAction func leaderBoardClicked(_ sender: Any) {
+    @IBAction func leaderboardClicked(_ sender: Any) {
         LeaderboardManager.shared.navigateToLeaderboard(presentingVC: self)
     }
-    
 }

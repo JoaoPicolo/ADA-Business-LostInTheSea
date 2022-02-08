@@ -13,9 +13,13 @@ import GoogleMobileAds
 class GameViewController: UIViewController, GADFullScreenContentDelegate {
     private var scene: GameScene!
     private var interstitial: GADInterstitialAd?
+
+    @IBOutlet weak var extraLifeView: UIView!
+    @IBOutlet weak var gameOverView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
             scene = SKScene(fileNamed: "GameScene") as? GameScene
@@ -37,6 +41,33 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
         requestIntersticial()
     }
     
+    func gameOver() {
+        extraLifeView.isHidden = false
+    }
+    
+    func resetGame() {
+        scene.reset()
+        extraLifeView.isHidden = true
+        gameOverView.isHidden = true
+    }
+    
+    @IBAction func playAd(_ sender: Any) {
+        showAd()
+    }
+
+    @IBAction func `continue`(_ sender: Any) {
+        extraLifeView.isHidden = true
+        gameOverView.isHidden = false
+    }
+
+    @IBAction func showLeaderoard(_ sender: Any) {
+        LeaderboardManager.shared.navigateToLeaderboard(presentingVC: self)
+    }
+    
+    @IBAction func restartGame(_ sender: Any) {
+        resetGame()
+    }
+
     func requestIntersticial() {
         let request = GADRequest()
         GADInterstitialAd.load(withAdUnitID:"ca-app-pub-3940256099942544/4411468910",
@@ -52,10 +83,18 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
         )
     }
     
+    func showAd() {
+        if interstitial != nil {
+            interstitial!.present(fromRootViewController: self)
+        } else {
+            print("Ad wasn't ready")
+        }
+    }
+    
     /// Tells the delegate that the ad failed to present full screen content.
     func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
         print("Ad did fail to present full screen content.")
-        scene.reset()
+        resetGame()
     }
     
     /// Tells the delegate that the ad presented full screen content.
@@ -67,18 +106,11 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
     /// Tells the delegate that the ad dismissed full screen content.
     func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
         print("Ad did dismiss full screen content.")
-        scene.reset()
+        resetGame()
         requestIntersticial()
+        
     }
-    
-    func showAd() {
-        if interstitial != nil {
-            interstitial!.present(fromRootViewController: self)
-        } else {
-            print("Ad wasn't ready")
-        }
-    }
-    
+
     override var shouldAutorotate: Bool {
         return true
     }

@@ -18,7 +18,6 @@ class GameScene: SKScene {
     var ceil: Limit!
     var lifebar: Lifebar!
     var introNode: SKSpriteNode!
-    var gameOverNode: SKSpriteNode!
     var distanceText: SKLabelNode!
     
     
@@ -58,10 +57,6 @@ class GameScene: SKScene {
         // Intro Node
         introNode = childNode(withName: "intro") as? SKSpriteNode
         
-        // Game over Node
-        gameOverNode = childNode(withName: "gameOver") as? SKSpriteNode
-        gameOverNode.removeFromParent()
-        
         // Distance text
         distanceText = childNode(withName: "distanceText") as? SKLabelNode
         resetDistanceText()
@@ -81,7 +76,7 @@ class GameScene: SKScene {
         case .playing:
             player.jump()
         case .gameOver:
-            gameVC.showAd()
+            print("Depois decido")
         }
     }
     
@@ -133,8 +128,9 @@ class GameScene: SKScene {
             return
         }
         
+        gameVC.gameOver()
+        
         LeaderboardManager.shared.updateScore(with: Int(GameManager.shared.distance))
-        addChild(gameOverNode)
         player.die()
         status = .gameOver
         Analytics.logEvent("level_end", parameters: nil)
@@ -142,17 +138,14 @@ class GameScene: SKScene {
     }
     
     func reset() {
-        gameOverNode.removeFromParent()
         addChild(introNode)
         
         status = .intro
-        
         player.reset()
         spawnManager.resetSpawns()
         resetDistanceText()
         GameManager.shared.reset()
         lifebar.lifeUpdate(life: player.life)
-        
         Analytics.logEvent("level_reset", parameters: nil)
     }
     
