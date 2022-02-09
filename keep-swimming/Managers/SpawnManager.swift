@@ -40,7 +40,7 @@ struct Objects {
 class SpawnManager {
     private var parent: SKNode!
     private var spawnIntervals = SpawnTimes()
-    private var lowerInterval = CGFloat(2)
+    private var lowerInterval = TimeInterval(2)
     
     // Obstacles
     private var obstacles = [Obstacle]()
@@ -83,6 +83,7 @@ class SpawnManager {
         let newValue = ((currentInterval * GameManager.shared.initialSpeed) / GameManager.shared.speed)
         var newInterval = currentInterval
         
+        print("[Here] Compare \(newValue) with \(lowerInterval) results in \(newValue >= lowerInterval)")
         if newValue >= lowerInterval {
             newInterval = CGFloat.random(in: lowerInterval...newValue)
         }
@@ -104,6 +105,7 @@ class SpawnManager {
             let updatedTime = updateInterval(currentTime: obstaclesTimes.middle, currentInterval: spawnIntervals.middle)
             obstaclesTimes.middle = updatedTime.time
             spawnIntervals.middle = updatedTime.interval
+            print("[Here] Interval: \(spawnIntervals.middle)")
         }
         if obstaclesTimes.top > spawnIntervals.top {
             spawnObstacle(pos: Positions.top)
@@ -205,5 +207,8 @@ class SpawnManager {
             life.node.removeFromParent()
         }
         lives.removeAll()
+        
+        obstaclesTimes = SpawnTimes()
+        spawnIntervals = SpawnTimes()
     }
 }
