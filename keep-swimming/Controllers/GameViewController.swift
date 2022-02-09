@@ -72,6 +72,7 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
     @IBAction func `continue`(_ sender: Any) {
         extraLifeView.isHidden = true
         gameOverView.isHidden = false
+//        GameManager.shared.distanceDisplayed
     }
     
     @IBAction func showLeaderoard(_ sender: Any) {

@@ -182,7 +182,7 @@ class SpawnManager {
     
     func getDamage(node: SKNode) -> CGFloat? {
         guard let obstacle = obstacles.first(where: { $0.node == node }) else {
-            return nil
+            return 20
         }
         
         if obstacle.obstacleStruct.contactEnabled {
