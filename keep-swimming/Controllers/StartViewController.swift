@@ -18,7 +18,10 @@ class StartViewController: UIViewController {
     }
     
     @IBAction func gameClicked(_ sender: Any) {
-        LeaderboardManager.shared.navigateToGame(presentingVC: self)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let gameVC = storyboard.instantiateViewController(withIdentifier: "GameViewController") as! GameViewController
+        gameVC.modalTransitionStyle = .crossDissolve
+        self.present(gameVC, animated: true, completion: nil)
     }
     
     @IBAction func leaderboardClicked(_ sender: Any) {
