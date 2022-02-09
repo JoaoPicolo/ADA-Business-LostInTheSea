@@ -30,14 +30,24 @@
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="dEb-q5-Un1">
-                                <rect key="frame" x="287.5" y="98" width="321" height="171"/>
+                                <rect key="frame" x="287.5" y="81" width="321" height="171"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="321" id="FnJ-nz-QLB"/>
                                     <constraint firstAttribute="height" constant="171" id="ZzB-Dm-gre"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wsp-lQ-cfx" userLabel="Leaderboard Button">
+                                <rect key="frame" x="787" y="20" width="74" height="86.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" backgroundImage="medal"/>
+                                <connections>
+                                    <action selector="leaderboardClicked:" destination="HyI-pM-40l" eventType="touchUpInside" id="X7W-iG-Iy7"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XZg-us-Nk3" userLabel="Start Button">
-                                <rect key="frame" x="340.5" y="260" width="215" height="104"/>
+                                <rect key="frame" x="341" y="244" width="215" height="104"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -49,16 +59,6 @@
                                     <action selector="gameClicked:" destination="HyI-pM-40l" eventType="touchUpInside" id="Jkq-10-Ubp"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wsp-lQ-cfx" userLabel="Leaderboard Button">
-                                <rect key="frame" x="822" y="0.0" width="74" height="86.5"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" backgroundImage="medal"/>
-                                <connections>
-                                    <action selector="leaderboardClicked:" destination="HyI-pM-40l" eventType="touchUpInside" id="X7W-iG-Iy7"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="es1-C1-hhu"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -66,11 +66,11 @@
                             <constraint firstItem="dEb-q5-Un1" firstAttribute="centerX" secondItem="es1-C1-hhu" secondAttribute="centerX" id="08N-aI-Dxc"/>
                             <constraint firstItem="dEb-q5-Un1" firstAttribute="centerX" secondItem="es1-C1-hhu" secondAttribute="centerX" id="5Wd-dq-ru7"/>
                             <constraint firstItem="Wsp-lQ-cfx" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="es1-C1-hhu" secondAttribute="leading" symbolic="YES" id="8XC-BL-2s5"/>
-                            <constraint firstItem="dEb-q5-Un1" firstAttribute="top" secondItem="es1-C1-hhu" secondAttribute="top" constant="98" id="AKI-61-5aG"/>
-                            <constraint firstItem="XZg-us-Nk3" firstAttribute="top" secondItem="es1-C1-hhu" secondAttribute="top" constant="260" id="BNo-Lm-Q0Q"/>
+                            <constraint firstItem="dEb-q5-Un1" firstAttribute="top" secondItem="es1-C1-hhu" secondAttribute="top" constant="81" id="AKI-61-5aG"/>
+                            <constraint firstItem="XZg-us-Nk3" firstAttribute="top" secondItem="es1-C1-hhu" secondAttribute="top" constant="244" id="BNo-Lm-Q0Q"/>
                             <constraint firstItem="4JK-xe-7K7" firstAttribute="centerX" secondItem="es1-C1-hhu" secondAttribute="centerX" id="MHL-wk-cbw"/>
-                            <constraint firstAttribute="trailing" secondItem="Wsp-lQ-cfx" secondAttribute="trailing" id="OMF-xG-Vfq"/>
-                            <constraint firstItem="Wsp-lQ-cfx" firstAttribute="top" secondItem="es1-C1-hhu" secondAttribute="top" id="t1d-Lx-FNP"/>
+                            <constraint firstAttribute="trailing" secondItem="Wsp-lQ-cfx" secondAttribute="trailing" constant="35" id="OMF-xG-Vfq"/>
+                            <constraint firstItem="Wsp-lQ-cfx" firstAttribute="top" secondItem="es1-C1-hhu" secondAttribute="top" constant="20" id="t1d-Lx-FNP"/>
                             <constraint firstItem="4JK-xe-7K7" firstAttribute="top" secondItem="hmY-yx-OH9" secondAttribute="topMargin" id="vkg-JX-qS1"/>
                             <constraint firstItem="XZg-us-Nk3" firstAttribute="centerX" secondItem="hmY-yx-OH9" secondAttribute="centerX" id="xqL-6L-ZBY"/>
                         </constraints>
@@ -94,22 +94,6 @@
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="finalText" translatesAutoresizingMaskIntoConstraints="NO" id="bJ3-RD-UD9">
                                         <rect key="frame" x="248.5" y="82" width="399" height="64"/>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bzr-9w-G4f" userLabel="LeaderboardButton">
-                                        <rect key="frame" x="822" y="45" width="74" height="57"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="57" id="9x5-ew-DFK"/>
-                                        </constraints>
-                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" backgroundImage="medal">
-                                            <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="showLeaderoard:" destination="dyb-BF-QCG" eventType="touchUpInside" id="kJB-O6-kQ9"/>
-                                        </connections>
-                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 m" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DxG-l0-zbM">
                                         <rect key="frame" x="399.5" y="154" width="97" height="72"/>
                                         <fontDescription key="fontDescription" name="SingleDay-Regular" family="Single Day" pointSize="72"/>
@@ -125,15 +109,31 @@
                                             <action selector="restartGame:" destination="dyb-BF-QCG" eventType="touchUpInside" id="mRl-Vo-Sjk"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bzr-9w-G4f" userLabel="LeaderboardButton">
+                                        <rect key="frame" x="796" y="21" width="74" height="86.5"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="86.5" id="9x5-ew-DFK"/>
+                                        </constraints>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" backgroundImage="medal">
+                                            <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="showLeaderoard:" destination="dyb-BF-QCG" eventType="touchUpInside" id="kJB-O6-kQ9"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstItem="DxG-l0-zbM" firstAttribute="top" secondItem="bJ3-RD-UD9" secondAttribute="bottom" constant="8" symbolic="YES" id="2ob-u9-oQA"/>
                                     <constraint firstItem="DxG-l0-zbM" firstAttribute="centerX" secondItem="s6q-nK-Feu" secondAttribute="centerX" id="3TR-jq-opR"/>
                                     <constraint firstItem="bzr-9w-G4f" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="s6q-nK-Feu" secondAttribute="leading" constant="20" symbolic="YES" id="8M4-vl-SdP"/>
-                                    <constraint firstItem="bzr-9w-G4f" firstAttribute="top" secondItem="s6q-nK-Feu" secondAttribute="top" constant="45" id="HgV-ot-8dj"/>
+                                    <constraint firstItem="bzr-9w-G4f" firstAttribute="top" secondItem="s6q-nK-Feu" secondAttribute="top" constant="21" id="HgV-ot-8dj"/>
                                     <constraint firstItem="bJ3-RD-UD9" firstAttribute="top" secondItem="s6q-nK-Feu" secondAttribute="top" constant="82" id="Yy5-io-VRD"/>
-                                    <constraint firstAttribute="trailing" secondItem="bzr-9w-G4f" secondAttribute="trailing" id="aZD-5Z-SML"/>
+                                    <constraint firstAttribute="trailing" secondItem="bzr-9w-G4f" secondAttribute="trailing" constant="26" id="aZD-5Z-SML"/>
                                     <constraint firstItem="bJ3-RD-UD9" firstAttribute="centerX" secondItem="s6q-nK-Feu" secondAttribute="centerX" id="c1T-rV-h5V"/>
                                     <constraint firstItem="aLK-Gl-6xd" firstAttribute="centerX" secondItem="s6q-nK-Feu" secondAttribute="centerX" id="nyP-Hc-zeC"/>
                                     <constraint firstItem="aLK-Gl-6xd" firstAttribute="top" secondItem="bJ3-RD-UD9" secondAttribute="bottom" constant="77" id="tTF-ad-co2"/>
@@ -148,8 +148,17 @@
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="continue" translatesAutoresizingMaskIntoConstraints="NO" id="HvQ-8A-9Ht">
                                         <rect key="frame" x="356.5" y="157" width="183" height="61"/>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JR1-JG-1Gx" userLabel="VideoButton">
+                                        <rect key="frame" x="340.5" y="229" width="215" height="104"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" backgroundImage="play"/>
+                                        <connections>
+                                            <action selector="playAd:" destination="dyb-BF-QCG" eventType="touchUpInside" id="BR4-oY-4NH"/>
+                                        </connections>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aaf-4u-Y7f" userLabel="NotButton">
-                                        <rect key="frame" x="412.5" y="335" width="71.5" height="18"/>
+                                        <rect key="frame" x="412.5" y="325" width="71.5" height="18"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -160,25 +169,16 @@
                                             <action selector="continue:" destination="dyb-BF-QCG" eventType="touchUpInside" id="JHS-EP-9Lc"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JR1-JG-1Gx" userLabel="VideoButton">
-                                        <rect key="frame" x="340.5" y="235" width="215" height="104"/>
-                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" backgroundImage="play"/>
-                                        <connections>
-                                            <action selector="playAd:" destination="dyb-BF-QCG" eventType="touchUpInside" id="BR4-oY-4NH"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="HvQ-8A-9Ht" firstAttribute="top" secondItem="EIQ-bK-GeB" secondAttribute="top" constant="157" id="JO4-d2-OrY"/>
                                     <constraint firstItem="JR1-JG-1Gx" firstAttribute="centerX" secondItem="EIQ-bK-GeB" secondAttribute="centerX" id="Rjc-De-oFD"/>
                                     <constraint firstItem="sW3-kt-5xQ" firstAttribute="top" secondItem="EIQ-bK-GeB" secondAttribute="top" constant="58" id="aPX-EU-36u"/>
-                                    <constraint firstAttribute="bottom" secondItem="aaf-4u-Y7f" secondAttribute="bottom" constant="61" id="jfh-qT-cGd"/>
+                                    <constraint firstAttribute="bottom" secondItem="aaf-4u-Y7f" secondAttribute="bottom" constant="70.895659237255018" id="jfh-qT-cGd"/>
                                     <constraint firstItem="aaf-4u-Y7f" firstAttribute="centerX" secondItem="EIQ-bK-GeB" secondAttribute="centerX" id="n0T-0d-uLY"/>
                                     <constraint firstItem="sW3-kt-5xQ" firstAttribute="centerX" secondItem="EIQ-bK-GeB" secondAttribute="centerX" id="nep-Xq-9EF"/>
-                                    <constraint firstItem="aaf-4u-Y7f" firstAttribute="top" secondItem="JR1-JG-1Gx" secondAttribute="bottom" constant="-4" id="oiP-q2-HmP"/>
+                                    <constraint firstItem="aaf-4u-Y7f" firstAttribute="top" secondItem="JR1-JG-1Gx" secondAttribute="bottom" constant="-7.895659237255245" id="oiP-q2-HmP"/>
                                     <constraint firstItem="HvQ-8A-9Ht" firstAttribute="centerX" secondItem="EIQ-bK-GeB" secondAttribute="centerX" id="yX4-ZI-ZZm"/>
                                 </constraints>
                             </view>
