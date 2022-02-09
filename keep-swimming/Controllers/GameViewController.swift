@@ -16,6 +16,7 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
     
     @IBOutlet weak var extraLifeView: UIView!
     @IBOutlet weak var gameOverView: UIView!
+    @IBOutlet weak var finalDistance: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()

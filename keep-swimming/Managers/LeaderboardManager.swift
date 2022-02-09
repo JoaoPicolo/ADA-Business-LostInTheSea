@@ -56,11 +56,6 @@ class LeaderboardManager: NSObject, GKGameCenterControllerDelegate {
         }
     }
     
-    func navigateToGame(presentingVC: UIViewController?) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let gameVC = storyboard.instantiateViewController(withIdentifier: "GameViewController") as! GameViewController
-        presentingVC!.present(gameVC, animated: true, completion: nil)
-    }
     
     func navigateToLeaderboard(presentingVC: UIViewController?) {
         let gameCenterVC = GKGameCenterViewController(leaderboardID: self.gcDefaultLeaderBoard, playerScope: .global, timeScope: .allTime)
