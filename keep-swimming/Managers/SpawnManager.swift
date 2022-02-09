@@ -180,18 +180,17 @@ class SpawnManager {
         }
     }
     
-    func getDamage(node: SKNode) -> CGFloat {
-        for obstacle in obstacles {
-            if obstacle.node == node {
-                if obstacle.obstacleStruct.contactEnabled {
-                    obstacle.obstacleStruct.contactEnabled = false
-                    return obstacle.obstacleStruct.damage
-                } else {
-                    return 0
-                }
-            }
+    func getDamage(node: SKNode) -> CGFloat? {
+        guard let obstacle = obstacles.first(where: { $0.node == node }) else {
+            return nil
         }
-        return 20
+        
+        if obstacle.obstacleStruct.contactEnabled {
+            obstacle.obstacleStruct.contactEnabled = false
+            return obstacle.obstacleStruct.damage
+        } else {
+            return 0
+        }
     }
     
     func resetSpawns() {

@@ -12,14 +12,14 @@ import GoogleMobileAds
 
 class GameViewController: UIViewController, GADFullScreenContentDelegate {
     private var scene: GameScene!
-    private var interstitial: GADInterstitialAd?
-
+    private var rewardedAd: GADRewardedAd?
+    
     @IBOutlet weak var extraLifeView: UIView!
     @IBOutlet weak var gameOverView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
             scene = SKScene(fileNamed: "GameScene") as? GameScene
@@ -37,8 +37,22 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
             view.showsNodeCount = false
         }
         
-        // INTERSTICIAL
-        requestIntersticial()
+        // Rewarded
+        loadRewardedAd()
+    }
+    
+    private func loadRewardedAd() {
+        GADRewardedAd.load(
+            withAdUnitID: "ca-app-pub-3940256099942544/1712485313", request: GADRequest()
+        ) { (ad, error) in
+            if let error = error {
+                print("Rewarded ad failed to load with error: \(error.localizedDescription)")
+                return
+            }
+            print("Loading Succeeded")
+            self.rewardedAd = ad
+            self.rewardedAd?.fullScreenContentDelegate = self
+        }
     }
     
     func gameOver() {
@@ -54,12 +68,12 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
     @IBAction func playAd(_ sender: Any) {
         showAd()
     }
-
+    
     @IBAction func `continue`(_ sender: Any) {
         extraLifeView.isHidden = true
         gameOverView.isHidden = false
     }
-
+    
     @IBAction func showLeaderoard(_ sender: Any) {
         LeaderboardManager.shared.navigateToLeaderboard(presentingVC: self)
     }
@@ -67,50 +81,38 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
     @IBAction func restartGame(_ sender: Any) {
         resetGame()
     }
-
-    func requestIntersticial() {
-        let request = GADRequest()
-        GADInterstitialAd.load(withAdUnitID:"ca-app-pub-3940256099942544/4411468910",
-                               request: request,
-                               completionHandler: { [self] ad, error in
-            if let error = error {
-                print("Failed to load interstitial ad with error: \(error.localizedDescription)")
-                return
+    
+    private func showAd() {
+        if let ad = rewardedAd {
+            ad.present(fromRootViewController: self) {
+                let reward = ad.adReward
+                // TODO: Reward the user
+                self.loadRewardedAd()
+                self.resetGame()
+                print("[Add] did show \(reward)")
             }
-            interstitial = ad
-            interstitial?.fullScreenContentDelegate = self
-        }
-        )
-    }
-    
-    func showAd() {
-        if interstitial != nil {
-            interstitial!.present(fromRootViewController: self)
         } else {
-            print("Ad wasn't ready")
+            resetGame()
         }
     }
     
-    /// Tells the delegate that the ad failed to present full screen content.
-    func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
-        print("Ad did fail to present full screen content.")
-        resetGame()
-    }
-    
-    /// Tells the delegate that the ad presented full screen content.
+    // MARK: GADFullScreenContentDelegate
     func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-        print("Ad did present full screen content.")
-        // Pause music
+        print("Rewarded ad presented.")
     }
     
-    /// Tells the delegate that the ad dismissed full screen content.
     func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-        print("Ad did dismiss full screen content.")
-        resetGame()
-        requestIntersticial()
-        
+        print("Rewarded ad dismissed.")
     }
-
+    
+    func ad(
+        _ ad: GADFullScreenPresentingAd,
+        didFailToPresentFullScreenContentWithError error: Error
+    ) {
+        print("Rewarded ad failed to present with error: \(error.localizedDescription).")
+        resetGame()
+    }
+    
     override var shouldAutorotate: Bool {
         return true
     }

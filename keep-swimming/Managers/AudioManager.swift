@@ -33,10 +33,12 @@ extension AudioManager: AudioPlayer {
     }
     
     func play(effect: Effect) {
-        guard let effectPlayer = try? AVAudioPlayer(soundFile: effect) else { return }
-        effectPlayer.volume = effectsVolume
-        effectPlayer.play()
-        currentEffectPlayer = effectPlayer
+        DispatchQueue.global(qos: .userInteractive).async { [weak self] in
+            guard let effectPlayer = try? AVAudioPlayer(soundFile: effect) else { return }
+            effectPlayer.volume = self?.effectsVolume ?? 0
+            effectPlayer.play()
+            self?.currentEffectPlayer = effectPlayer
+        }
     }
 }
 

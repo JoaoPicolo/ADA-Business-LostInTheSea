@@ -181,11 +181,15 @@ extension GameScene: SKPhysicsContactDelegate {
     }
     
     private func obstacleCollision(node: SKNode) {
+        guard let damage = spawnManager.getDamage(node: node),
+              damage > 0 else {
+                  return
+              }
+
         AudioManager.shared.play(effect: Audio.EffectFiles.tum)
         hapticsManeger.vibrateByImpact(intensity: CGFloat(15))
         cameraManager.cameraShake(duration: 0.2)
         
-        let damage = spawnManager.getDamage(node: node)
         player.updateLife(points: -damage)
         
         if player.life == 0 {
