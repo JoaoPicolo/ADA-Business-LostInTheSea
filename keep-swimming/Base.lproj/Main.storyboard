@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="HyI-pM-40l">
     <device id="retina6_1" orientation="landscape" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -28,48 +29,6 @@
                                     <constraint firstAttribute="width" constant="941" id="Dpd-JZ-dia"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OPU-Zt-fTv">
-                                <rect key="frame" x="798" y="33" width="98" height="57"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="57" id="a6P-XQ-sy5"/>
-                                </constraints>
-                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" image="medal">
-                                    <backgroundConfiguration key="background">
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="strokeColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </backgroundConfiguration>
-                                    <color key="baseForegroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <color key="baseBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="leaderboardClicked:" destination="HyI-pM-40l" eventType="touchUpInside" id="jWN-vE-Nqd"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xcl-ti-puH">
-                                <rect key="frame" x="328.5" y="288" width="239" height="48"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <rect key="contentStretch" x="0.0" y="0.0" width="0.65000000000000002" height="1"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="204" id="Y29-mR-7Sb"/>
-                                    <constraint firstAttribute="height" constant="48" id="xRg-6t-BCb"/>
-                                </constraints>
-                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" image="start">
-                                    <backgroundConfiguration key="background">
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="strokeColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </backgroundConfiguration>
-                                    <color key="baseForegroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <color key="baseBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="gameClicked:" destination="HyI-pM-40l" eventType="touchUpInside" id="xn9-iE-u9F"/>
-                                </connections>
-                            </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="dEb-q5-Un1">
                                 <rect key="frame" x="287.5" y="98" width="321" height="171"/>
                                 <constraints>
@@ -77,22 +36,43 @@
                                     <constraint firstAttribute="height" constant="171" id="ZzB-Dm-gre"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XZg-us-Nk3" userLabel="Start Button">
+                                <rect key="frame" x="340.5" y="260" width="215" height="104"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" backgroundImage="start">
+                                    <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="gameClicked:" destination="HyI-pM-40l" eventType="touchUpInside" id="Jkq-10-Ubp"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wsp-lQ-cfx" userLabel="Leaderboard Button">
+                                <rect key="frame" x="822" y="0.0" width="74" height="86.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" backgroundImage="medal"/>
+                                <connections>
+                                    <action selector="leaderboardClicked:" destination="HyI-pM-40l" eventType="touchUpInside" id="X7W-iG-Iy7"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="es1-C1-hhu"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="xcl-ti-puH" firstAttribute="top" secondItem="dEb-q5-Un1" secondAttribute="bottom" constant="19" id="02F-Xy-Rjd"/>
                             <constraint firstItem="dEb-q5-Un1" firstAttribute="centerX" secondItem="es1-C1-hhu" secondAttribute="centerX" id="08N-aI-Dxc"/>
                             <constraint firstItem="dEb-q5-Un1" firstAttribute="centerX" secondItem="es1-C1-hhu" secondAttribute="centerX" id="5Wd-dq-ru7"/>
-                            <constraint firstItem="xcl-ti-puH" firstAttribute="centerX" secondItem="es1-C1-hhu" secondAttribute="centerX" id="5sA-YQ-LN4"/>
+                            <constraint firstItem="Wsp-lQ-cfx" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="es1-C1-hhu" secondAttribute="leading" symbolic="YES" id="8XC-BL-2s5"/>
+                            <constraint firstItem="dEb-q5-Un1" firstAttribute="top" secondItem="es1-C1-hhu" secondAttribute="top" constant="98" id="AKI-61-5aG"/>
+                            <constraint firstItem="XZg-us-Nk3" firstAttribute="top" secondItem="es1-C1-hhu" secondAttribute="top" constant="260" id="BNo-Lm-Q0Q"/>
                             <constraint firstItem="4JK-xe-7K7" firstAttribute="centerX" secondItem="es1-C1-hhu" secondAttribute="centerX" id="MHL-wk-cbw"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="xcl-ti-puH" secondAttribute="bottom" constant="57" id="MgJ-Ro-12f"/>
-                            <constraint firstItem="xcl-ti-puH" firstAttribute="centerX" secondItem="es1-C1-hhu" secondAttribute="centerX" id="WTY-2B-K89"/>
-                            <constraint firstItem="OPU-Zt-fTv" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="es1-C1-hhu" secondAttribute="leading" symbolic="YES" id="Y55-Ol-3bb"/>
-                            <constraint firstItem="xcl-ti-puH" firstAttribute="centerX" secondItem="4JK-xe-7K7" secondAttribute="centerX" id="lAZ-5y-2aX"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="OPU-Zt-fTv" secondAttribute="trailing" constant="-60" id="n6y-qm-zkq"/>
+                            <constraint firstAttribute="trailing" secondItem="Wsp-lQ-cfx" secondAttribute="trailing" id="OMF-xG-Vfq"/>
+                            <constraint firstItem="Wsp-lQ-cfx" firstAttribute="top" secondItem="es1-C1-hhu" secondAttribute="top" id="t1d-Lx-FNP"/>
                             <constraint firstItem="4JK-xe-7K7" firstAttribute="top" secondItem="hmY-yx-OH9" secondAttribute="topMargin" id="vkg-JX-qS1"/>
-                            <constraint firstItem="OPU-Zt-fTv" firstAttribute="top" secondItem="hmY-yx-OH9" secondAttribute="topMargin" constant="33" id="xWD-H0-87s"/>
+                            <constraint firstItem="XZg-us-Nk3" firstAttribute="centerX" secondItem="hmY-yx-OH9" secondAttribute="centerX" id="xqL-6L-ZBY"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -115,21 +95,17 @@
                                         <rect key="frame" x="248.5" y="82" width="399" height="64"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bzr-9w-G4f" userLabel="LeaderboardButton">
-                                        <rect key="frame" x="798" y="45" width="98" height="57"/>
+                                        <rect key="frame" x="822" y="45" width="74" height="57"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="57" id="9x5-ew-DFK"/>
                                         </constraints>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" image="medal">
-                                            <backgroundConfiguration key="background">
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <color key="strokeColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </backgroundConfiguration>
-                                            <color key="baseForegroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <color key="baseBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </buttonConfiguration>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" backgroundImage="medal">
+                                            <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                         <connections>
                                             <action selector="showLeaderoard:" destination="dyb-BF-QCG" eventType="touchUpInside" id="kJB-O6-kQ9"/>
                                         </connections>
@@ -141,14 +117,10 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aLK-Gl-6xd" userLabel="ReplayButton">
-                                        <rect key="frame" x="321.5" y="223" width="253" height="118"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="replay">
-                                            <backgroundConfiguration key="background">
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <color key="strokeColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </backgroundConfiguration>
-                                        </buttonConfiguration>
+                                        <rect key="frame" x="333.5" y="223" width="229" height="104"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" backgroundImage="replay"/>
                                         <connections>
                                             <action selector="restartGame:" destination="dyb-BF-QCG" eventType="touchUpInside" id="mRl-Vo-Sjk"/>
                                         </connections>
@@ -177,27 +149,22 @@
                                         <rect key="frame" x="356.5" y="157" width="183" height="61"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aaf-4u-Y7f" userLabel="NotButton">
-                                        <rect key="frame" x="400" y="323" width="96" height="30"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="notNow">
-                                            <backgroundConfiguration key="background">
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <color key="strokeColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </backgroundConfiguration>
-                                        </buttonConfiguration>
+                                        <rect key="frame" x="412.5" y="335" width="71.5" height="18"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" backgroundImage="notNow">
+                                            <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                         <connections>
                                             <action selector="continue:" destination="dyb-BF-QCG" eventType="touchUpInside" id="JHS-EP-9Lc"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JR1-JG-1Gx" userLabel="VideoButton">
-                                        <rect key="frame" x="328.5" y="209" width="239" height="118"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="play">
-                                            <backgroundConfiguration key="background">
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <color key="strokeColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </backgroundConfiguration>
-                                        </buttonConfiguration>
+                                        <rect key="frame" x="340.5" y="235" width="215" height="104"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" backgroundImage="play"/>
                                         <connections>
                                             <action selector="playAd:" destination="dyb-BF-QCG" eventType="touchUpInside" id="BR4-oY-4NH"/>
                                         </connections>
