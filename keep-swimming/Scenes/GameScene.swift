@@ -76,7 +76,7 @@ class GameScene: SKScene {
         case .playing:
             player.jump()
         case .gameOver:
-            print("Depois decido")
+            print("Game is over")
         }
     }
     

@@ -10,9 +10,11 @@ import SpriteKit
 import GameplayKit
 import GoogleMobileAds
 
-class GameViewController: UIViewController, GADFullScreenContentDelegate {
+class GameViewController: UIViewController {
     private var scene: GameScene!
+    
     private var rewardedAd: GADRewardedAd?
+    private var canViewAd = true
     
     @IBOutlet weak var extraLifeView: UIView!
     @IBOutlet weak var gameOverView: UIView!
@@ -42,22 +44,15 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
         loadRewardedAd()
     }
     
-    private func loadRewardedAd() {
-        GADRewardedAd.load(
-            withAdUnitID: "ca-app-pub-3940256099942544/1712485313", request: GADRequest()
-        ) { (ad, error) in
-            if let error = error {
-                print("Rewarded ad failed to load with error: \(error.localizedDescription)")
-                return
-            }
-            print("Loading Succeeded")
-            self.rewardedAd = ad
-            self.rewardedAd?.fullScreenContentDelegate = self
-        }
-    }
-    
     func gameOver() {
-        extraLifeView.isHidden = false
+        if canViewAd {
+            extraLifeView.isHidden = false
+            canViewAd = false
+        } else {
+            gameOverView.isHidden = false
+            finalDistance.text = GameManager.shared.distanceDisplayed.description + " m"
+            canViewAd = true
+        }
     }
     
     func resetGame() {
@@ -100,23 +95,6 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
         }
     }
     
-    // MARK: GADFullScreenContentDelegate
-    func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-        print("Rewarded ad presented.")
-    }
-    
-    func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-        print("Rewarded ad dismissed.")
-    }
-    
-    func ad(
-        _ ad: GADFullScreenPresentingAd,
-        didFailToPresentFullScreenContentWithError error: Error
-    ) {
-        print("Rewarded ad failed to present with error: \(error.localizedDescription).")
-        resetGame()
-    }
-    
     override var shouldAutorotate: Bool {
         return true
     }
@@ -131,5 +109,39 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
     
     override var prefersStatusBarHidden: Bool {
         return true
+    }
+}
+
+// MARK: Ads extension
+extension GameViewController: GADFullScreenContentDelegate {
+    private func loadRewardedAd() {
+        GADRewardedAd.load(
+            withAdUnitID: "ca-app-pub-3940256099942544/1712485313", request: GADRequest()
+        ) { (ad, error) in
+            if let error = error {
+                print("Rewarded ad failed to load with error: \(error.localizedDescription)")
+                return
+            }
+            print("Loading Succeeded")
+            self.rewardedAd = ad
+            self.rewardedAd?.fullScreenContentDelegate = self
+        }
+    }
+    
+    /// GADFullScreenContentDelegate
+    func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+        print("Rewarded ad presented.")
+    }
+    
+    func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+        print("Rewarded ad dismissed.")
+    }
+    
+    func ad(
+        _ ad: GADFullScreenPresentingAd,
+        didFailToPresentFullScreenContentWithError error: Error
+    ) {
+        print("Rewarded ad failed to present with error: \(error.localizedDescription).")
+        resetGame()
     }
 }
