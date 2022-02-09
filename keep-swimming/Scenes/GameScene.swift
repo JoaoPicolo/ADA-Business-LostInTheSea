@@ -116,6 +116,14 @@ class GameScene: SKScene {
         Analytics.logEvent("level_start", parameters: nil)
     }
     
+    func rewardUser() {
+        addChild(introNode)
+        
+        status = .intro
+        player.reset(lifePoints: 50)
+        lifebar.lifeUpdate(life: player.life)
+    }
+    
     func playingUpdate(deltaTime: TimeInterval) {
         ground.update(deltaTime: deltaTime)
         ceil.update(deltaTime: deltaTime)
@@ -141,7 +149,7 @@ class GameScene: SKScene {
         addChild(introNode)
         
         status = .intro
-        player.reset()
+        player.reset(lifePoints: 100)
         spawnManager.resetSpawns()
         resetDistanceText()
         GameManager.shared.reset()
@@ -151,7 +159,7 @@ class GameScene: SKScene {
     
     func resetDistanceText() {
         let value = "0 m"
-        let attributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.white]
+        let attributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.white, .font: UIFont(name: "SingleDay-Regular", size: 16)!]
         let finalString = NSAttributedString(string: value, attributes: attributes)
         distanceText.attributedText = finalString
     }

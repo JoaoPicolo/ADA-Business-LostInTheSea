@@ -86,8 +86,8 @@ class Player: GameNode {
         node.removeAllActions()
     }
     
-    func reset() {
-        life = 100
+    func reset(lifePoints: CGFloat) {
+        life = lifePoints
         
         node.yScale = startScaleY
         node.xScale = startScaleX

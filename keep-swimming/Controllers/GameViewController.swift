@@ -66,6 +66,11 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
         gameOverView.isHidden = true
     }
     
+    func rewardUser() {
+        extraLifeView.isHidden = true
+        scene.rewardUser()
+    }
+    
     @IBAction func playAd(_ sender: Any) {
         showAd()
     }
@@ -73,7 +78,7 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
     @IBAction func `continue`(_ sender: Any) {
         extraLifeView.isHidden = true
         gameOverView.isHidden = false
-//        GameManager.shared.distanceDisplayed
+        finalDistance.text = GameManager.shared.distanceDisplayed.description + " m"
     }
     
     @IBAction func showLeaderoard(_ sender: Any) {
@@ -87,11 +92,8 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
     private func showAd() {
         if let ad = rewardedAd {
             ad.present(fromRootViewController: self) {
-                let reward = ad.adReward
-                // TODO: Reward the user
                 self.loadRewardedAd()
-                self.resetGame()
-                print("[Add] did show \(reward)")
+                self.rewardUser()
             }
         } else {
             resetGame()

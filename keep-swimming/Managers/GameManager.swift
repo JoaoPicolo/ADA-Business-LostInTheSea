@@ -27,7 +27,7 @@ class GameManager: NSObject {
         distanceDisplayed = Int(distance)
         
         let value = "\(distanceDisplayed) m"
-        let attributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.white]
+        let attributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.white, .font: UIFont(name: "SingleDay-Regular", size: 16)!]
         let finalString = NSAttributedString(string: value, attributes: attributes)
         return finalString
     }
