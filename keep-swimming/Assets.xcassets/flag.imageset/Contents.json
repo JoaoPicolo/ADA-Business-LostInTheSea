@@ -6,10 +6,12 @@
       "scale" : "1x"
     },
     {
+      "filename" : "flag2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "flag3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
