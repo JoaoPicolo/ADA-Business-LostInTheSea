@@ -52,8 +52,8 @@ class GameViewController: UIViewController {
     func lottieAnimation() {
         
         let animationview = AnimationView(name: "heartAnimation")
-        animationview.frame = CGRect(x: 0, y: 0, width: 400, height: 700)
-        animationview.center = self.view.center
+        animationview.frame = CGRect(x: 347, y: 35, width: 150, height: 150)
+      //  animationview.center = self.view.center
         animationview.contentMode = .scaleAspectFit
         view.addSubview(animationview)
         animationview.play()
@@ -120,6 +120,7 @@ class GameViewController: UIViewController {
         gameOverView.isHidden = false
         extraLifeView.isHidden = true
         finalDistance.text = GameManager.shared.distanceDisplayed.description + " m"
+        
     }
     
     override var shouldAutorotate: Bool {

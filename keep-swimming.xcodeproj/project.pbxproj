@@ -13,7 +13,7 @@
 		5405A05827AC1AE200725CF2 /* garden.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5405A05727AC1AE200725CF2 /* garden.mp3 */; };
 		5405A05A27AD49DC00725CF2 /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5405A05927AD49DC00725CF2 /* HapticsManager.swift */; };
 		5472223F27A9D1D8002A25BB /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5472223E27A9D1D8002A25BB /* GameKit.framework */; };
-		5490CC4427B551C9000F29BA /* heartAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 5490CC4327B551C9000F29BA /* heartAnimation.json */; };
+		5490CC4E27B55FE5000F29BA /* heartAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 5490CC4D27B55FE4000F29BA /* heartAnimation.json */; };
 		54E79C6227B4833F00741EA0 /* Scenery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E79C6127B4833F00741EA0 /* Scenery.swift */; };
 		C40712F127AEF400000BA395 /* Obstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40712F027AEF400000BA395 /* Obstacle.swift */; };
 		C40712F327AF0364000BA395 /* CameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40712F227AF0364000BA395 /* CameraManager.swift */; };
@@ -52,7 +52,7 @@
 		5405A05727AC1AE200725CF2 /* garden.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = garden.mp3; sourceTree = "<group>"; };
 		5405A05927AD49DC00725CF2 /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
 		5472223E27A9D1D8002A25BB /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
-		5490CC4327B551C9000F29BA /* heartAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = heartAnimation.json; sourceTree = "<group>"; };
+		5490CC4D27B55FE4000F29BA /* heartAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = heartAnimation.json; path = ../../../../../Downloads/heartAnimation.json; sourceTree = "<group>"; };
 		54E79C6127B4833F00741EA0 /* Scenery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scenery.swift; sourceTree = "<group>"; };
 		C40712F027AEF400000BA395 /* Obstacle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Obstacle.swift; sourceTree = "<group>"; };
 		C40712F227AF0364000BA395 /* CameraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraManager.swift; sourceTree = "<group>"; };
@@ -232,8 +232,8 @@
 			children = (
 				C484454F27B2B25F00D4CB3B /* Fonts */,
 				C4CA2B5D27B1527100C23615 /* Info.plist */,
-				5490CC4327B551C9000F29BA /* heartAnimation.json */,
 				C4CA2B5A27B141A900C23615 /* GoogleService-Info.plist */,
+				5490CC4D27B55FE4000F29BA /* heartAnimation.json */,
 				C4674C6627AB5F0E005E5308 /* Music */,
 				C4674C5327AB5587005E5308 /* Controllers */,
 				C4674C5227AB557A005E5308 /* Scenes */,
@@ -316,7 +316,7 @@
 				C497244927A2BDF5004A121A /* Assets.xcassets in Resources */,
 				C4674C6D27AB5F5F005E5308 /* rainFuse.mp3 in Resources */,
 				5405A05227AB7C7200725CF2 /* bip.wav in Resources */,
-				5490CC4427B551C9000F29BA /* heartAnimation.json in Resources */,
+				5490CC4E27B55FE5000F29BA /* heartAnimation.json in Resources */,
 				C4CA2B5B27B141A900C23615 /* GoogleService-Info.plist in Resources */,
 				5405A05827AC1AE200725CF2 /* garden.mp3 in Resources */,
 				C484455127B2B29800D4CB3B /* SingleDay-Regular.ttf in Resources */,
