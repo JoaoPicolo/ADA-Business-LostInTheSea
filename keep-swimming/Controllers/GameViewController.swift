@@ -34,31 +34,22 @@ class GameViewController: UIViewController {
             
             
             view.ignoresSiblingOrder = true
-            view.showsPhysics = false
+            view.showsPhysics = true
             
             view.showsFPS = false
             view.showsNodeCount = false
         }
         
         // Rewarded
-        loadRewardedAd()
+        loadRewardAd()
     }
     
-    func gameOver() {
+    func adChoice() {
         if canViewAd {
-            extraLifeView.isHidden = false
-            canViewAd = false
+            showExtraLifeView()
         } else {
-            gameOverView.isHidden = false
-            finalDistance.text = GameManager.shared.distanceDisplayed.description + " m"
-            canViewAd = true
+            showGameOverView()
         }
-    }
-    
-    func resetGame() {
-        scene.reset()
-        extraLifeView.isHidden = true
-        gameOverView.isHidden = true
     }
     
     func rewardUser() {
@@ -71,9 +62,7 @@ class GameViewController: UIViewController {
     }
     
     @IBAction func `continue`(_ sender: Any) {
-        extraLifeView.isHidden = true
-        gameOverView.isHidden = false
-        finalDistance.text = GameManager.shared.distanceDisplayed.description + " m"
+        showGameOverView()
     }
     
     @IBAction func showLeaderoard(_ sender: Any) {
@@ -87,12 +76,31 @@ class GameViewController: UIViewController {
     private func showAd() {
         if let ad = rewardedAd {
             ad.present(fromRootViewController: self) {
-                self.loadRewardedAd()
+                self.loadRewardAd()
                 self.rewardUser()
             }
         } else {
             resetGame()
         }
+    }
+    
+    func resetGame() {
+        scene.reset()
+        gameOverView.isHidden = true
+        extraLifeView.isHidden = true
+    }
+    
+    private func showExtraLifeView() {
+        canViewAd = false
+        gameOverView.isHidden = true
+        extraLifeView.isHidden = false
+    }
+    
+    private func showGameOverView() {
+        canViewAd = true
+        gameOverView.isHidden = false
+        extraLifeView.isHidden = true
+        finalDistance.text = GameManager.shared.distanceDisplayed.description + " m"
     }
     
     override var shouldAutorotate: Bool {
@@ -114,7 +122,7 @@ class GameViewController: UIViewController {
 
 // MARK: Ads extension
 extension GameViewController: GADFullScreenContentDelegate {
-    private func loadRewardedAd() {
+    private func loadRewardAd() {
         GADRewardedAd.load(
             withAdUnitID: "ca-app-pub-3940256099942544/1712485313", request: GADRequest()
         ) { (ad, error) in

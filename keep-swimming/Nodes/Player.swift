@@ -62,6 +62,10 @@ class Player: GameNode {
         node.physicsBody?.velocity.dy = jumpVelocity
     }
     
+    private func obstacleColission() {
+        
+    }
+    
     func updateLife(points: CGFloat) {
         if points < 0 && life == 0 {
             return

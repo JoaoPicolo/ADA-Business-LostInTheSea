@@ -9,9 +9,9 @@ import Foundation
 import SpriteKit
 
 struct SpawnTimes {
-    var bottom = TimeInterval(5)
+    var bottom = TimeInterval(2.8)
     var middle = TimeInterval(3)
-    var top = TimeInterval(4)
+    var top = TimeInterval(3.4)
     var life = TimeInterval(20)
 }
 
@@ -39,8 +39,10 @@ struct Objects {
 
 class SpawnManager {
     private var parent: SKNode!
+    private var originalIntervals = SpawnTimes()
     private var spawnIntervals = SpawnTimes()
-    private var lowerInterval = TimeInterval(2)
+    private var lowerInterval = TimeInterval(1.5)
+    private var decreaseDistance = 100
     
     // Obstacles
     private var obstacles = [Obstacle]()
@@ -78,17 +80,23 @@ class SpawnManager {
         moveLives(deltaTime: deltaTime)
     }
     
-    func updateInterval(currentTime: TimeInterval, currentInterval: TimeInterval) -> (time: TimeInterval, interval: TimeInterval) {
-        // Keep incrementing a value, instead of using just game speed -> Adds a value
-        let newValue = ((currentInterval * GameManager.shared.initialSpeed) / GameManager.shared.speed)
+    func updateInterval(currentTime: TimeInterval, currentInterval: TimeInterval, originalInterval: TimeInterval) -> (time: TimeInterval, interval: TimeInterval) {
+        // Decrease distance every 100m
         var newInterval = currentInterval
         
-        print("[Here] Compare \(newValue) with \(lowerInterval) results in \(newValue >= lowerInterval)")
-        if newValue >= lowerInterval {
-            newInterval = CGFloat.random(in: lowerInterval...newValue)
+        let distance = GameManager.shared.distanceDisplayed
+        var remainder = distance % decreaseDistance
+        remainder = distance - remainder
+        if remainder % decreaseDistance == 0 {
+            newInterval = originalInterval - TimeInterval(CGFloat(remainder) / CGFloat(1000) + CGFloat(originalInterval) / CGFloat(10))
+        }
+
+        if newInterval < lowerInterval {
+            newInterval = lowerInterval
         }
         
         let newCurrent = currentTime - newInterval
+        print("type is \(type(of: newCurrent))")
         return (newCurrent, newInterval)
     }
     
@@ -96,20 +104,19 @@ class SpawnManager {
         // Obstacles
         if obstaclesTimes.bottom > spawnIntervals.bottom {
             spawnObstacle(pos: Positions.bottom)
-            let updatedTime = updateInterval(currentTime: obstaclesTimes.bottom, currentInterval: spawnIntervals.bottom)
+            let updatedTime = updateInterval(currentTime: obstaclesTimes.bottom, currentInterval: spawnIntervals.bottom, originalInterval: originalIntervals.bottom)
             obstaclesTimes.bottom = updatedTime.time
             spawnIntervals.bottom = updatedTime.interval
         }
         if obstaclesTimes.middle > spawnIntervals.middle {
             spawnObstacle(pos: Positions.middle)
-            let updatedTime = updateInterval(currentTime: obstaclesTimes.middle, currentInterval: spawnIntervals.middle)
+            let updatedTime = updateInterval(currentTime: obstaclesTimes.middle, currentInterval: spawnIntervals.middle, originalInterval: originalIntervals.middle)
             obstaclesTimes.middle = updatedTime.time
             spawnIntervals.middle = updatedTime.interval
-            print("[Here] Interval: \(spawnIntervals.middle)")
         }
         if obstaclesTimes.top > spawnIntervals.top {
             spawnObstacle(pos: Positions.top)
-            let updatedTime = updateInterval(currentTime: obstaclesTimes.top, currentInterval: spawnIntervals.top)
+            let updatedTime = updateInterval(currentTime: obstaclesTimes.top, currentInterval: spawnIntervals.top, originalInterval: originalIntervals.top)
             obstaclesTimes.top = updatedTime.time
             spawnIntervals.top = updatedTime.interval
         }

@@ -20,8 +20,7 @@ class GameScene: SKScene {
     var introNode: SKSpriteNode!
     var distanceText: SKLabelNode!
     var scenery: Scenery!
-    
-    
+    var limitCollisionEnabled = true
     
     // Managers
     var spawnManager: SpawnManager!
@@ -90,8 +89,8 @@ class GameScene: SKScene {
             start()
         case .playing:
             player.jump()
-        case .gameOver:
-            print("Game is over")
+        case .adChoice:
+            print("Can see ad")
         }
     }
     
@@ -112,7 +111,7 @@ class GameScene: SKScene {
             playIntro(deltaTime: deltaTime)
         case .playing:
             playingUpdate(deltaTime: deltaTime)
-        case .gameOver:
+        case .adChoice:
             break
         }
     }
@@ -128,10 +127,31 @@ class GameScene: SKScene {
         status = .playing
         introNode.removeFromParent()
         player.start()
-        
         Analytics.logEvent("level_start", parameters: nil)
     }
     
+    func playingUpdate(deltaTime: TimeInterval) {
+        ground.update(deltaTime: deltaTime)
+        ceil.update(deltaTime: deltaTime)
+        scenery.update(deltaTime: deltaTime)
+        spawnManager.updateObjects(deltaTime: deltaTime)
+        distanceText.attributedText = GameManager.shared.updateDistance(deltaTime: deltaTime)
+    }
+    
+    func adChoice() {
+        if status == .adChoice {
+            return
+        }
+        
+        status = .adChoice
+        gameVC.adChoice()
+
+        player.die()
+        LeaderboardManager.shared.updateScore(with: Int(GameManager.shared.distance))
+        Analytics.logEvent("level_end", parameters: nil)
+        Analytics.setUserProperty(GameManager.shared.distanceDisplayed.description, forName: "player_distance")
+    }
+
     func rewardUser() {
         addChild(introNode)
         
@@ -140,36 +160,14 @@ class GameScene: SKScene {
         lifebar.lifeUpdate(life: player.life)
     }
     
-    func playingUpdate(deltaTime: TimeInterval) {
-        ground.update(deltaTime: deltaTime)
-        ceil.update(deltaTime: deltaTime)
-        spawnManager.updateObjects(deltaTime: deltaTime)
-        scenery.update(deltaTime: deltaTime)
-        distanceText.attributedText = GameManager.shared.updateDistance(deltaTime: deltaTime)
-    }
-    
-    func gameOver() {
-        if status == .gameOver {
-            return
-        }
-        
-        gameVC.gameOver()
-        
-        LeaderboardManager.shared.updateScore(with: Int(GameManager.shared.distance))
-        player.die()
-        status = .gameOver
-        Analytics.logEvent("level_end", parameters: nil)
-        Analytics.setUserProperty(GameManager.shared.distanceDisplayed.description, forName: "player_distance")
-    }
-    
     func reset() {
         addChild(introNode)
-        
+
         status = .intro
-        player.reset(lifePoints: 100)
         spawnManager.resetSpawns()
-        resetDistanceText()
         GameManager.shared.reset()
+        resetDistanceText()
+        player.reset(lifePoints: 100)
         lifebar.lifeUpdate(life: player.life)
         Analytics.logEvent("level_reset", parameters: nil)
     }
@@ -193,7 +191,7 @@ extension GameScene: SKPhysicsContactDelegate {
     }
     
     func hasColided(other: SKNode) {
-        if status != .gameOver {
+        if status != .adChoice {
             let category = other.userData?.value(forKey: "category") as! String
             if  category == "obstacle" {
                 obstacleCollision(node: other)
@@ -218,7 +216,7 @@ extension GameScene: SKPhysicsContactDelegate {
         player.updateLife(points: -damage)
         
         if player.life == 0 {
-            gameOver()
+            adChoice()
         }
     }
     
@@ -229,5 +227,4 @@ extension GameScene: SKPhysicsContactDelegate {
         
         node.alpha = 0
     }
-    
 }

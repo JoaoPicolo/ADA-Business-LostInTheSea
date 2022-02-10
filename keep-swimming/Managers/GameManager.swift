@@ -46,5 +46,5 @@ class GameManager: NSObject {
 enum GameStatus {
     case intro
     case playing
-    case gameOver
+    case adChoice
 }
