@@ -13,6 +13,7 @@
 		5405A05827AC1AE200725CF2 /* garden.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5405A05727AC1AE200725CF2 /* garden.mp3 */; };
 		5405A05A27AD49DC00725CF2 /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5405A05927AD49DC00725CF2 /* HapticsManager.swift */; };
 		5472223F27A9D1D8002A25BB /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5472223E27A9D1D8002A25BB /* GameKit.framework */; };
+		54E79C6227B4833F00741EA0 /* Scenery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E79C6127B4833F00741EA0 /* Scenery.swift */; };
 		C40712F127AEF400000BA395 /* Obstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40712F027AEF400000BA395 /* Obstacle.swift */; };
 		C40712F327AF0364000BA395 /* CameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40712F227AF0364000BA395 /* CameraManager.swift */; };
 		C40712F527AF03BA000BA395 /* Operations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40712F427AF03BA000BA395 /* Operations.swift */; };
@@ -50,6 +51,7 @@
 		5405A05727AC1AE200725CF2 /* garden.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = garden.mp3; sourceTree = "<group>"; };
 		5405A05927AD49DC00725CF2 /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
 		5472223E27A9D1D8002A25BB /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		54E79C6127B4833F00741EA0 /* Scenery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scenery.swift; sourceTree = "<group>"; };
 		C40712F027AEF400000BA395 /* Obstacle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Obstacle.swift; sourceTree = "<group>"; };
 		C40712F227AF0364000BA395 /* CameraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraManager.swift; sourceTree = "<group>"; };
 		C40712F427AF03BA000BA395 /* Operations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operations.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 				5405A05527AC023600725CF2 /* Lifebar.swift */,
 				C47B370527AC48EE00B734F6 /* Life.swift */,
 				C40712F027AEF400000BA395 /* Obstacle.swift */,
+				54E79C6127B4833F00741EA0 /* Scenery.swift */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -402,6 +405,7 @@
 				C40712F127AEF400000BA395 /* Obstacle.swift in Sources */,
 				C47B370627AC48EE00B734F6 /* Life.swift in Sources */,
 				C4674C4E27AB4D7F005E5308 /* LeaderboardManager.swift in Sources */,
+				54E79C6227B4833F00741EA0 /* Scenery.swift in Sources */,
 				C47B370227AC04E800B734F6 /* Obstacles.swift in Sources */,
 				C4674C6127AB5C42005E5308 /* AudioManager.swift in Sources */,
 				C40712F527AF03BA000BA395 /* Operations.swift in Sources */,

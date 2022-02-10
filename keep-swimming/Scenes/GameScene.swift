@@ -19,6 +19,8 @@ class GameScene: SKScene {
     var lifebar: Lifebar!
     var introNode: SKSpriteNode!
     var distanceText: SKLabelNode!
+    var scenery: Scenery!
+    
     
     
     // Managers
@@ -48,10 +50,23 @@ class GameScene: SKScene {
         let ceilNode = childNode(withName: "ceil") as! SKSpriteNode
         ceil = Limit(node: ceilNode)
         
+        
         // LifeBar Node
         let lifeBarParent = childNode(withName: "lifeBar")!
         let lifeBarNode = lifeBarParent.childNode(withName: "life") as! SKSpriteNode
         lifebar = Lifebar(lifeNode: lifeBarNode)
+        
+        // Background Node
+        let backgroundNodes = [
+            self.childNode(withName: "1") as! SKSpriteNode,
+            self.childNode(withName: "2") as! SKSpriteNode,
+            self.childNode(withName: "3") as! SKSpriteNode,
+            self.childNode(withName: "4") as! SKSpriteNode,
+            self.childNode(withName: "5") as! SKSpriteNode,
+            self.childNode(withName: "6") as! SKSpriteNode,
+            self.childNode(withName: "7") as! SKSpriteNode
+        ]
+        scenery = Scenery(nodes: backgroundNodes)
         
         
         // Intro Node
@@ -105,6 +120,7 @@ class GameScene: SKScene {
     func playIntro(deltaTime: TimeInterval) {
         ground.update(deltaTime: deltaTime)
         ceil.update(deltaTime: deltaTime)
+        scenery.update(deltaTime: deltaTime)
     }
     
     
@@ -128,6 +144,7 @@ class GameScene: SKScene {
         ground.update(deltaTime: deltaTime)
         ceil.update(deltaTime: deltaTime)
         spawnManager.updateObjects(deltaTime: deltaTime)
+        scenery.update(deltaTime: deltaTime)
         distanceText.attributedText = GameManager.shared.updateDistance(deltaTime: deltaTime)
     }
     
