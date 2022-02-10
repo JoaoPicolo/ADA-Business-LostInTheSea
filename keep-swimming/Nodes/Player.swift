@@ -12,10 +12,12 @@ class Player: GameNode {
     private var jumpVelocity = CGFloat(300)
     private var animation = SKAction()
     var life = CGFloat(100)
+    var collisionEnabled = true
     
     override init(node: SKSpriteNode) {
         super.init(node: node)
         
+        setStructure()
         setTextures()
         physicsSetup()
     }
@@ -52,6 +54,12 @@ class Player: GameNode {
         node.run(animation)
     }
     
+    private func setStructure() {
+        let blurNode = SKSpriteNode(imageNamed: "lifeBlur")
+        blurNode.name = "blurNode"
+        blurNode.alpha = 0
+        node.addChild(blurNode)
+    }
     
     func start() {
         node.physicsBody?.isDynamic = true
@@ -62,11 +70,32 @@ class Player: GameNode {
         node.physicsBody?.velocity.dy = jumpVelocity
     }
     
-    private func obstacleColission() {
+    private func obstacleCollision() {
+        node.alpha = 0.5
+        collisionEnabled = false
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            self.node.alpha = 1
+            self.collisionEnabled = true
+        }
+    }
+    
+    private func lifeCollission() {
+        let blur = node.childNode(withName: "blurNode")
+        blur?.alpha = 1
         
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            blur?.alpha = 0
+        }
     }
     
     func updateLife(points: CGFloat) {
+        if points < 0 {
+            obstacleCollision()
+        } else if points > 0 {
+            lifeCollission()
+        }
+        
         if points < 0 && life == 0 {
             return
         }

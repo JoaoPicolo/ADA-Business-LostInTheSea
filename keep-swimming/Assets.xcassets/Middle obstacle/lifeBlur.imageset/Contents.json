@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "coralv3.png",
+      "filename" : "lifeBlur.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "coralv3@2x.png",
+      "filename" : "lifeBlur@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "coralv3@3x.png",
+      "filename" : "lifeBlur@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

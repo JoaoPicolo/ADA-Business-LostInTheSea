@@ -182,11 +182,13 @@ class GameScene: SKScene {
 
 extension GameScene: SKPhysicsContactDelegate {
     func didBegin(_ contact: SKPhysicsContact) {
-        // Pass which object colided with which object
-        if contact.bodyA.node?.name == "player" {
-            hasColided(other: contact.bodyB.node!)
-        } else if contact.bodyB.node?.name == "player" {
-            hasColided(other: contact.bodyA.node!)
+        if player.collisionEnabled {
+            // Pass which object colided with which object
+            if contact.bodyA.node?.name == "player" {
+                hasColided(other: contact.bodyB.node!)
+            } else if contact.bodyB.node?.name == "player" {
+                hasColided(other: contact.bodyA.node!)
+            }
         }
     }
     
