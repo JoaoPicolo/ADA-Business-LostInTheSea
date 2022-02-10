@@ -9,6 +9,7 @@ import UIKit
 import SpriteKit
 import GameplayKit
 import GoogleMobileAds
+import Lottie
 
 class GameViewController: UIViewController {
     private var scene: GameScene!
@@ -19,6 +20,9 @@ class GameViewController: UIViewController {
     @IBOutlet weak var extraLifeView: UIView!
     @IBOutlet weak var gameOverView: UIView!
     @IBOutlet weak var finalDistance: UILabel!
+    
+    @IBOutlet weak var animationView: AnimationView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +46,18 @@ class GameViewController: UIViewController {
         
         // Rewarded
         loadRewardAd()
+        
+    }
+    
+    func lottieAnimation() {
+        
+        let animationview = AnimationView(name: "heartAnimation")
+        animationview.frame = CGRect(x: 0, y: 0, width: 400, height: 700)
+        animationview.center = self.view.center
+        animationview.contentMode = .scaleAspectFit
+        view.addSubview(animationview)
+        animationview.play()
+        animationview.loopMode = .loop
     }
     
     func adChoice() {
@@ -94,6 +110,9 @@ class GameViewController: UIViewController {
         canViewAd = false
         gameOverView.isHidden = true
         extraLifeView.isHidden = false
+        
+        // Do animation
+        lottieAnimation()
     }
     
     private func showGameOverView() {

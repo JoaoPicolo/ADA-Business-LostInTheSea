@@ -47,7 +47,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XZg-us-Nk3" userLabel="Start Button">
-                                <rect key="frame" x="341" y="244" width="215" height="104"/>
+                                <rect key="frame" x="340.5" y="244" width="215" height="104"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -169,16 +169,27 @@
                                             <action selector="continue:" destination="dyb-BF-QCG" eventType="touchUpInside" id="JHS-EP-9Lc"/>
                                         </connections>
                                     </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X4h-MT-Fca" customClass="AnimationView" customModule="Lottie">
+                                        <rect key="frame" x="378" y="58" width="140" height="298"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="animationName" value="animationView"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="X4h-MT-Fca" firstAttribute="leading" secondItem="EIQ-bK-GeB" secondAttribute="leading" constant="378" id="2HD-aA-Ydv"/>
                                     <constraint firstItem="HvQ-8A-9Ht" firstAttribute="top" secondItem="EIQ-bK-GeB" secondAttribute="top" constant="157" id="JO4-d2-OrY"/>
+                                    <constraint firstItem="X4h-MT-Fca" firstAttribute="centerX" secondItem="EIQ-bK-GeB" secondAttribute="centerX" id="Ny0-5W-HbV"/>
                                     <constraint firstItem="JR1-JG-1Gx" firstAttribute="centerX" secondItem="EIQ-bK-GeB" secondAttribute="centerX" id="Rjc-De-oFD"/>
                                     <constraint firstItem="sW3-kt-5xQ" firstAttribute="top" secondItem="EIQ-bK-GeB" secondAttribute="top" constant="58" id="aPX-EU-36u"/>
                                     <constraint firstAttribute="bottom" secondItem="aaf-4u-Y7f" secondAttribute="bottom" constant="70.895659237255018" id="jfh-qT-cGd"/>
                                     <constraint firstItem="aaf-4u-Y7f" firstAttribute="centerX" secondItem="EIQ-bK-GeB" secondAttribute="centerX" id="n0T-0d-uLY"/>
                                     <constraint firstItem="sW3-kt-5xQ" firstAttribute="centerX" secondItem="EIQ-bK-GeB" secondAttribute="centerX" id="nep-Xq-9EF"/>
                                     <constraint firstItem="aaf-4u-Y7f" firstAttribute="top" secondItem="JR1-JG-1Gx" secondAttribute="bottom" constant="-7.895659237255245" id="oiP-q2-HmP"/>
+                                    <constraint firstItem="X4h-MT-Fca" firstAttribute="centerY" secondItem="EIQ-bK-GeB" secondAttribute="centerY" id="roB-Kk-a2v"/>
+                                    <constraint firstItem="X4h-MT-Fca" firstAttribute="top" secondItem="sW3-kt-5xQ" secondAttribute="top" id="ySI-jE-AA2"/>
                                     <constraint firstItem="HvQ-8A-9Ht" firstAttribute="centerX" secondItem="EIQ-bK-GeB" secondAttribute="centerX" id="yX4-ZI-ZZm"/>
                                 </constraints>
                             </view>
@@ -197,6 +208,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="animationView" destination="X4h-MT-Fca" id="bCw-yC-5EW"/>
                         <outlet property="extraLifeView" destination="EIQ-bK-GeB" id="t0g-qA-tnb"/>
                         <outlet property="finalDistance" destination="DxG-l0-zbM" id="r11-0z-eOP"/>
                         <outlet property="gameOverView" destination="s6q-nK-Feu" id="R0h-CM-NdJ"/>

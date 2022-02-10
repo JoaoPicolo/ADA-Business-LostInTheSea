@@ -9,4 +9,5 @@ target 'keep-swimming' do
   pod 'Firebase/Analytics'
   pod 'Firebase/Crashlytics'
   pod 'Google-Mobile-Ads-SDK'
+  pod 'lottie-ios'
 end
