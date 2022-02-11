@@ -11,6 +11,7 @@ import SpriteKit
 class Limit: GameNode {
     override init(node: SKSpriteNode) {
         super.init(node: node)
+        node.zPosition = 10
     }
     
     func update(deltaTime: TimeInterval) {
