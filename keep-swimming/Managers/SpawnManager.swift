@@ -96,7 +96,6 @@ class SpawnManager {
         }
         
         let newCurrent = currentTime - newInterval
-        print("type is \(type(of: newCurrent))")
         return (newCurrent, newInterval)
     }
     

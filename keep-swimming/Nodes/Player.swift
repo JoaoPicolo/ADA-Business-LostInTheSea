@@ -58,6 +58,7 @@ class Player: GameNode {
         let blurNode = SKSpriteNode(imageNamed: "lifeBlur")
         blurNode.name = "blurNode"
         blurNode.alpha = 0
+        blurNode.zPosition = -1
         node.addChild(blurNode)
     }
     
@@ -71,21 +72,21 @@ class Player: GameNode {
     }
     
     private func obstacleCollision() {
-        node.alpha = 0.5
+        node.run(SKAction.fadeAlpha(to: 0.5, duration: 0.25))
         collisionEnabled = false
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            self.node.alpha = 1
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.node.run(SKAction.fadeAlpha(to: 1, duration: 0.25))
             self.collisionEnabled = true
         }
     }
     
     private func lifeCollission() {
         let blur = node.childNode(withName: "blurNode")
-        blur?.alpha = 1
+        blur?.run(SKAction.fadeAlpha(to: 1, duration: 0.25))
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            blur?.alpha = 0
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            blur?.run(SKAction.fadeAlpha(to: 0, duration: 0.25))
         }
     }
     

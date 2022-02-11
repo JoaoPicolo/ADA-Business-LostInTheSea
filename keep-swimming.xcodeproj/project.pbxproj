@@ -39,6 +39,7 @@
 		C497245527A2C23A004A121A /* Limit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C497245427A2C23A004A121A /* Limit.swift */; };
 		C497245727A2C5B2004A121A /* GameNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C497245627A2C5B2004A121A /* GameNode.swift */; };
 		C497245D27A2D3D9004A121A /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C497245C27A2D3D9004A121A /* GameManager.swift */; };
+		C4A0818027B69F2A00D285EA /* heartAnimationOfficial2.json in Resources */ = {isa = PBXBuildFile; fileRef = C4A0817F27B69F2A00D285EA /* heartAnimationOfficial2.json */; };
 		C4C710F827A40A9100927855 /* SpawnManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C710F727A40A9100927855 /* SpawnManager.swift */; };
 		C4CA2B5B27B141A900C23615 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C4CA2B5A27B141A900C23615 /* GoogleService-Info.plist */; };
 		C4ED51D627A80661004C160B /* Masks.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4ED51D527A80661004C160B /* Masks.swift */; };
@@ -80,6 +81,7 @@
 		C497245427A2C23A004A121A /* Limit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Limit.swift; sourceTree = "<group>"; };
 		C497245627A2C5B2004A121A /* GameNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameNode.swift; sourceTree = "<group>"; };
 		C497245C27A2D3D9004A121A /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
+		C4A0817F27B69F2A00D285EA /* heartAnimationOfficial2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = heartAnimationOfficial2.json; sourceTree = "<group>"; };
 		C4C710F727A40A9100927855 /* SpawnManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpawnManager.swift; sourceTree = "<group>"; };
 		C4CA2B5A27B141A900C23615 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C4CA2B5D27B1527100C23615 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -232,11 +234,10 @@
 		C497243A27A2BDF3004A121A /* keep-swimming */ = {
 			isa = PBXGroup;
 			children = (
+				C4A0817E27B69CC500D285EA /* Lotties */,
 				C484454F27B2B25F00D4CB3B /* Fonts */,
-				C4CA2B5D27B1527100C23615 /* Info.plist */,
-				5490CC6327B69820000F29BA /* heartAnimation.json */,
-				5490CC6527B69921000F29BA /* heartAnimationOfficial.json */,
 				C4CA2B5A27B141A900C23615 /* GoogleService-Info.plist */,
+				C4CA2B5D27B1527100C23615 /* Info.plist */,
 				C4674C6627AB5F0E005E5308 /* Music */,
 				C4674C5327AB5587005E5308 /* Controllers */,
 				C4674C5227AB557A005E5308 /* Scenes */,
@@ -249,6 +250,16 @@
 				C497244A27A2BDF5004A121A /* LaunchScreen.storyboard */,
 			);
 			path = "keep-swimming";
+			sourceTree = "<group>";
+		};
+		C4A0817E27B69CC500D285EA /* Lotties */ = {
+			isa = PBXGroup;
+			children = (
+				5490CC6327B69820000F29BA /* heartAnimation.json */,
+				C4A0817F27B69F2A00D285EA /* heartAnimationOfficial2.json */,
+				5490CC6527B69921000F29BA /* heartAnimationOfficial.json */,
+			);
+			path = Lotties;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -317,6 +328,7 @@
 				C497244727A2BDF4004A121A /* Main.storyboard in Resources */,
 				C497243E27A2BDF3004A121A /* GameScene.sks in Resources */,
 				5405A05427AB7D3D00725CF2 /* tum.mp3 in Resources */,
+				C4A0818027B69F2A00D285EA /* heartAnimationOfficial2.json in Resources */,
 				C497244927A2BDF5004A121A /* Assets.xcassets in Resources */,
 				C4674C6D27AB5F5F005E5308 /* rainFuse.mp3 in Resources */,
 				5405A05227AB7C7200725CF2 /* bip.wav in Resources */,

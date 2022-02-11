@@ -167,11 +167,11 @@
                                         </connections>
                                     </button>
                                     <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="X4h-MT-Fca" customClass="AnimationView" customModule="Lottie">
-                                        <rect key="frame" x="395" y="62" width="107" height="94"/>
+                                        <rect key="frame" x="374" y="48" width="149" height="131"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="107" id="G6O-Zc-xHV"/>
-                                            <constraint firstAttribute="height" constant="94" id="KW3-n4-xM8"/>
+                                            <constraint firstAttribute="width" constant="149" id="G6O-Zc-xHV"/>
+                                            <constraint firstAttribute="height" constant="131" id="KW3-n4-xM8"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="animationName" value="animationView"/>
@@ -180,14 +180,14 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="X4h-MT-Fca" firstAttribute="centerX" secondItem="HvQ-8A-9Ht" secondAttribute="centerX" constant="0.5" id="EOc-78-xzc"/>
+                                    <constraint firstItem="HvQ-8A-9Ht" firstAttribute="centerX" secondItem="X4h-MT-Fca" secondAttribute="centerX" constant="-0.5" id="2M4-gy-aCJ"/>
                                     <constraint firstItem="HvQ-8A-9Ht" firstAttribute="top" secondItem="EIQ-bK-GeB" secondAttribute="top" constant="157" id="JO4-d2-OrY"/>
+                                    <constraint firstItem="X4h-MT-Fca" firstAttribute="centerX" secondItem="EIQ-bK-GeB" secondAttribute="centerX" constant="0.5" id="LG2-tM-Upi"/>
                                     <constraint firstItem="JR1-JG-1Gx" firstAttribute="centerX" secondItem="EIQ-bK-GeB" secondAttribute="centerX" id="Rjc-De-oFD"/>
                                     <constraint firstAttribute="bottom" secondItem="aaf-4u-Y7f" secondAttribute="bottom" constant="61" id="jfh-qT-cGd"/>
                                     <constraint firstItem="aaf-4u-Y7f" firstAttribute="centerX" secondItem="EIQ-bK-GeB" secondAttribute="centerX" id="n0T-0d-uLY"/>
                                     <constraint firstItem="aaf-4u-Y7f" firstAttribute="top" secondItem="JR1-JG-1Gx" secondAttribute="bottom" constant="4" id="oiP-q2-HmP"/>
-                                    <constraint firstItem="HvQ-8A-9Ht" firstAttribute="top" secondItem="X4h-MT-Fca" secondAttribute="bottom" constant="1" id="uhQ-bs-VZC"/>
-                                    <constraint firstItem="HvQ-8A-9Ht" firstAttribute="centerX" secondItem="EIQ-bK-GeB" secondAttribute="centerX" id="yX4-ZI-ZZm"/>
+                                    <constraint firstItem="HvQ-8A-9Ht" firstAttribute="top" secondItem="X4h-MT-Fca" secondAttribute="bottom" constant="-22" id="uhQ-bs-VZC"/>
                                 </constraints>
                             </view>
                         </subviews>

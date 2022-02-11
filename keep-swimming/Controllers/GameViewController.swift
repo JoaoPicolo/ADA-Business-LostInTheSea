@@ -51,31 +51,17 @@ class GameViewController: UIViewController {
     }
     
     func setLottieAnimation() {
-        
-        animationView.animation = Animation.named("heartAnimation")
-//
-//        let animationview = AnimationView(name: "heartAnimation")
-//        animationview.frame = CGRect(x: 347, y: 35, width: 150, height: 150)
-//      //  animationview.center = self.view.center
-//        animationview.contentMode = .scaleAspectFit
-//
-//        extraLifeView.addSubview(animationview)
-  
+        animationView.animation = Animation.named("heartAnimationOfficial2")
     }
     
     func playAnimation() {
-        
         animationView.play()
         animationView.loopMode = .loop
-        
     }
     
     func stopAnimation() {
-        
         animationView.stop()
     }
-    
-    
     
     func adChoice() {
         if canViewAd {
@@ -125,7 +111,6 @@ class GameViewController: UIViewController {
         extraLifeView.isHidden = true
         
         stopAnimation()
-        
     }
     
     private func showExtraLifeView() {
@@ -144,7 +129,6 @@ class GameViewController: UIViewController {
         finalDistance.text = GameManager.shared.distanceDisplayed.description + " m"
         
         stopAnimation()
-        
     }
     
     override var shouldAutorotate: Bool {
