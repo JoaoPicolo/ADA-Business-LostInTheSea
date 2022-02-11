@@ -46,19 +46,36 @@ class GameViewController: UIViewController {
         
         // Rewarded
         loadRewardAd()
+        setLottieAnimation()
         
     }
     
-    func lottieAnimation() {
+    func setLottieAnimation() {
         
-        let animationview = AnimationView(name: "heartAnimation")
-        animationview.frame = CGRect(x: 347, y: 35, width: 150, height: 150)
-      //  animationview.center = self.view.center
-        animationview.contentMode = .scaleAspectFit
-        view.addSubview(animationview)
-        animationview.play()
-        animationview.loopMode = .loop
+        animationView.animation = Animation.named("heartAnimation")
+//
+//        let animationview = AnimationView(name: "heartAnimation")
+//        animationview.frame = CGRect(x: 347, y: 35, width: 150, height: 150)
+//      //  animationview.center = self.view.center
+//        animationview.contentMode = .scaleAspectFit
+//
+//        extraLifeView.addSubview(animationview)
+  
     }
+    
+    func playAnimation() {
+        
+        animationView.play()
+        animationView.loopMode = .loop
+        
+    }
+    
+    func stopAnimation() {
+        
+        animationView.stop()
+    }
+    
+    
     
     func adChoice() {
         if canViewAd {
@@ -71,6 +88,8 @@ class GameViewController: UIViewController {
     func rewardUser() {
         extraLifeView.isHidden = true
         scene.rewardUser()
+        
+        stopAnimation()
     }
     
     @IBAction func playAd(_ sender: Any) {
@@ -104,6 +123,9 @@ class GameViewController: UIViewController {
         scene.reset()
         gameOverView.isHidden = true
         extraLifeView.isHidden = true
+        
+        stopAnimation()
+        
     }
     
     private func showExtraLifeView() {
@@ -112,7 +134,7 @@ class GameViewController: UIViewController {
         extraLifeView.isHidden = false
         
         // Do animation
-        lottieAnimation()
+        playAnimation()
     }
     
     private func showGameOverView() {
@@ -120,6 +142,8 @@ class GameViewController: UIViewController {
         gameOverView.isHidden = false
         extraLifeView.isHidden = true
         finalDistance.text = GameManager.shared.distanceDisplayed.description + " m"
+        
+        stopAnimation()
         
     }
     

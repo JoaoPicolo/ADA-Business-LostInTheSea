@@ -95,7 +95,7 @@
                                         <rect key="frame" x="248.5" y="82" width="399" height="64"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 m" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DxG-l0-zbM">
-                                        <rect key="frame" x="399.5" y="154" width="97" height="72"/>
+                                        <rect key="frame" x="400" y="154" width="96.5" height="72"/>
                                         <fontDescription key="fontDescription" name="SingleDay-Regular" family="Single Day" pointSize="72"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -166,12 +166,12 @@
                                             <action selector="continue:" destination="dyb-BF-QCG" eventType="touchUpInside" id="JHS-EP-9Lc"/>
                                         </connections>
                                     </button>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X4h-MT-Fca" customClass="AnimationView" customModule="Lottie">
-                                        <rect key="frame" x="378" y="58" width="140" height="91"/>
+                                    <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="X4h-MT-Fca" customClass="AnimationView" customModule="Lottie">
+                                        <rect key="frame" x="395" y="62" width="107" height="94"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="140" id="G6O-Zc-xHV"/>
-                                            <constraint firstAttribute="height" constant="91" id="KW3-n4-xM8"/>
+                                            <constraint firstAttribute="width" constant="107" id="G6O-Zc-xHV"/>
+                                            <constraint firstAttribute="height" constant="94" id="KW3-n4-xM8"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="animationName" value="animationView"/>
@@ -180,13 +180,13 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="X4h-MT-Fca" firstAttribute="centerX" secondItem="HvQ-8A-9Ht" secondAttribute="centerX" id="EOc-78-xzc"/>
+                                    <constraint firstItem="X4h-MT-Fca" firstAttribute="centerX" secondItem="HvQ-8A-9Ht" secondAttribute="centerX" constant="0.5" id="EOc-78-xzc"/>
                                     <constraint firstItem="HvQ-8A-9Ht" firstAttribute="top" secondItem="EIQ-bK-GeB" secondAttribute="top" constant="157" id="JO4-d2-OrY"/>
                                     <constraint firstItem="JR1-JG-1Gx" firstAttribute="centerX" secondItem="EIQ-bK-GeB" secondAttribute="centerX" id="Rjc-De-oFD"/>
                                     <constraint firstAttribute="bottom" secondItem="aaf-4u-Y7f" secondAttribute="bottom" constant="61" id="jfh-qT-cGd"/>
                                     <constraint firstItem="aaf-4u-Y7f" firstAttribute="centerX" secondItem="EIQ-bK-GeB" secondAttribute="centerX" id="n0T-0d-uLY"/>
                                     <constraint firstItem="aaf-4u-Y7f" firstAttribute="top" secondItem="JR1-JG-1Gx" secondAttribute="bottom" constant="4" id="oiP-q2-HmP"/>
-                                    <constraint firstItem="HvQ-8A-9Ht" firstAttribute="top" secondItem="X4h-MT-Fca" secondAttribute="bottom" constant="8" symbolic="YES" id="uhQ-bs-VZC"/>
+                                    <constraint firstItem="HvQ-8A-9Ht" firstAttribute="top" secondItem="X4h-MT-Fca" secondAttribute="bottom" constant="1" id="uhQ-bs-VZC"/>
                                     <constraint firstItem="HvQ-8A-9Ht" firstAttribute="centerX" secondItem="EIQ-bK-GeB" secondAttribute="centerX" id="yX4-ZI-ZZm"/>
                                 </constraints>
                             </view>
@@ -216,6 +216,9 @@
             <point key="canvasLocation" x="513.61607142857144" y="924.63768115942037"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="X4h-MT-Fca"/>
+    </designables>
     <resources>
         <image name="background" width="812" height="375"/>
         <image name="continue" width="183" height="61"/>
