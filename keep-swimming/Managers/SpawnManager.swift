@@ -11,7 +11,7 @@ import SpriteKit
 struct SpawnTimes {
     var bottom = TimeInterval(2.8)
     var middle = TimeInterval(3)
-    var top = TimeInterval(3.4)
+    var top = TimeInterval(3.2)
     var life = TimeInterval(20)
 }
 
@@ -39,7 +39,6 @@ struct Objects {
 
 class SpawnManager {
     private var parent: SKNode!
-    private var originalIntervals = SpawnTimes()
     private var spawnIntervals = SpawnTimes()
     private var lowerInterval = TimeInterval(1.5)
     private var decreaseDistance = 100
@@ -80,19 +79,51 @@ class SpawnManager {
         moveLives(deltaTime: deltaTime)
     }
     
-    func updateInterval(currentTime: TimeInterval, currentInterval: TimeInterval, originalInterval: TimeInterval) -> (time: TimeInterval, interval: TimeInterval) {
+    func updateInterval(currentTime: TimeInterval, currentInterval: TimeInterval, pos: Positions) -> (time: TimeInterval, interval: TimeInterval) {
         // Decrease distance every 100m
         var newInterval = currentInterval
         
         let distance = GameManager.shared.distanceDisplayed
         var remainder = distance % decreaseDistance
         remainder = distance - remainder
-        if remainder % decreaseDistance == 0 {
-            newInterval = originalInterval - TimeInterval(CGFloat(remainder) / CGFloat(1000) + CGFloat(originalInterval) / CGFloat(10))
-        }
-
-        if newInterval < lowerInterval {
-            newInterval = lowerInterval
+        
+        if pos == .bottom {
+            if remainder == 100 {
+                newInterval = TimeInterval(2.3)
+            }
+            if remainder == 200 {
+                newInterval = TimeInterval(1.8)
+            }
+            if remainder == 400 {
+                newInterval = TimeInterval(1.3)
+            }
+            if remainder == 800 {
+                newInterval = TimeInterval(0.8)
+            }
+            
+        } else if pos == .middle {
+            if remainder == 100 {
+                newInterval = TimeInterval(2.5)
+            }
+            if remainder == 200 {
+                newInterval = TimeInterval(2)
+            }
+            if remainder == 400 {
+                newInterval = TimeInterval(1.5)
+            }
+        } else {
+            if remainder == 100 {
+                newInterval = TimeInterval(2.7)
+            }
+            if remainder == 200 {
+                newInterval = TimeInterval(2.2)
+            }
+            if remainder == 400 {
+                newInterval = TimeInterval(1.7)
+            }
+            if remainder == 800 {
+                newInterval = TimeInterval(1.2)
+            }
         }
         
         let newCurrent = currentTime - newInterval
@@ -103,19 +134,19 @@ class SpawnManager {
         // Obstacles
         if obstaclesTimes.bottom > spawnIntervals.bottom {
             spawnObstacle(pos: Positions.bottom)
-            let updatedTime = updateInterval(currentTime: obstaclesTimes.bottom, currentInterval: spawnIntervals.bottom, originalInterval: originalIntervals.bottom)
+            let updatedTime = updateInterval(currentTime: obstaclesTimes.bottom, currentInterval: spawnIntervals.bottom, pos: .bottom)
             obstaclesTimes.bottom = updatedTime.time
             spawnIntervals.bottom = updatedTime.interval
         }
         if obstaclesTimes.middle > spawnIntervals.middle {
             spawnObstacle(pos: Positions.middle)
-            let updatedTime = updateInterval(currentTime: obstaclesTimes.middle, currentInterval: spawnIntervals.middle, originalInterval: originalIntervals.middle)
+            let updatedTime = updateInterval(currentTime: obstaclesTimes.middle, currentInterval: spawnIntervals.middle, pos: .middle)
             obstaclesTimes.middle = updatedTime.time
             spawnIntervals.middle = updatedTime.interval
         }
         if obstaclesTimes.top > spawnIntervals.top {
             spawnObstacle(pos: Positions.top)
-            let updatedTime = updateInterval(currentTime: obstaclesTimes.top, currentInterval: spawnIntervals.top, originalInterval: originalIntervals.top)
+            let updatedTime = updateInterval(currentTime: obstaclesTimes.top, currentInterval: spawnIntervals.top, pos: .top)
             obstaclesTimes.top = updatedTime.time
             spawnIntervals.top = updatedTime.interval
         }
