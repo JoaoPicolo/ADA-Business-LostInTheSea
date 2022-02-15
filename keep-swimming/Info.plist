@@ -172,5 +172,15 @@
     <string>503797787749501</string>
     <key>FacebookDisplayName</key>
     <string>Lost in the sea</string>
+    <key>FacebookAdvertiserIDCollectionEnabled</key>
+    <string>FALSE</string>
+    <key>FacebookAutoLogAppEventsEnabled</key>
+    <string>FALSE</string>
+    <key>GOOGLE_ANALYTICS_IDFV_COLLECTION_ENABLED</key>
+    <false/>
+    <key>FIREBASE_ANALYTICS_COLLECTION_ENABLED</key>
+    <false/>
+    <key>NSUserTrackingUsageDescription</key>
+    <string>Need tracking for analytics and to deliver custom ads</string>
 </dict>
 </plist>
