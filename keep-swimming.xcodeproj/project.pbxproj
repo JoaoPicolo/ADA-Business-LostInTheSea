@@ -16,6 +16,7 @@
 		5490CC6427B69820000F29BA /* heartAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 5490CC6327B69820000F29BA /* heartAnimation.json */; };
 		5490CC6627B69921000F29BA /* heartAnimationOfficial.json in Resources */ = {isa = PBXBuildFile; fileRef = 5490CC6527B69921000F29BA /* heartAnimationOfficial.json */; };
 		54E79C6227B4833F00741EA0 /* Scenery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E79C6127B4833F00741EA0 /* Scenery.swift */; };
+		54F5C4B427BB352E004E2492 /* heartAnimationOfficial3.json in Resources */ = {isa = PBXBuildFile; fileRef = 54F5C4B327BB352E004E2492 /* heartAnimationOfficial3.json */; };
 		C40712F127AEF400000BA395 /* Obstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40712F027AEF400000BA395 /* Obstacle.swift */; };
 		C40712F327AF0364000BA395 /* CameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40712F227AF0364000BA395 /* CameraManager.swift */; };
 		C40712F527AF03BA000BA395 /* Operations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40712F427AF03BA000BA395 /* Operations.swift */; };
@@ -57,6 +58,7 @@
 		5490CC6327B69820000F29BA /* heartAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = heartAnimation.json; sourceTree = "<group>"; };
 		5490CC6527B69921000F29BA /* heartAnimationOfficial.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = heartAnimationOfficial.json; sourceTree = "<group>"; };
 		54E79C6127B4833F00741EA0 /* Scenery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scenery.swift; sourceTree = "<group>"; };
+		54F5C4B327BB352E004E2492 /* heartAnimationOfficial3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = heartAnimationOfficial3.json; sourceTree = "<group>"; };
 		C40712F027AEF400000BA395 /* Obstacle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Obstacle.swift; sourceTree = "<group>"; };
 		C40712F227AF0364000BA395 /* CameraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraManager.swift; sourceTree = "<group>"; };
 		C40712F427AF03BA000BA395 /* Operations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operations.swift; sourceTree = "<group>"; };
@@ -258,6 +260,7 @@
 				5490CC6327B69820000F29BA /* heartAnimation.json */,
 				C4A0817F27B69F2A00D285EA /* heartAnimationOfficial2.json */,
 				5490CC6527B69921000F29BA /* heartAnimationOfficial.json */,
+				54F5C4B327BB352E004E2492 /* heartAnimationOfficial3.json */,
 			);
 			path = Lotties;
 			sourceTree = "<group>";
@@ -327,6 +330,7 @@
 				5490CC6627B69921000F29BA /* heartAnimationOfficial.json in Resources */,
 				C497244727A2BDF4004A121A /* Main.storyboard in Resources */,
 				C497243E27A2BDF3004A121A /* GameScene.sks in Resources */,
+				54F5C4B427BB352E004E2492 /* heartAnimationOfficial3.json in Resources */,
 				5405A05427AB7D3D00725CF2 /* tum.mp3 in Resources */,
 				C4A0818027B69F2A00D285EA /* heartAnimationOfficial2.json in Resources */,
 				C497244927A2BDF5004A121A /* Assets.xcassets in Resources */,

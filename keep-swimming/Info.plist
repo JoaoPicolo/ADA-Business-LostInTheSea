@@ -159,5 +159,18 @@
 	<array>
 		<string>SingleDay-Regular</string>
 	</array>
+    <key>CFBundleURLTypes</key>
+    <array>
+      <dict>
+      <key>CFBundleURLSchemes</key>
+      <array>
+        <string>fb503797787749501</string>
+      </array>
+      </dict>
+    </array>
+    <key>FacebookAppID</key>
+    <string>503797787749501</string>
+    <key>FacebookDisplayName</key>
+    <string>Lost in the sea</string>
 </dict>
 </plist>

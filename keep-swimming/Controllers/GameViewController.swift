@@ -51,7 +51,7 @@ class GameViewController: UIViewController {
     }
     
     func setLottieAnimation() {
-        animationView.animation = Animation.named("heartAnimationOfficial2")
+        animationView.animation = Animation.named("heartAnimationOfficial3")
     }
     
     func playAnimation() {
