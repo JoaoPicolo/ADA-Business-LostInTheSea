@@ -2,8 +2,29 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb503797787749501</string>
+			</array>
+		</dict>
+	</array>
+	<key>FIREBASE_ANALYTICS_COLLECTION_ENABLED</key>
+	<false/>
+	<key>FacebookAdvertiserIDCollectionEnabled</key>
+	<string>FALSE</string>
+	<key>FacebookAppID</key>
+	<string>503797787749501</string>
+	<key>FacebookAutoLogAppEventsEnabled</key>
+	<string>FALSE</string>
+	<key>FacebookDisplayName</key>
+	<string>Lost in the sea</string>
 	<key>GADApplicationIdentifier</key>
 	<string>ca-app-pub-5811792341403548~6311022240</string>
+	<key>GOOGLE_ANALYTICS_IDFV_COLLECTION_ENABLED</key>
+	<false/>
 	<key>SKAdNetworkItems</key>
 	<array>
 		<dict>
@@ -159,28 +180,5 @@
 	<array>
 		<string>SingleDay-Regular</string>
 	</array>
-    <key>CFBundleURLTypes</key>
-    <array>
-      <dict>
-      <key>CFBundleURLSchemes</key>
-      <array>
-        <string>fb503797787749501</string>
-      </array>
-      </dict>
-    </array>
-    <key>FacebookAppID</key>
-    <string>503797787749501</string>
-    <key>FacebookDisplayName</key>
-    <string>Lost in the sea</string>
-    <key>FacebookAdvertiserIDCollectionEnabled</key>
-    <string>FALSE</string>
-    <key>FacebookAutoLogAppEventsEnabled</key>
-    <string>FALSE</string>
-    <key>GOOGLE_ANALYTICS_IDFV_COLLECTION_ENABLED</key>
-    <false/>
-    <key>FIREBASE_ANALYTICS_COLLECTION_ENABLED</key>
-    <false/>
-    <key>NSUserTrackingUsageDescription</key>
-    <string>Need tracking for analytics and to deliver custom ads</string>
 </dict>
 </plist>

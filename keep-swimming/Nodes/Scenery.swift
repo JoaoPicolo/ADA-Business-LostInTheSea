@@ -17,7 +17,7 @@ class Scenery {
     
     func update(deltaTime: TimeInterval) {
         for (index, node) in nodes.enumerated() {
-            node.position.x -= 100 * CGFloat(index + 1) * deltaTime
+            node.position.x -= 50 * CGFloat(index + 1) * deltaTime
             
             if node.position.x <= -406 {
                 node.position.x = 406
