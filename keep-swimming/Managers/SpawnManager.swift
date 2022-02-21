@@ -207,7 +207,7 @@ class SpawnManager {
     private func moveLives(deltaTime: TimeInterval) {
         // Movement
         for life in lives {
-            life.node.position.x -= GameManager.shared.speed * deltaTime
+            life.node.position.x -= (GameManager.shared.speed - 20) * deltaTime
         }
         
         // Only the first must be removed
