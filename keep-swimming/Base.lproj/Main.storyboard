@@ -80,60 +80,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s6q-nK-Feu" userLabel="Game Over Final">
-                                <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="finalText" translatesAutoresizingMaskIntoConstraints="NO" id="bJ3-RD-UD9">
-                                        <rect key="frame" x="249" y="82" width="399" height="64"/>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 m" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DxG-l0-zbM">
-                                        <rect key="frame" x="400" y="154" width="97" height="72"/>
-                                        <fontDescription key="fontDescription" name="SingleDay-Regular" family="Single Day" pointSize="72"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aLK-Gl-6xd" userLabel="ReplayButton">
-                                        <rect key="frame" x="334" y="223" width="228" height="104"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="228" id="hXF-QX-qeZ"/>
-                                        </constraints>
-                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" backgroundImage="replay"/>
-                                        <connections>
-                                            <action selector="restartGame:" destination="dyb-BF-QCG" eventType="touchUpInside" id="mRl-Vo-Sjk"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bzr-9w-G4f" userLabel="LeaderboardButton">
-                                        <rect key="frame" x="796" y="21" width="74" height="86.5"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="86.5" id="9x5-ew-DFK"/>
-                                        </constraints>
-                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" backgroundImage="medal">
-                                            <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="showLeaderoard:" destination="dyb-BF-QCG" eventType="touchUpInside" id="kJB-O6-kQ9"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="displayP3"/>
-                                <constraints>
-                                    <constraint firstItem="DxG-l0-zbM" firstAttribute="top" secondItem="s6q-nK-Feu" secondAttribute="top" constant="154" id="4QD-gm-Jz7"/>
-                                    <constraint firstItem="DxG-l0-zbM" firstAttribute="centerX" secondItem="s6q-nK-Feu" secondAttribute="centerX" id="6cY-bI-TEc"/>
-                                    <constraint firstItem="DxG-l0-zbM" firstAttribute="centerX" secondItem="aLK-Gl-6xd" secondAttribute="centerX" id="6sb-dB-VDT"/>
-                                    <constraint firstItem="bzr-9w-G4f" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="s6q-nK-Feu" secondAttribute="leading" constant="20" symbolic="YES" id="8M4-vl-SdP"/>
-                                    <constraint firstItem="aLK-Gl-6xd" firstAttribute="top" secondItem="bJ3-RD-UD9" secondAttribute="bottom" constant="77" id="8zQ-Zb-0Ks"/>
-                                    <constraint firstItem="DxG-l0-zbM" firstAttribute="top" secondItem="bJ3-RD-UD9" secondAttribute="bottom" constant="8" id="Ds7-C3-8S0"/>
-                                    <constraint firstItem="DxG-l0-zbM" firstAttribute="centerX" secondItem="bJ3-RD-UD9" secondAttribute="centerX" id="GVP-AD-ho0"/>
-                                    <constraint firstItem="bzr-9w-G4f" firstAttribute="top" secondItem="s6q-nK-Feu" secondAttribute="top" constant="21" id="HgV-ot-8dj"/>
-                                    <constraint firstAttribute="trailing" secondItem="bzr-9w-G4f" secondAttribute="trailing" constant="26" id="aZD-5Z-SML"/>
-                                </constraints>
-                            </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EIQ-bK-GeB" userLabel="Game Over Extra">
                                 <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                                 <subviews>
@@ -174,6 +120,56 @@
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s6q-nK-Feu" userLabel="Game Over Final">
+                                <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="finalText" translatesAutoresizingMaskIntoConstraints="NO" id="bJ3-RD-UD9">
+                                        <rect key="frame" x="249" y="82" width="399" height="64"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 m" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DxG-l0-zbM">
+                                        <rect key="frame" x="200" y="171" width="496" height="72"/>
+                                        <fontDescription key="fontDescription" name="SingleDay-Regular" family="Single Day" pointSize="72"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bzr-9w-G4f" userLabel="LeaderboardButton">
+                                        <rect key="frame" x="796" y="21" width="74" height="86.5"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="86.5" id="9x5-ew-DFK"/>
+                                        </constraints>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" backgroundImage="medal">
+                                            <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="showLeaderoard:" destination="dyb-BF-QCG" eventType="touchUpInside" id="kJB-O6-kQ9"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aLK-Gl-6xd" userLabel="ReplayButton">
+                                        <rect key="frame" x="334" y="251" width="228" height="104"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" backgroundImage="replay"/>
+                                        <connections>
+                                            <action selector="restartGame:" destination="dyb-BF-QCG" eventType="touchUpInside" id="mRl-Vo-Sjk"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstItem="bzr-9w-G4f" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="s6q-nK-Feu" secondAttribute="leading" constant="20" symbolic="YES" id="8M4-vl-SdP"/>
+                                    <constraint firstItem="bzr-9w-G4f" firstAttribute="top" secondItem="s6q-nK-Feu" secondAttribute="top" constant="21" id="HgV-ot-8dj"/>
+                                    <constraint firstItem="DxG-l0-zbM" firstAttribute="centerY" secondItem="s6q-nK-Feu" secondAttribute="centerY" id="RJw-S2-BWc"/>
+                                    <constraint firstAttribute="trailing" secondItem="bzr-9w-G4f" secondAttribute="trailing" constant="26" id="aZD-5Z-SML"/>
+                                    <constraint firstItem="DxG-l0-zbM" firstAttribute="leading" secondItem="s6q-nK-Feu" secondAttribute="leading" constant="200" id="x2h-sK-GyX"/>
+                                    <constraint firstAttribute="trailing" secondItem="DxG-l0-zbM" secondAttribute="trailing" constant="200" id="xLJ-ky-bsG"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="a1r-cE-jSm"/>
