@@ -14,8 +14,10 @@ import Lottie
 class GameViewController: UIViewController {
     private var scene: GameScene!
     
+    private var interstitial: GADInterstitialAd?
     private var rewardedAd: GADRewardedAd?
     private var canViewAd = true
+    private var playWithoutAds = 0
     
     @IBOutlet weak var extraLifeView: UIView!
     @IBOutlet weak var gameOverView: UIView!
@@ -46,8 +48,8 @@ class GameViewController: UIViewController {
         
         // Rewarded
         loadRewardAd()
+        loadInterstitialAd()
         setLottieAnimation()
-        
     }
     
     func setLottieAnimation() {
@@ -83,7 +85,16 @@ class GameViewController: UIViewController {
     }
     
     @IBAction func `continue`(_ sender: Any) {
-        showGameOverView()
+        if playWithoutAds >= 2 {
+            // Show Intersectial
+            interstitial?.present(fromRootViewController: self)
+            showGameOverView()
+            loadInterstitialAd()
+        }
+        else {
+            playWithoutAds += 1
+            showGameOverView()
+        }
     }
     
     @IBAction func showLeaderoard(_ sender: Any) {
@@ -152,10 +163,10 @@ class GameViewController: UIViewController {
 extension GameViewController: GADFullScreenContentDelegate {
     private func loadRewardAd() {
         GADRewardedAd.load(
-            withAdUnitID: "ca-app-pub-3940256099942544/1712485313", request: GADRequest()
+            withAdUnitID: "ca-app-pub-5811792341403548/1897204328", request: GADRequest()
         ) { (ad, error) in
             if let error = error {
-                print("Rewarded ad failed to load with error: \(error.localizedDescription)")
+                print("[Ads] Rewarded ad failed to load with error: \(error.localizedDescription)")
                 return
             }
             print("Loading Succeeded")
@@ -164,20 +175,37 @@ extension GameViewController: GADFullScreenContentDelegate {
         }
     }
     
+    private func loadInterstitialAd() {
+        let request = GADRequest()
+        GADInterstitialAd.load(withAdUnitID:"ca-app-pub-5811792341403548/7840069213",
+                               request: request,
+                               completionHandler: { [self] ad, error in
+            if let error = error {
+                print("[Ads] Failed to load interstitial ad with error: \(error.localizedDescription)")
+                return
+            }
+            self.interstitial = ad
+            self.interstitial?.fullScreenContentDelegate = self
+        })
+    }
+    
     /// GADFullScreenContentDelegate
     func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-        print("Rewarded ad presented.")
+        playWithoutAds = 0
+        print("[Ads] Ad presented.")
     }
     
     func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-        print("Rewarded ad dismissed.")
+        playWithoutAds = 0
+        print("[Ads] Ad dismissed.")
     }
     
     func ad(
         _ ad: GADFullScreenPresentingAd,
         didFailToPresentFullScreenContentWithError error: Error
     ) {
-        print("Rewarded ad failed to present with error: \(error.localizedDescription).")
         resetGame()
+        playWithoutAds = 0
+        print("[Ads] Ad failed to present with error: \(error.localizedDescription).")
     }
 }

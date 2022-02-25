@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="4JK-xe-7K7">
-                                <rect key="frame" x="-22.5" y="-20" width="941" height="433"/>
+                                <rect key="frame" x="-23" y="-20" width="941" height="438"/>
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="dEb-q5-Un1">
@@ -58,13 +58,13 @@
                         <viewLayoutGuide key="safeArea" id="es1-C1-hhu"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="4JK-xe-7K7" firstAttribute="width" secondItem="hmY-yx-OH9" secondAttribute="width" multiplier="1.05022" id="2su-J4-ql4"/>
                             <constraint firstItem="Wsp-lQ-cfx" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="es1-C1-hhu" secondAttribute="leading" symbolic="YES" id="8XC-BL-2s5"/>
-                            <constraint firstItem="4JK-xe-7K7" firstAttribute="centerY" secondItem="es1-C1-hhu" secondAttribute="centerY" id="CyJ-jk-XtC"/>
-                            <constraint firstItem="4JK-xe-7K7" firstAttribute="centerX" secondItem="es1-C1-hhu" secondAttribute="centerX" id="L9Q-53-Um5"/>
                             <constraint firstAttribute="trailing" secondItem="Wsp-lQ-cfx" secondAttribute="trailing" constant="35" id="OMF-xG-Vfq"/>
-                            <constraint firstItem="4JK-xe-7K7" firstAttribute="height" secondItem="hmY-yx-OH9" secondAttribute="height" multiplier="1.04589" id="gCk-6F-a6d"/>
+                            <constraint firstItem="4JK-xe-7K7" firstAttribute="bottom" secondItem="es1-C1-hhu" secondAttribute="bottom" constant="25" id="SeO-QZ-UE0"/>
+                            <constraint firstItem="4JK-xe-7K7" firstAttribute="trailing" secondItem="es1-C1-hhu" secondAttribute="trailing" constant="66.5" id="bWQ-c2-gvZ"/>
+                            <constraint firstItem="es1-C1-hhu" firstAttribute="leading" secondItem="4JK-xe-7K7" secondAttribute="leading" constant="66.5" id="gLI-bw-fTs"/>
                             <constraint firstItem="Wsp-lQ-cfx" firstAttribute="top" secondItem="es1-C1-hhu" secondAttribute="top" constant="20" id="t1d-Lx-FNP"/>
+                            <constraint firstItem="es1-C1-hhu" firstAttribute="top" secondItem="4JK-xe-7K7" secondAttribute="top" constant="20" id="xpN-YD-HTt"/>
                         </constraints>
                     </view>
                 </viewController>
