@@ -9,6 +9,7 @@ import GameKit
 
 class LeaderboardManager: NSObject, GKGameCenterControllerDelegate {
     static let shared = LeaderboardManager()
+    private var userAchievements = [GKAchievement]()
     
     // Leaderboard variables
     var gcEnabled = Bool() // Check if the user has Game Center enabled
@@ -36,6 +37,12 @@ class LeaderboardManager: NSObject, GKGameCenterControllerDelegate {
                         self.gcDefaultLeaderBoard = leaderboardIdentifer!
                     }
                 })
+                
+//                self.loadActiveAchievements()
+//                if self.userAchievements.isEmpty {
+//                    // Saves achievements for the first time, tricks being done here hehe
+//                    self.initAchievements()
+//                }
             }
             else {
                 // Game center is not enabled on the user's device
@@ -58,12 +65,52 @@ class LeaderboardManager: NSObject, GKGameCenterControllerDelegate {
     
     
     func navigateToLeaderboard(presentingVC: UIViewController?) {
-        let gameCenterVC = GKGameCenterViewController(leaderboardID: self.gcDefaultLeaderBoard, playerScope: .global, timeScope: .allTime)
+        let gameCenterVC = GKGameCenterViewController(state: .dashboard)
+//        let gameCenterVC = GKGameCenterViewController(leaderboardID: self.gcDefaultLeaderBoard, playerScope: .global, timeScope: .allTime)
         gameCenterVC.gameCenterDelegate = self
         presentingVC!.present(gameCenterVC, animated: true, completion: nil)
     }
     
     func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
         gameCenterViewController.dismiss(animated:true)
+    }
+    
+    private let playIDs = ["firstPlay"]
+    private let obstacleIDs = ["obstacles10", "obstacles50", "obstacles100"]
+    func initAchievements() {
+        var achievementsToReport = [GKAchievement]()
+        
+        for id in playIDs {
+            achievementsToReport.append(GKAchievement(identifier: id))
+        }
+        
+        for id in obstacleIDs {
+            achievementsToReport.append(GKAchievement(identifier: id))
+        }
+        
+        // Must report achievements when app init
+        print("[Acv] Will report \(achievementsToReport)")
+        GKAchievement.report(achievementsToReport, withCompletionHandler: {(error: Error?) in
+            if error != nil {
+                // Handle the error that occurs.
+                print("[Acv] Error on init: \(String(describing: error))")
+            } else {
+                self.loadActiveAchievements()
+            }
+        })
+    }
+    
+    func loadActiveAchievements() {
+        GKAchievement.loadAchievements(completionHandler: { (achievements: [GKAchievement]?, error: Error?) in
+            print("[Acv] Retrieved achievements \(achievements)")
+            if achievements != nil {
+                self.userAchievements = achievements!
+            }
+            
+            if error != nil {
+                // Handle the error that occurs.
+                print("[Acv] Error on load: \(String(describing: error))")
+            }
+        })
     }
 }
