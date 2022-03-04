@@ -26,6 +26,10 @@ class GameManager: NSObject {
         distance += (deltaTime / 30) * speed
         distanceDisplayed = Int(distance)
         
+        if (distanceDisplayed % 100 == 0) && (distanceDisplayed > 0) {
+            updateAchievements()
+        }
+        
         let value = "\(distanceDisplayed) m"
         let attributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.white, .font: UIFont(name: "SingleDay-Regular", size: 16)!]
         let finalString = NSAttributedString(string: value, attributes: attributes)
@@ -34,6 +38,15 @@ class GameManager: NSObject {
     
     func updateSpeed() {
         speed = initialSpeed + self.accelaration * self.distance
+    }
+    
+    func updateAchievements() {
+        LeaderboardManager.shared.updateAchievement(id: "distance100", value: 100, total: 100)
+        LeaderboardManager.shared.updateAchievement(id: "distance500", value: 100, total: 500)
+        LeaderboardManager.shared.updateAchievement(id: "distance1000", value: 100, total: 1000)
+        LeaderboardManager.shared.updateAchievement(id: "distance15000", value: 100, total: 15000)
+        LeaderboardManager.shared.updateAchievement(id: "distance20000", value: 100, total: 20000)
+        LeaderboardManager.shared.updateAchievement(id: "distance100000", value: 100, total: 100000)
     }
     
     func reset() {

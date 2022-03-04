@@ -38,11 +38,7 @@ class LeaderboardManager: NSObject, GKGameCenterControllerDelegate {
                     }
                 })
                 
-//                self.loadActiveAchievements()
-//                if self.userAchievements.isEmpty {
-//                    // Saves achievements for the first time, tricks being done here hehe
-//                    self.initAchievements()
-//                }
+                self.loadActiveAchievements()
             }
             else {
                 // Game center is not enabled on the user's device
@@ -59,6 +55,24 @@ class LeaderboardManager: NSObject, GKGameCenterControllerDelegate {
                 if error != nil {
                     print("Error updating score: \(error!)")
                 }
+                
+                GKLeaderboard.loadLeaderboards(IDs: [self.gcDefaultLeaderBoard], completionHandler: { leaderboards, leaderboardError in
+                    if leaderboardError != nil {
+                        print("[Acv] Error getting leaderboard", leaderboardError!)
+                    }
+                    else {
+                        let leaderboard = leaderboards?.first
+                        if leaderboard != nil {
+                            leaderboard!.loadEntries(for: [GKLocalPlayer.local], timeScope: .allTime, completionHandler: { entry, entries, error in
+                                let rank = entry?.rank
+                                if rank == 1 {
+                                    self.updateAchievement(id: "bestPlayer", value: 1, total: 1)
+                                }
+
+                            })
+                        }
+                    }
+                })
             })
         }
     }
@@ -66,7 +80,6 @@ class LeaderboardManager: NSObject, GKGameCenterControllerDelegate {
     
     func navigateToLeaderboard(presentingVC: UIViewController?) {
         let gameCenterVC = GKGameCenterViewController(state: .dashboard)
-//        let gameCenterVC = GKGameCenterViewController(leaderboardID: self.gcDefaultLeaderBoard, playerScope: .global, timeScope: .allTime)
         gameCenterVC.gameCenterDelegate = self
         presentingVC!.present(gameCenterVC, animated: true, completion: nil)
     }
@@ -75,34 +88,12 @@ class LeaderboardManager: NSObject, GKGameCenterControllerDelegate {
         gameCenterViewController.dismiss(animated:true)
     }
     
-    private let playIDs = ["firstPlay"]
-    private let obstacleIDs = ["obstacles10", "obstacles50", "obstacles100"]
-    func initAchievements() {
-        var achievementsToReport = [GKAchievement]()
-        
-        for id in playIDs {
-            achievementsToReport.append(GKAchievement(identifier: id))
-        }
-        
-        for id in obstacleIDs {
-            achievementsToReport.append(GKAchievement(identifier: id))
-        }
-        
-        // Must report achievements when app init
-        print("[Acv] Will report \(achievementsToReport)")
-        GKAchievement.report(achievementsToReport, withCompletionHandler: {(error: Error?) in
-            if error != nil {
-                // Handle the error that occurs.
-                print("[Acv] Error on init: \(String(describing: error))")
-            } else {
-                self.loadActiveAchievements()
-            }
-        })
-    }
-    
+    private let achievementIDs = ["play1", "play100", "obstacles50", "obstacles100", "obstacles500", "obstacles1000",
+    "distance100", "distance500", "distance1000", "distance15000", "distance20000", "distance100000", "bestPlayer",
+    "loss1", "loss10", "extraLife", "memory1", "memory10"]
+
     func loadActiveAchievements() {
         GKAchievement.loadAchievements(completionHandler: { (achievements: [GKAchievement]?, error: Error?) in
-            print("[Acv] Retrieved achievements \(achievements)")
             if achievements != nil {
                 self.userAchievements = achievements!
             }
@@ -112,5 +103,38 @@ class LeaderboardManager: NSObject, GKGameCenterControllerDelegate {
                 print("[Acv] Error on load: \(String(describing: error))")
             }
         })
+    }
+    
+    func updateAchievement(id: String, value: Double, total: Double) {
+        let achievement = self.userAchievements.first { $0.identifier == id }
+        
+        print("[Acv] User achievements are \(self.userAchievements)")
+        
+        if achievement != nil {
+            if achievement!.percentComplete < 100 {
+                let progress = (value * 100.0) / total
+                achievement!.percentComplete = achievement!.percentComplete + progress
+                achievement?.showsCompletionBanner = true
+                GKAchievement.report([achievement!], withCompletionHandler: {(error: Error?) in
+                    if error != nil {
+                        // Handle the error that occurs.
+                        print("[Acv] Error on update: \(String(describing: error))")
+                    }
+                })
+            }
+        }
+        else {
+            let newAchievement = GKAchievement(identifier: id)
+            let progress = (value * 100.0) / total
+            newAchievement.percentComplete = progress
+            newAchievement.showsCompletionBanner = true
+            self.userAchievements.append(newAchievement)
+            GKAchievement.report([newAchievement], withCompletionHandler: {(error: Error?) in
+                if error != nil {
+                    // Handle the error that occurs.
+                    print("[Acv] Error on update: \(String(describing: error))")
+                }
+            })
+        }
     }
 }

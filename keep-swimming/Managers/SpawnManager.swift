@@ -42,6 +42,7 @@ class SpawnManager {
     private var spawnIntervals = SpawnTimes()
     private var lowerInterval = TimeInterval(1.5)
     private var decreaseDistance = 100
+    var dodgedObstacles = 0
     
     // Obstacles
     private var obstacles = [Obstacle]()
@@ -200,6 +201,16 @@ class SpawnManager {
             if first.node.position.x < -500 {
                 first.node.removeFromParent()
                 obstacles.removeFirst()
+                dodgedObstacles += 1
+                if dodgedObstacles == 50 {
+                    LeaderboardManager.shared.updateAchievement(id: "obstacles50", value: 50, total: 50)
+                } else if dodgedObstacles == 100 {
+                    LeaderboardManager.shared.updateAchievement(id: "obstacles100", value: 100, total: 100)
+                } else if dodgedObstacles == 500 {
+                    LeaderboardManager.shared.updateAchievement(id: "obstacles500", value: 500, total: 500)
+                } else if dodgedObstacles == 1000 {
+                    LeaderboardManager.shared.updateAchievement(id: "obstacles1000", value: 1000, total: 1000)
+                }
             }
         }
     }
@@ -247,5 +258,6 @@ class SpawnManager {
         
         obstaclesTimes = SpawnTimes()
         spawnIntervals = SpawnTimes()
+        dodgedObstacles = 0
     }
 }

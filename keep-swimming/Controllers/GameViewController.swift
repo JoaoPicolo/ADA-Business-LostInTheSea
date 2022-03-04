@@ -85,7 +85,7 @@ class GameViewController: UIViewController {
     }
     
     @IBAction func `continue`(_ sender: Any) {
-        if playWithoutAds >= 2 {
+        if playWithoutAds >= 1 {
             // Show Intersectial
             interstitial?.present(fromRootViewController: self)
             showGameOverView()

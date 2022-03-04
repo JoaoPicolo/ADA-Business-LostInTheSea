@@ -128,6 +128,8 @@ class GameScene: SKScene {
         introNode.removeFromParent()
         player.start()
         Analytics.logEvent("level_start", parameters: nil)
+        LeaderboardManager.shared.updateAchievement(id: "play1", value: 1, total: 1)
+        LeaderboardManager.shared.updateAchievement(id: "play1", value: 1, total: 100)
     }
     
     func playingUpdate(deltaTime: TimeInterval) {
@@ -148,6 +150,8 @@ class GameScene: SKScene {
 
         player.die()
         LeaderboardManager.shared.updateScore(with: Int(GameManager.shared.distance))
+        LeaderboardManager.shared.updateAchievement(id: "loss1", value: 1, total: 1)
+        LeaderboardManager.shared.updateAchievement(id: "loss10", value: 1, total: 10)
         Analytics.logEvent("level_end", parameters: nil)
         Analytics.setUserProperty(GameManager.shared.distanceDisplayed.description, forName: "player_distance")
     }
@@ -158,6 +162,7 @@ class GameScene: SKScene {
         status = .intro
         player.reset(lifePoints: 50)
         lifebar.lifeUpdate(life: player.life)
+        LeaderboardManager.shared.updateAchievement(id: "extraLife", value: 1, total: 1)
     }
     
     func reset() {
@@ -226,7 +231,9 @@ extension GameScene: SKPhysicsContactDelegate {
         AudioManager.shared.play(effect: Audio.EffectFiles.life)
         hapticsManeger.vibrateByImpact(intensity: CGFloat(8))
         player.updateLife(points: 10)
-        
         node.alpha = 0
+        
+        LeaderboardManager.shared.updateAchievement(id: "memory1", value: 1, total: 1)
+        LeaderboardManager.shared.updateAchievement(id: "memory10", value: 1, total: 10)
     }
 }
