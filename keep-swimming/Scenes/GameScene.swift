@@ -129,7 +129,7 @@ class GameScene: SKScene {
         player.start()
         Analytics.logEvent("level_start", parameters: nil)
         LeaderboardManager.shared.updateAchievement(id: "play1", value: 1, total: 1)
-        LeaderboardManager.shared.updateAchievement(id: "play1", value: 1, total: 100)
+        LeaderboardManager.shared.updateAchievement(id: "play100", value: 1, total: 100)
     }
     
     func playingUpdate(deltaTime: TimeInterval) {

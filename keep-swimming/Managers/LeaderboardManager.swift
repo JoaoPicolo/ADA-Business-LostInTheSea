@@ -95,6 +95,7 @@ class LeaderboardManager: NSObject, GKGameCenterControllerDelegate {
     func loadActiveAchievements() {
         GKAchievement.loadAchievements(completionHandler: { (achievements: [GKAchievement]?, error: Error?) in
             if achievements != nil {
+                print("[Acv] Loaded achievements \(achievements!)")
                 self.userAchievements = achievements!
             }
             
@@ -108,10 +109,10 @@ class LeaderboardManager: NSObject, GKGameCenterControllerDelegate {
     func updateAchievement(id: String, value: Double, total: Double) {
         let achievement = self.userAchievements.first { $0.identifier == id }
         
-        print("[Acv] User achievements are \(self.userAchievements)")
-        
         if achievement != nil {
+//            print("[Acv] Will update before: \(achievement!)")
             if achievement!.percentComplete < 100 {
+//                print("[Acv] Will update after: \(achievement!)")
                 let progress = (value * 100.0) / total
                 achievement!.percentComplete = achievement!.percentComplete + progress
                 achievement?.showsCompletionBanner = true
@@ -128,11 +129,12 @@ class LeaderboardManager: NSObject, GKGameCenterControllerDelegate {
             let progress = (value * 100.0) / total
             newAchievement.percentComplete = progress
             newAchievement.showsCompletionBanner = true
+//            print("[Acv] New achievement: \(newAchievement)")
             self.userAchievements.append(newAchievement)
             GKAchievement.report([newAchievement], withCompletionHandler: {(error: Error?) in
                 if error != nil {
                     // Handle the error that occurs.
-                    print("[Acv] Error on update: \(String(describing: error))")
+                    print("[Acv] Error on create: \(String(describing: error))")
                 }
             })
         }
